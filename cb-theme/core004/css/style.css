@@ -1,0 +1,136 @@
+
+#tartalom h1.title {
+	clear:both;
+	float:left;
+	margin:5px 0 5px 0;
+	color:#3399ff;
+	font-size:28px;
+	font-weight:normal;
+	width:100%;
+}
+
+#tartalom hr.title {
+	width:100%;
+	float:left;
+	border:0;
+/*	height:4px;
+	background: url(../images/hr.png) no-repeat left top; */
+}
+
+
+
+/* module elemek */
+
+	
+/*design elemek*/
+/*debugging*/
+
+#tartalom div.pageContent{
+	float:left; width: 100%;
+	
+}#tartalom div.pageContent p{
+	float:left; width: 100%; margin:8px 0;
+}
+
+/* menu elemek */
+#tartalom div.pageContent.accountInvite span.inpText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.accountInvite input[type=text]{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.accountInvite textarea{
+	float:left; width: 450px;height:200px;
+}
+
+
+#tartalom div.pageContent.userSettings span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.userSettings span.rowData{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.userSettings span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.userSettings span.rowData textarea{
+	float:left; width: 460px;
+}
+
+
+#tartalom div.pageContent.formContent span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.formContent span.rowData{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.formContent span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.formContent span.rowData textarea{
+	float:left; width: 460px;
+}
+
+
+#tartalom div.pageContent.registration.step1  span.rowText{
+	float:left; width: 200px;
+}
+#tartalom div.pageContent.registration.step1  span.rowData{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.registration.step1  span.rowData input[type=text]{
+	float:left; width: 450px;
+}
+
+#tartalom div.pageContent.registration.step2 span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.registration.step2 span.rowData{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.registration.step2 span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.registration.step2 span.rowData textarea{
+	float:left; width: 460px;
+}
+
+#tartalom div.pageContent.formContent span.rowText{
+	float:left; width: 200px;
+}
+#tartalom div.pageContent.formContent  span.rowData{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.formContent  span.rowData input[type=text]{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.formContent textarea{
+	float:left; width: 600px;height:200px;
+}
+
+#tartalom div.pageContent.pageEditor span.inpText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.pageEditor input[type=text]{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.pageEditor textarea.contentEdit{
+	float:left; width: 600px;height:500px;
+}
+#tartalom div.pageContent.pageEditor input.metaKey{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.pageEditor textarea.metaDesc{
+	float:left; width: 450px;height:200px;
+}
+
+#tartalom div.pageContent.userDetails span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.userDetails  span.rowData{
+	float:left; width: 450px;
+	color:#000;
+}
+#tartalom div.pageContent.userDetails  a.filelink{
+	margin: 0 5px;
+}

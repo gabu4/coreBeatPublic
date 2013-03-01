@@ -1,0 +1,113 @@
+/* menu */
+#menu {
+	float:left;	
+	height:41px;
+	margin:0;
+	padding:0px 0px 0px 248px;
+	width:716px;
+	background:url('../images/menu.png');
+}
+
+#menu ul.menulevel_0 {
+	float:left;
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+#menu ul.menulevel_0>li {
+	line-height:41px;padding: 0;
+	font-size:18px;
+	color:#fff;
+	float:left;
+}
+#menu ul.menulevel_0>li a {
+	text-decoration:none;
+	line-height:41px;padding:0 10px;
+	color:#fff;
+}
+#menu ul.menulevel_0>li>a.active,
+#menu ul.menulevel_0>li>a:hover {
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* almenü innen! */
+#menu ul.menulevel_0>li>ul.menulevel_1 {
+	display:none;
+	background: rgba(182,2,8,.97);
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+	position:absolute;
+	list-style:none;
+	padding:3px 5px;
+	margin:0;
+	border-radius: 0 0 10px 10px;
+	box-shadow: 1px 1px 2x 1px #222;
+}
+
+#menu ul.menulevel_0>li:hover ul.menulevel_1{
+	display:block;
+}
+
+#menu ul.menulevel_0>li>ul.menulevel_1>li {
+	float:left;
+	display;block;
+	clear:left;
+	padding: 2px 0px;
+}
+
+#menu ul.menulevel_0>li>ul.menulevel_1>li>a{
+	display:block;
+	float:left;
+	width:100px;
+	font-size:14px;
+	color:#fff;
+	padding: 5px 20px;
+}
+#menu ul.menulevel_0>li>ul.menulevel_1>li>a.active,
+#menu ul.menulevel_0>li>ul.menulevel_1>li>a:hover{
+	background:#ad0508;
+	border-radius:3px;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* almenü eddig */
+
+/* menu2 */
+#menu2 {
+	float:left;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+#menu2 ul.menulevel_0 {
+	float:left;
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+#menu2 ul.menulevel_0 li {
+	float:left;
+	clear:left;
+	margin:0 0 1px 0;
+}
+
+#menu2 ul.menulevel_0 li a{
+	background: #a00408;
+	color: #fff;
+	font-size: 15px;
+	line-height: 30px;
+	padding: 0 10px 0 10px;
+	margin: 0 10px 0 0;
+	width:210px;
+	float:left;
+	display:block;
+	text-decoration:none;
+}
+
+#menu2 ul.menulevel_0 li a.active,
+#menu2 ul.menulevel_0 li a:hover{
+	background: #d8060a;
+}

@@ -1,0 +1,252 @@
+body {
+	background: gray;
+	font-family: "serif";
+	font-size:14px;
+	margin:0;
+	padding:0;
+	}
+
+#pcenter {
+	float:none;
+	width:90%;
+	margin:10px auto 10px auto;
+}
+
+#pageadmin {
+	float:left;
+	width:100%;
+	margin:10px auto;
+	
+	border: 1px solid black;
+	border-radius:10px;
+	background: #fff;
+	}
+div.inlineBlock{
+	display:inline-block;
+}
+#logo {
+	float:left;
+	margin:0 5%;
+	width: 90%;
+}
+
+#menu {
+	float:left;
+	width:100%;
+	margin: 10px 0;
+	color:#fff;
+}
+#menu ul.mainMenuAdmin {
+	float:left;
+	padding:0;
+	margin:0;
+	font-size:14px;
+	list-style-type:none;
+	display:block;
+}
+
+#menu ul.mainMenuAdmin li {
+	float:left;
+	margin:0px;
+	display:block;
+}
+
+#menu ul.mainMenuAdmin li a{
+	padding:5px 15px;
+	display:block;
+}
+
+#subMenu {
+	float:left;
+	width:100%;
+}
+
+#subMenu ul.subMenu{
+	float:left;
+	width:100%;
+	font-size:14px;
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+#subMenu ul.subMenu>li{
+	float:left;
+	width:100%;
+	padding:0;
+	margin:0 0 1px 0;
+}
+
+#subMenu ul.subMenu>li>a{
+	float:left;
+	width:90%;
+	padding:5px 5%;
+	display:block;
+}
+
+
+#subMenu ul.subMenu>li>a,
+#menu {
+	background: #222;
+}
+
+#subMenu ul.subMenu>li>a,
+#menu ul.mainMenuAdmin>li>a{
+	text-decoration:none;
+	color: #fff;
+}
+
+#subMenu ul.subMenu>li>a:hover,
+#menu ul.mainMenuAdmin>li>a:hover{
+	background: darkorange;
+}
+
+
+#left {
+	float:left;
+	width: 20%;
+	margin: 10px 1% 10px 1%;
+}
+
+#center {
+	float:left;
+	width: 77%;
+	margin: 10px 1% 10px 0%;
+}
+
+#lent {
+	width:80%;
+	margin:10px 10%;
+	padding: 10px 0 0;
+	text-align:center;
+	float:left;
+	border-top:1px solid #222;
+}
+
+.tartalom h1.title{
+	float:left;width:100%;
+}
+
+.tartalom hr.title{
+	float:left;width:30%;margin-right:60%;margin-left:10%;
+}
+
+.tartalom div.pageContent{
+	float:left; width: 100%;
+}
+.tartalom div.pageContent p{
+	float:left; width: 100%; margin:8px 0;
+}
+
+/* oldal elemek */
+.tartalom div.pageContent span.inpText{
+	float:left; width: 150px;
+}
+.tartalom div.pageContent input[type=text]{
+	float:left; width: 450px;
+}
+.tartalom div.pageContent textarea{
+	float:left; width: 450px;height:100px;
+}
+.tartalom div.pageContent select{
+	float:left; width: 450px;
+}
+
+
+.tartalom div.pageContent span.rowText{
+	float:left; width: 150px;
+}
+.tartalom div.pageContent span.rowData{
+	float:left; width: 460px;
+}
+.tartalom div.pageContent span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+.tartalom div.pageContent span.rowData textarea{
+	float:left; width: 460px;
+}
+
+.tartalom div.pageContent span.inpText{
+	float:left; width: 150px;
+}
+.tartalom div.pageContent input[type=text]{
+	float:left; width: 450px;
+}
+.tartalom div.pageContent textarea.contentEdit{
+	float:left; width: 600px;height:500px;
+}
+.tartalom div.pageContent input.metaKey{
+	float:left; width: 450px;
+}
+.tartalom div.pageContent textarea.metaDesc{
+	float:left; width: 450px;height:200px;
+}
+
+.tartalom div.pageContent a.filelink{
+	margin: 0 5px;
+}
+
+.tartalom div.pageContent p span.categorySel{
+	float:left;
+	background: beige;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox{
+	float:left;
+	width:100%;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox input{
+	float:left;
+	clear:left;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox label{
+	float:left;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew {
+	float:left;
+	width:100%;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew span.rowText {
+	float:left;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew input.new_category {
+	float:left;
+	width:300px;
+}
+
+.tartalom table.adminList {
+	width:100%;
+	border: 1px solid #222;
+	border-radius: 5px 5px 0px 0px;
+	border-spacing: 0px;
+}
+
+.tartalom .tabTableList .ui-tabs .ui-tabs-panel {
+	padding: 0;
+}
+.tartalom .tabTableList table.adminList {
+	width:100%;
+	border: 0;
+	border-radius: 0;
+	border-spacing: 0px;
+}
+
+.tartalom table.adminList thead tr{ background: #222; color: #fff; }
+
+.tartalom table.adminList tbody tr{ background: white; }
+
+.tartalom table.adminList tbody tr:nth-of-type(even) { background: whitesmoke; }
+.tartalom table.adminList tbody tr:hover { background: lightgray; }
+
+.tartalom table.adminList tr td.left { text-align: left; }
+.tartalom table.adminList tr td.center { text-align: center; }
+.tartalom table.adminList tr td.right { text-align: right; }
+.tartalom table.adminList tr td.bold { font-weight: bold; }
+.tartalom table.adminList tr td.italic { font-style: italic; }
