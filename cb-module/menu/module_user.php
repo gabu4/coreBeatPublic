@@ -13,7 +13,7 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class menu {
+class module_menu {
 	
 	protected $menuData = Array();
 	
@@ -22,11 +22,9 @@ class menu {
 	public $actPageId = 0;
 	public $actPageVal = 0;
 	
-	function menu() {
+	function module_menu() {
 		global $database, $handler;
-		
-		if ( $handler->haveFunctionCall == 1 ) return 0;
-				
+						
 		if ( ( IS_SEO == '1' ) AND isset($_GET['seo']) and !empty($_GET['seo']) ) { 
 			$val = $database->getSelect("row"," * ","menu"," WHERE `state` = '1' AND `seo_name` = '".$_GET['seo']."' ");
 			if ( !empty($val) ) {

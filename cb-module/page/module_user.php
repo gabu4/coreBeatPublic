@@ -13,11 +13,11 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class page {
+class module_page {
 	
 	var $call = Array( "loadpage" );
 	
-	function page() {
+	function module_page() {
 		global $heandler;
 		
 		$handler->call['page'] = $this->call;
@@ -104,14 +104,7 @@ class page {
 		
 		header("Location: ".$link);
 	}
-	
-	public function loadModule($id, $where = 'MAIN' ) {
-		global $handler;
 		
-		$handler->loadFunction($id, $where);
-		
-	}
-	
 	public function loadCategory($id, $where = 'MAIN' ) {
 		global $database, $theme;
 		

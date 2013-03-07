@@ -13,12 +13,12 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class page_admin {
+class module_admin_page {
 	
 	var $admin = 0;
 	var $call = Array( "pagelist", "pageedit", "pagenew", "pagetrash", "postlist", "postedit", "postnew", "posttrash" );
 	
-	function page_admin() {
+	function module_admin_page() {
 		global $user, $theme, $handler;
 		
 		$handler->callAdmin['page_admin'] = $this->call;

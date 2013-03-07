@@ -13,15 +13,12 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class admin_admin {
+class module_admin_admin {
 	
 	var $admin = 0;
-	var $call = Array( "main" );
 	
-	function admin_admin() {
-		global $user, $theme, $handler;
-		
-		$handler->callAdmin['main'] = $this->call;
+	function module_admin_admin() {
+		global $user, $theme;
 		
 	}
 	

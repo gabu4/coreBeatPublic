@@ -34,7 +34,7 @@ $THEMEBODY['main'] = '
 		</div>
 		<div id="fejlec_cover"></div>
 		
-		<div id="menu">{#MODULE_MENU_USER_MENU,[1]}</div>
+		<div id="menu">{#MODULE,MENU,USER_MENU,1}</div>
 
 		<div id="kozep">  
 			<div id="balsav">
@@ -50,9 +50,9 @@ $THEMEBODY['main'] = '
 				</div> 
 				<div id="box">
 				
-					{#MODULE_ACCOUNT_USER_ACCOUNT_BOX}
+					{#MODULE,ACCOUNT,USER_ACCOUNT_BOX,}
 						<div id="menu2">
-					{#MODULE_MENU_USER_MENU,[2]}
+					{#MODULE,MENU_USER,MENU,2}
 					</div>
 				</div>
 				<div id="boxalj">

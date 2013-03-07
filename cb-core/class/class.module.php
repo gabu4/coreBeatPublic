@@ -42,41 +42,40 @@ class module {
 	
 	private function moduleLoad($name, $type, $function) {
 		
-		
 		if ($type == 'USER') {
-			if ( !isset($this->call[$name]) AND is_file(CB_MODULE.'/'.$name.'/module.php') ) {
+			if ( !isset($this->call[$name][$function]) AND is_file(CB_MODULE.'/'.$name.'/module_user.php') ) {
 				include_once(CB_MODULE.'/'.$name.'/module_user.php');
 				
 				$module = 'module_'.$name;
 				
 				global $$module;
-				$$module = new $name;
+				$$module = new $module;
 				
 				$this->call[$name] = Array();
 				
 				$functionName = '__call_'.$function;
-				if ( function_exists( call_user_func(array($$module, $functionName)) ) ) {
-					$this->call[$name][$function] = '';
+								
+				if ( function_exists( call_user_func(array($$module, $functionName)) ) ) {print "ds";
+					$this->call[$name][$function] = 1;
 				}
 			}
 		} else if ($type == 'ADMIN') {
-			if ( !isset($this->callAdmin[$name]) AND ( $this->haveAdmin == 1 ) AND ( is_file(CB_MODULE.'/'.$name.'/admin.php') ) ) {
+			if ( !isset($this->callAdmin[$name][$function]) AND ( $this->haveAdmin == 1 ) AND ( is_file(CB_MODULE.'/'.$name.'/module_admin.php') ) ) {
 				include_once(CB_MODULE.'/'.$name.'/module_admin.php');
 				
 				$module = 'module_admin_'.$name;
 				
 				global $$module;
-				$$module = new $name;
+				$$module = new $module;
 				
 				$this->callAdmin[$name] = Array();
 				
 				$functionName = '__call_'.$function;
 				if ( function_exists( call_user_func(array($$module, $functionName)) ) ) {
-					$this->callAdmin[$name][$function] = '';
+					$this->callAdmin[$name][$function] = 1;
 				}
 			}
 		}
-		
 		
 	}
 	
@@ -113,6 +112,31 @@ class module {
 		}
 		
 	}
+		
+	private function moduleList() {
+		global $database;
+		
+		$reqMod = ( $this->haveAdmin != 1 ) ? " AND `1`.`type` != 'ADMIN' " : "";
+		
+		$table = Array();
+		$table[] = "module";
+		$table[] = "module_details";
+		$this->moduleList = $database->getSelect("array","*, `1`.`id` `id`",$table," WHERE `0`.`id` = `1`.`module_id` AND `0`.`active` = '1' ".$reqMod." ORDER BY `0`.`priority` ASC, `1`.`module_id` ASC ");
+		
+	}
+	
+	private function moduleName() {
+		
+		$moduleName = Array();
+		foreach ( $this->moduleList as $val ) {
+			if ( isset($this->levelAccess[$val['id']]) AND ($this->levelAccess[$val['id']] == 1) ) {
+				$moduleName[$val['id']] = strtolower($val['name'].'_'.$val['type'].'_'.$val['function']);
+			}
+		}
+		
+		return $moduleName;
+	}
+	
 	/* hozzáférési szint lekérdezés --> */
 
 	/* <!-- kódbináris generálás */
@@ -173,100 +197,47 @@ class module {
 	}
 	/* kódbináris generálás --> */
 	
-	private function moduleList() {
-		global $database;
-		
-		$reqMod = ( $this->haveAdmin != 1 ) ? " AND `1`.`type` != 'ADMIN' " : "";
-		
-		$table = Array();
-		$table[] = "module";
-		$table[] = "module_details";
-		$this->moduleList = $database->getSelect("array","*, `1`.`id` `id`",$table," WHERE `0`.`id` = `1`.`module_id` AND `0`.`active` = '1' ".$reqMod." ORDER BY `0`.`priority` ASC, `1`.`module_id` ASC ");
-		
-	}
-	
-	private function moduleName() {
-		
-		$moduleName = Array();
-		foreach ( $this->moduleList as $val ) {
-			if ( isset($this->levelAccess[$val['id']]) AND ($this->levelAccess[$val['id']] == 1) ) {
-				$moduleName[$val['id']] = strtolower($val['name'].'_'.$val['type'].'_'.$val['function']);
-			}
-		}
-		
-		return $moduleName;
-	}
-
-	
 /* <!-- funkció meghívás modulból */
 
+		
 	
-	private function genCallList() {
-		$call = $this->call;
-		
-		if ( !empty($this->callList) ) unset($this->callList);
-		
-		foreach ( $call as $key => $val ) {
-			foreach ( $val as $val2) {
-				$this->callList[$val2] = $key;
-			}
-		}
-	}
-	
-	private function genCallAdminList() {
-		$call = $this->callAdmin;
-		
-		if ( !empty($this->callAdminList) ) unset($this->callAdminList);
-		
-		foreach ( $call as $key => $val ) {
-			foreach ( $val as $val2) {
-				$this->callAdminList[$val2] = $key;
-			}
-		}
-	}
-	
-	public function loadFunction($who, $where = 'MAIN') {
+	public function loadFunction($cModule, $cFunction, $cSettings = NULL ) {
 		global $theme;
 		
-		$where = strtoupper($where);
+		$cModule = strtolower($cModule);
+		$cFunction = strtolower($cFunction);
 		
-		$this->genCallList();
-		$who = strtolower($who);
-		if ( !isset($this->callList[$who]) ) return 0;
-		$module = $this->callList[$who];
+		if ( !isset($this->call[$cModule][$cFunction]) ) return '';
+		print "ads ";
 		
-		global $$module;
+		$cModule = 'module_'.$cModule;
+		$cFunction = "__call_".$cFunction;
 		
-		$function = "__call_".$who;
-		$ret = $$module->$function();
-		if ( !$ret ) return 0;
+		global $$cModule;
 		
-		$theme->tempREPLACE[$where] = $ret;
-		$this->haveFunctionCall = 1;
-		
-		return 1;
+		$ret = $$cModule->$cFunction($cSettings);
+		if ( !$ret ) return '';
+				
+		return $ret;
 	}
 	
-	public function loadAdminFunction($who, $where = 'MAIN') {
+	public function loadAdminFunction($cModule, $cFunction, $cSettings = NULL ) {
 		global $theme;
 		
-		$where = strtoupper($where);
+		$cModule = strtolower($cModule);
+		$cModule = 'module_admin_'.$cModule;
+		$cFunction = strtolower($cFunction);
 		
-		$this->genCallAdminList();
-		$who = strtolower($who);
-		if ( !isset($this->callAdminList[$who]) ) return 0;
-		$module = $this->callAdminList[$who];
 		
-		global $$module;
+		if ( !isset($this->callAdmin[$cModule][$cFunction]) ) return '';
 		
-		$function = "__call_".$who;
-		$ret = $$module->$function();
-		if ( !$ret ) return 0;
+		$cFunction = "__call_".$cFunction;
+		global $$cModule;
 		
-		$theme->tempREPLACE[$where] = $ret;
-		$this->haveFunctionCall = 1;
-		
-		return 1;
+		$ret = $$cModule->$cFunction($cSettings);
+		if ( !$ret ) return '';
+				
+		return $ret;
 	}
 	
 /* funkció meghívás modulból --!> */

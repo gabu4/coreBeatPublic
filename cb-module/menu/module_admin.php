@@ -13,14 +13,14 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class menu_admin {
+class module_admin_menu {
 	
 	var $admin = 0;
 	var $call = Array( "menulist", "menuedit", "menunew", "menutrash", "menudelete", "menugroup", "menugroupdelete" );
 	
 	var $modules = Array( "form", "account" );
 	
-	function menu_admin() {
+	function module_admin_menu() {
 		global $user, $theme, $handler;
 		
 		$handler->callAdmin['menu_admin'] = $this->call;

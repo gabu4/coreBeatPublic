@@ -13,12 +13,12 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class filemanager_admin {
+class module_admin_filemanager {
 	
 	var $admin = 0;
 	var $call = Array( "filemain", "files", "fileupload", "filedelete" );
 	
-	function filemanager_admin( ) {
+	function module_admin_filemanager( ) {
 		global $user, $theme, $handler;
 		
 		$handler->callAdmin['filemanager_admin'] = $this->call;

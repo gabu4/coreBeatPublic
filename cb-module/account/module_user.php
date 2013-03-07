@@ -13,24 +13,18 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class account {
+class module_account {
 	
-//	var $call = Array( "account", "settings", "registration", "password" );
-	
-	function account() {
+	function module_account() {
 		global $theme, $module;
 		
 		$this->adminMenu();
-		
-	//	$module->call['account'] = $this->call;
-		
-	//	$theme->tempREPLACE['ACCOUNTBOX'] = $this->__call_account();
 	}
 	
 	public function __call_account_box() {
 		global $user, $handler, $post, $admin_admin;
 		$html = "";
-		
+		print_r("as f gf");
 		if ( isset($post['loginbutton']) ) { 
 			$login = $this->getLoginPost();
 			if ( $login == 1 ) { 
@@ -57,22 +51,22 @@ class account {
 		
 		global $theme;
 		
-		$html = $theme->loadModuleTemplate('account_loginbox_template');
+		$html = $theme->loadModuleTemplate('module_account_loginbox_template');
 		
-		$theme->tempREPLACE['REGISTRATION_LINK'] = '';
-		$theme->tempREPLACE['FORGOT_PASSWORD_LINK'] = '';
-		$theme->tempREPLACE['REGISTRATION_MAIL_RESEND_LINK'] = '';
+		$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_LINK'] = '';
+		$theme->tempStaticREPLACE['ACCOUNT']['FORGOT_PASSWORD_LINK'] = '';
+		$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_MAIL_RESEND_LINK'] = '';
 		
 		$reglink = ' <a class="loginElement registration" href="' . RUNNER . '?c=registration">Regisztráció</a> ';
 		$froglink = ' <a class="loginElement frogott_password" href="' . RUNNER . '?c=frogott_password">Elfelejtett jelszó</a> ';
 		$resendlink = ' <a class="loginElement regmailresend" href="' . RUNNER . '?c=regmailresend">Regisztrációs e-mail újraküldés</a> ';
 		
 		if ( REGMODE == 'normal' ) {
-			$theme->tempREPLACE['REGISTRATION_LINK'] = $reglink;
-			$theme->tempREPLACE['FORGOT_PASSWORD_LINK'] = $froglink;
+			$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_LINK'] = $reglink;
+			$theme->tempStaticREPLACE['ACCOUNT']['FORGOT_PASSWORD_LINK'] = $froglink;
 		} elseif ( REGMODE == 'admin_invitation' ) {
-			$theme->tempREPLACE['REGISTRATION_LINK'] = $reglink;
-			$theme->tempREPLACE['FORGOT_PASSWORD_LINK'] = $froglink;
+			$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_LINK'] = $reglink;
+			$theme->tempStaticREPLACE['ACCOUNT']['FORGOT_PASSWORD_LINK'] = $froglink;
 		}
 		
 		return $html;
@@ -82,10 +76,9 @@ class account {
 	
 		global $theme, $user;
 		
-		$html = $theme->loadModuleTemplate('account_logoutbox_template');
+		$html = $theme->loadModuleTemplate('module_account_logoutbox_template');
 		
-		$replaceFrom[0] = '{#USERNAME}';
-		$replaceTo[0] = $user->username;
+		$theme->tempStaticREPLACE['ACCOUNT']['USERNAME'] = $user->username;
 		
 		$html = str_replace($replaceFrom, $replaceTo, $html);
 		
@@ -432,10 +425,10 @@ class account {
 		if ( $user->userLevel == 255 ) {
 			$html = "<ul><li><a href='".RUNNER."?admin=admin_menu' target='admin_page'>Admin</a></li></ul>";
 			
-			$theme->tempREPLACE['ADMINMENU'] = $html;
+			$theme->tempStaticREPLACE['ADMINMENU'] = $html;
 		} else {
 		
-			$theme->tempREPLACE['ADMINMENU'] = "";
+			$theme->tempStaticREPLACE['ADMINMENU'] = "";
 			
 		}
 	}

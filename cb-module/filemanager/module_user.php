@@ -13,11 +13,11 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class filemanager {
+class module_filemanager {
 	
 	var $call = Array( "filemanager", "fileupload", "filedownload" );
 	
-	function filemanager() {
+	function module_filemanager() {
 		global $theme, $handler;
 		
 		$handler->call['filemanager'] = $this->call;

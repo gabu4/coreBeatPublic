@@ -18,7 +18,7 @@ $MODULEBODY = "
 		<p><input type='text' id='username' name='username' placeholder='".ACCOUNT_TEXT_USERNAME."' /></p>	
 		<p><input type='password' id='password' name='password' placeholder='".ACCOUNT_TEXT_PASSWORD."' /></p>
 		<p><input type='submit' name='loginbutton' value='Belépés' /></p>
-		<p>{#REGISTRATION_LINK}{#FORGOT_PASSWORD_LINK}{#REGISTRATION_MAIL_RESEND_LINK}</p>
+		<p>{#STATIC,ACCOUNT,REGISTRATION_LINK}{#STATIC,ACCOUNT,FORGOT_PASSWORD_LINK}{#STATIC,ACCOUNT,REGISTRATION_MAIL_RESEND_LINK}</p>
 	</form>
 </div>
 ";

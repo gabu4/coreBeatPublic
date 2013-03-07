@@ -13,11 +13,11 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class form {
+class module_form {
 	
 	var $call = Array( "form" );
 	
-	function form() {
+	function module_form() {
 		
 		global $theme, $handler;
 		$handler->call['form'] = $this->call;

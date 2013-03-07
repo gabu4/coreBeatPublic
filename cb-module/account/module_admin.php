@@ -13,16 +13,11 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class account_admin {
-	
-	var $admin = 0;
-	var $call = Array( "accountmain", "accountinvite", "accountcreate", "accountedit", "accountdetails" );
-	
-	function account_admin() {
+class module_admin_account {
+		
+	function module_admin_account() {
 		global $user, $theme, $handler;
-		
-		$handler->callAdmin['account_admin'] = $this->call;
-		
+				
 		$theme->tempREPLACE['ADMIN_ACCOUNT'] = "";
 	}
 	

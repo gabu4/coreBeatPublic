@@ -13,14 +13,14 @@ if ( !defined('H-KEI') ) { exit; }
 
 include_once('language/'.LANGTYPE.'.php');
 
-class admin {
+class module_admin {
 	
 	var $admin = 0;
 	
-	function admin() {
+	function module_admin() {
 		global $user, $theme;
 		
-//		if ( !empty($user->levelAccess) AND in_array("admin", $user->levelAccess) ) {
+
 		
 	}
 

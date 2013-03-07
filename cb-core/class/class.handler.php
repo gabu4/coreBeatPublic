@@ -12,17 +12,16 @@
 if ( !defined('H-KEI') ) { exit; }
 
 class handler {
-	
-	var $haveFunctionCall = 0;
 		
 	var $messageError = Array();
 	var $messageSuccess = Array();
 	var $messageWarning = Array();
 	
 	function handler() {
+	
 		$this->postCheck();
-		
 		$this->savedMessage();
+		
 	}
 	
 	private function savedMessage() {

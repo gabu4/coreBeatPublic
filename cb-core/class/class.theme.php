@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v000
-|     Date: 2012. 09. 30.
+|     Revision: v001
+|     Date: 2013. 03. 07.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -25,7 +25,7 @@ class theme {
 	var $tempMAINJS = Array();
 	
 	var $tempModuleREPLACE = Array();
-	var $tempREPLACE = Array();
+	var $tempStaticREPLACE = Array();
 	
 	var $tempSUBMENU = Array();
 	var $inMAIN = '';
@@ -60,16 +60,29 @@ class theme {
 		global $module;
 		$html = $this->tempOut;
 		
-	//	$html = '{#MODULE_ACCOUNT_ACCOUNT_BOX}{#MODULE_MENU_1}';
+		preg_match_all("/{#MODULE,(.*),(.*),(.*)?}/", $html, $matchSearch, PREG_SET_ORDER);
+//		print_r($matchSearch);
+		if ( !empty($matchSearch) ) {
+			foreach ($matchSearch as $matchValue) {				
+				$funct = $module->loadFunction($matchValue[1], $matchValue[2], $matchValue[3]);
+				$html = str_replace( $matchValue[0], $funct, $html );
+			}
+		}
 		
-	//	preg_match_all("/[\{\#MODULE_]*$/", $html, $search);
-		preg_match_all("|{#MODULE_(.*)[,\[(.*)\]]?}|U", $html, $search);
+		$this->tempOut = $html;
 		
-		print_r($search);
+	}
+	
+	private function themeAdminModuleReplace() {
+		global $module;
+		$html = $this->tempOut;
 		
-		if ( !empty($this->tempModuleREPLACE) ) {			
-			foreach ( $this->tempModuleREPLACE as $key => $value ) {
-				$html = str_replace( '{#MODULE_'.strtoupper($key).'}', $value, $html );
+		preg_match_all("/{#ADMIN,(.*),(.*),?(.*)?}/", $html, $matchSearch, PREG_SET_ORDER);
+		
+		if ( !empty($matchSearch) ) {
+			foreach ($matchSearch as $matchValue) {				
+				$funct = $module->loadAdminFunction($matchValue[1], $matchValue[2], $matchValue[3]);
+				$html = str_replace( $matchValue[0], $funct, $html );
 			}
 		}
 		
@@ -81,9 +94,17 @@ class theme {
 		
 		$html = $this->tempOut;
 		
-		if ( !empty($this->tempREPLACE) ) {
-			foreach ( $this->tempREPLACE as $key => $value ) {
-				$html = str_replace( '{#'.strtoupper($key).'}', $value, $html );
+		preg_match_all("/{#STATIC,(.*),(.*)}/", $html, $matchSearch, PREG_SET_ORDER);
+		
+		if ( !empty($this->tempStaticREPLACE) ) {
+			foreach ($matchSearch as $matchValue) {
+				if ( isset($this->tempStaticREPLACE[$matchValue[1]][$matchValue[2]]) ) {
+					$html = str_replace( $matchValue[0], $this->tempStaticREPLACE[$matchValue[1]][$matchValue[2]], $html );
+				} else {
+					if ( CMR_DEBUGING != '1' ) {
+						$html = str_replace( $matchValue[0], '', $html );
+					}
+				}
 			}
 		}
 		
@@ -123,7 +144,7 @@ class theme {
 	}
 	
 	public function loadModuleTemplate( $name, $module = NULL, $title = 1 ) {
-		$filename = $name.".php";
+		$filename = $name.".php";print_r($name);
 		$data = "";
 		if ( $module == NULL ) {
 			$data = CB_THEME."/".THEMESET."/".$filename;
@@ -236,6 +257,7 @@ class theme {
 		$this->tempOut = $html;
 		
 		$this->themeModuleReplace();
+		$this->themeAdminModuleReplace();
 		$this->themeStaticReplace();
 		
 	}
