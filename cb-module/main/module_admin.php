@@ -11,7 +11,7 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
 class module_admin_page {
 	
@@ -41,11 +41,11 @@ class module_admin_page {
 			$replace['NAME'] = $val['name'];
 			$replace['CDATE'] = date("Y-m-d H:i:s", $val['cdate']);
 			$replace['MDATE'] = ( $val['mdate'] != '0' ) ? date("Y-m-d H:i:s", $val['mdate']) : " ----- ";
-			$active = "<img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/active.png' alt='Aktív' title='Aktív' />";
-			$inactive = "<img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/inactive.png' alt='Inaktív' title='Inaktív' />";
+			$active = "<img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/active.png' alt='Aktív' title='Aktív' />";
+			$inactive = "<img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/inactive.png' alt='Inaktív' title='Inaktív' />";
 			$replace['ACTIVE'] = ( $val['state'] == 1 ) ? $active : $inactive;
-			$replace['SETTINGS'] = "<a href='".RUNNER."?admin=pageedit&id=".$val['page_id']."'><img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/settings.png' alt='Beállítás' title='Beállítás' /></a>";
-			$replace['DELETE'] = "<a href='".RUNNER."?admin=pagetrash&id=".$val['page_id']."' onclick=\"javascript:return confirm('Biztos, hogy törölni akarod a kiválasztott oldalt? (nem fogod tudni visszaállítani)')\"><img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/delete.png' alt='Törlés' title='Törlés' /></a>";
+			$replace['SETTINGS'] = "<a href='".CB_INDEX."?admin=pageedit&id=".$val['page_id']."'><img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/settings.png' alt='Beállítás' title='Beállítás' /></a>";
+			$replace['DELETE'] = "<a href='".CB_INDEX."?admin=pagetrash&id=".$val['page_id']."' onclick=\"javascript:return confirm('Biztos, hogy törölni akarod a kiválasztott oldalt? (nem fogod tudni visszaállítani)')\"><img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/delete.png' alt='Törlés' title='Törlés' /></a>";
 			
 			foreach ( $replace as $key => $value ) {
 				$in2 = str_replace( '{#'.strtoupper($key).'}', $value, $in2 );
@@ -111,7 +111,7 @@ class module_admin_page {
 			
 			$state = ( !isset($post['state']) OR empty($post['state']) ) ? 0 : $post['state'];
 			
-			$database->doQuery("INSERT INTO `".SQLPREF."page` (`name`, `text`, `cid`, `cdate`, `meta_keywords`, `meta_description`, `page_id`, `type`, `state`) VALUES ('".$post['name']."', '".$post['text']."', '".$user->userID."', '".$cdate."', '".$post['meta_key']."', '".$post['meta_desc']."', '".$page_id."', 'PAGE', '$state') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."page` (`name`, `text`, `cid`, `cdate`, `meta_keywords`, `meta_description`, `page_id`, `type`, `state`) VALUES ('".$post['name']."', '".$post['text']."', '".$user->userID."', '".$cdate."', '".$post['meta_key']."', '".$post['meta_desc']."', '".$page_id."', 'PAGE', '$state') ");
 			
 			$_SESSION['messageSuccess']['save'] = "Sikeres mentés!";
 			
@@ -168,11 +168,11 @@ class module_admin_page {
 			$replace['GROUP'] = $group;
 			$replace['CDATE'] = date("Y-m-d H:i:s", $val['cdate']);
 			$replace['MDATE'] = ( $val['mdate'] != '0' ) ? date("Y-m-d H:i:s", $val['mdate']) : " ----- ";
-			$active = "<img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/active.png' alt='Aktív' title='Aktív' />";
-			$inactive = "<img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/inactive.png' alt='Inaktív' title='Inaktív' />";
+			$active = "<img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/active.png' alt='Aktív' title='Aktív' />";
+			$inactive = "<img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/inactive.png' alt='Inaktív' title='Inaktív' />";
 			$replace['ACTIVE'] = ( $val['state'] == 1 ) ? $active : $inactive;
-			$replace['SETTINGS'] = "<a href='".RUNNER."?admin=postedit&id=".$val['page_id']."'><img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/settings.png' alt='Beállítás' title='Beállítás' /></a>";
-			$replace['DELETE'] = "<a href='".RUNNER."?admin=posttrash&id=".$val['page_id']."' onclick=\"javascript:return confirm('Biztos, hogy törölni akarod a kiválasztott bejegyzést? (nem fogod tudni visszaállítani)')\"><img src='" . CB_THEME ."/". ADMIN_THEMESET ."/images/icon/delete.png' alt='Törlés' title='Törlés' /></a>";
+			$replace['SETTINGS'] = "<a href='".CB_INDEX."?admin=postedit&id=".$val['page_id']."'><img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/settings.png' alt='Beállítás' title='Beállítás' /></a>";
+			$replace['DELETE'] = "<a href='".CB_INDEX."?admin=posttrash&id=".$val['page_id']."' onclick=\"javascript:return confirm('Biztos, hogy törölni akarod a kiválasztott bejegyzést? (nem fogod tudni visszaállítani)')\"><img src='" . CB_THEME ."/". CB_ADMIN_THEMESET ."/images/icon/delete.png' alt='Törlés' title='Törlés' /></a>";
 			
 			foreach ( $replace as $key => $value ) {
 				$in2 = str_replace( '{#'.strtoupper($key).'}', $value, $in2 );
@@ -203,15 +203,15 @@ class module_admin_page {
 			
 			$state = ( !isset($post['state']) OR empty($post['state']) ) ? 0 : $post['state'];
 			
-			$database->doQuery("UPDATE `".SQLPREF."page` SET `name` = '".$post['name']."', `text` = '".$post['text']."', `mid` = '".$user->userID."', `mdate` = '".$mdate."', `meta_keywords` = '".$post['meta_key']."', `meta_description` = '".$post['meta_desc']."', `state` = '".$state."' WHERE `page_id` = '".$_GET['id']."' ");
+			$database->doQuery("UPDATE `".CB_SQLPREF."page` SET `name` = '".$post['name']."', `text` = '".$post['text']."', `mid` = '".$user->userID."', `mdate` = '".$mdate."', `meta_keywords` = '".$post['meta_key']."', `meta_description` = '".$post['meta_desc']."', `state` = '".$state."' WHERE `page_id` = '".$_GET['id']."' ");
 			$handler->messageSuccess[] = "Sikeres mentés!";
 		}
 		
-		$database->doQuery("DELETE INTO `".SQLPREF."post_category_xref` WHERE `post` = '".$_GET['id']."' ");
+		$database->doQuery("DELETE INTO `".CB_SQLPREF."post_category_xref` WHERE `post` = '".$_GET['id']."' ");
 		
 		if ( isset($post['category']) ) {
 			foreach ($post['category'] as $key => $val )  {
-				$database->doQuery("INSERT INTO `".SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$key."', '".$_GET['id']."') ");
+				$database->doQuery("INSERT INTO `".CB_SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$key."', '".$_GET['id']."') ");
 			}
 		}
 		
@@ -219,9 +219,9 @@ class module_admin_page {
 			$cat_id = $database->getSelect("result","`id`","post_category"," ORDER BY `id` DESC LIMIT 1");
 			$cat_id = $cat_id+1;
 			
-			$database->doQuery("INSERT INTO `".SQLPREF."post_category` (`id`, `name`, `state`) VALUES ('".$cat_id."', '".$post['new_category']."', '1') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."post_category` (`id`, `name`, `state`) VALUES ('".$cat_id."', '".$post['new_category']."', '1') ");
 			
-			$database->doQuery("INSERT INTO `".SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$cat_id."', '".$_GET['id']."') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$cat_id."', '".$_GET['id']."') ");
 		}
 		
 		$pageData = $database->getSelect("row","*","page"," WHERE `type` = 'POST' AND `page_id` = '".$_GET['id']."' ");
@@ -256,13 +256,13 @@ class module_admin_page {
 			
 			$state = ( !isset($post['state']) OR empty($post['state']) ) ? 0 : $post['state'];
 			
-			$database->doQuery("INSERT INTO `".SQLPREF."page` (`name`, `text`, `cid`, `cdate`, `meta_keywords`, `meta_description`, `page_id`, `type`, `state`) VALUES ('".$post['name']."', '".$post['text']."', '".$user->userID."', '".$cdate."', '".$post['meta_key']."', '".$post['meta_desc']."', '".$page_id."', 'POST', '$state') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."page` (`name`, `text`, `cid`, `cdate`, `meta_keywords`, `meta_description`, `page_id`, `type`, `state`) VALUES ('".$post['name']."', '".$post['text']."', '".$user->userID."', '".$cdate."', '".$post['meta_key']."', '".$post['meta_desc']."', '".$page_id."', 'POST', '$state') ");
 			
-			$database->doQuery("DELETE INTO `".SQLPREF."post_category_xref` WHERE `post` = '".$page_id."' ");
+			$database->doQuery("DELETE INTO `".CB_SQLPREF."post_category_xref` WHERE `post` = '".$page_id."' ");
 			
 			if ( isset($post['category']) ) {
 				foreach ($post['category'] as $key => $val )  {
-					$database->doQuery("INSERT INTO `".SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$key."', '".$page_id."') ");
+					$database->doQuery("INSERT INTO `".CB_SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$key."', '".$page_id."') ");
 				}
 			}
 			
@@ -270,14 +270,14 @@ class module_admin_page {
 				$cat_id = $database->getSelect("result","`id`","post_category"," ORDER BY `id` DESC LIMIT 1");
 				$cat_id = $cat_id+1;
 				
-				$database->doQuery("INSERT INTO `".SQLPREF."post_category` (`id`, `name`, `state`) VALUES ('".$cat_id."', '".$post['new_category']."', '1') ");
+				$database->doQuery("INSERT INTO `".CB_SQLPREF."post_category` (`id`, `name`, `state`) VALUES ('".$cat_id."', '".$post['new_category']."', '1') ");
 				
-				$database->doQuery("INSERT INTO `".SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$cat_id."', '".$page_id."') ");
+				$database->doQuery("INSERT INTO `".CB_SQLPREF."post_category_xref` (`id`, `post`) VALUES ('".$cat_id."', '".$page_id."') ");
 			}
 			
 			$_SESSION['messageSuccess']['save'] = "Sikeres mentés!";
 			
-			header("Location: ".RUNNER."?admin=postlist");
+			header("Location: ".CB_INDEX."?admin=postlist");
 		}
 				
 		$replace['NAME'] = '';
@@ -339,7 +339,7 @@ class module_admin_page {
 		$extid = $database->getSelect("result","`id`","page"," WHERE `page_id` = '".$id."' AND `type` = 'PAGE' ");
 		if ( empty($extid) ) { return 'Hibás ID'; }
 		
-		$database->doQuery("UPDATE `".SQLPREF."page` SET `state` = '-1' WHERE `id` = '".$extid."' ");
+		$database->doQuery("UPDATE `".CB_SQLPREF."page` SET `state` = '-1' WHERE `id` = '".$extid."' ");
 		
 		$_SESSION['messageSuccess']['delete'] = 'Sikeres oldal törlés';
 		
@@ -355,7 +355,7 @@ class module_admin_page {
 		$extid = $database->getSelect("result","`id`","page"," WHERE `page_id` = '".$id."' AND `type` = 'POST' ");
 		if ( empty($extid) ) { return 'Hibás ID'; }
 		
-		$database->doQuery("UPDATE `".SQLPREF."page` SET `state` = '-1' WHERE `id` = '".$extid."' ");
+		$database->doQuery("UPDATE `".CB_SQLPREF."page` SET `state` = '-1' WHERE `id` = '".$extid."' ");
 		
 		$_SESSION['messageSuccess']['delete'] = 'Sikeres bejegyzés törlés';
 		

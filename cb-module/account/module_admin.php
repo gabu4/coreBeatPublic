@@ -11,7 +11,7 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
 class module_admin_account {
 		
@@ -128,9 +128,9 @@ class module_admin_account {
 			
 			if ( !$error ) {
 			
-				$database->doQuery("UPDATE `".SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."', `address` = '".$post['address']."', `disturb` = '".$post['disturb']."', `comment` = '".$post['comment']."' WHERE `id` = '".$id."' ");
+				$database->doQuery("UPDATE `".CB_SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."', `address` = '".$post['address']."', `disturb` = '".$post['disturb']."', `comment` = '".$post['comment']."' WHERE `id` = '".$id."' ");
 			
-				$database->doQuery("UPDATE `".SQLPREF."user` SET `email` = '".$post['email']."' WHERE `id` = '".$id."' ");
+				$database->doQuery("UPDATE `".CB_SQLPREF."user` SET `email` = '".$post['email']."' WHERE `id` = '".$id."' ");
 				
 			} else {
 				$handler->messageError = $error;
@@ -143,7 +143,7 @@ class module_admin_account {
 		$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$id."' ");
 		
 		if ( empty($userData2) ) {
-			$database->doQuery("INSERT INTO `".SQLPREF."user_data` (`id`) VALUES ('".$id."') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."user_data` (`id`) VALUES ('".$id."') ");
 			$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$id."' ");
 		}
 		if ( isset($post['userDataSettingSaveButton']) ) {
@@ -217,7 +217,7 @@ class module_admin_account {
 		$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$id."' ");
 		
 		if ( empty($userData2) ) {
-			$database->doQuery("INSERT INTO `".SQLPREF."user_data` (`id`) VALUES ('".$id."') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."user_data` (`id`) VALUES ('".$id."') ");
 			$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$id."' ");
 		}
 		

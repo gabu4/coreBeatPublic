@@ -5,22 +5,20 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v005
-|     Date: 2013. 01. 27.
+|     Revision: v006
+|     Date: 2013. 05. 22.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
 
-define('BASEDIR',$_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI']);
+define('CB_BASEDIR',$_SERVER['DOCUMENT_ROOT'].$_SERVER['REQUEST_URI']);
 
 /* Core functions */
 
 /* Main Including block */
-
 require_once( CB_CORE .'/function.php');
 
-
-require_once( CB_CORE .'/database/'.SQLTYPE.'.php');
+require_once( CB_CORE .'/database/'.CB_SQLTYPE.'.php');
 $database = new database;
 
 $database->connect();
@@ -28,7 +26,9 @@ $database->start();
 
 require_once( CB_CORE .'/init.settings.php');
 
-require_once( CB_LANGUAGE .'/'.LANGTYPE.'.php');
+require_once( CB_CORE .'/init.seo.php');
+
+require_once( CB_LANGUAGE .'/'.CB_LANGTYPE.'.php');
 
 require_once( CB_CORE . "/class/class.handler.php" );
 $handler = new handler;
@@ -43,8 +43,8 @@ $module = new module;
 
 
 /* Including block */
-include_once( CB_CORE .'/init.mail.php');
+include_once( CB_CORE .'/init.mail.php' );
 
-require_once(CB_CORE.'/init.start.php');
+require_once( CB_CORE.'/init.start.php' );
 
 return; ?>

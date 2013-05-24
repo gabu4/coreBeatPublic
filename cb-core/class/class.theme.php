@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v001
-|     Date: 2013. 03. 07.
+|     Revision: v002
+|     Date: 2013. 05. 24.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -15,8 +15,7 @@ class theme {
 
 	var $template = '';
 	
-	var $theme = THEMESET;
-	var $isAdmin = 0;
+	var $theme = CB_THEMESET;
 	
 	var $tempMETADESC = Array();
 	var $tempMETAKEY = Array();
@@ -41,9 +40,9 @@ class theme {
 	var $pageTitle = "";
 	
 	function theme() {
-		$this->tempMETAAUTH = META_DEF_AUTH;
-		$this->tempMETAKEY[] = META_DEF_KEY;
-		$this->tempMETADESC[] = META_DEF_DESC;
+		$this->tempMETAAUTH = CB_META_DEF_AUTH;
+		$this->tempMETAKEY[] = CB_META_DEF_KEY;
+		$this->tempMETADESC[] = CB_META_DEF_DESC;
 	}	
 		
 	private function loadMETA($type = 'main') {
@@ -101,7 +100,7 @@ class theme {
 				if ( isset($this->tempStaticREPLACE[$matchValue[1]][$matchValue[2]]) ) {
 					$html = str_replace( $matchValue[0], $this->tempStaticREPLACE[$matchValue[1]][$matchValue[2]], $html );
 				} else {
-					if ( CMR_DEBUGING != '1' ) {
+					if ( CB_CMR_DEBUGING != '1' ) {
 						$html = str_replace( $matchValue[0], '', $html );
 					}
 				}
@@ -114,13 +113,15 @@ class theme {
 	
 	
 	public function loadPageTheme( $theme = NULL, $themeStyle = 'main' ) {
+		global $module;
+		
 		if ( $theme == NULL ) $theme = $this->theme;
 		$this->themeStyle = strtoupper($themeStyle);
 	
 		$this->activeThemePath = CB_THEME."/".$theme."/";
 		
 		$filename = "theme.php";
-		if ( ($this->isAdmin == 1) AND file_exists($this->activeThemePath."admin_theme.php") ) {
+		if ( ($module->haveAdmin == 1) AND file_exists($this->activeThemePath."admin_theme.php") ) {
 			$this->theme = $theme;
 			$filename = "admin_theme.php";
 		}
@@ -144,47 +145,46 @@ class theme {
 	}
 	
 	public function loadModuleTemplate( $name, $module = NULL, $title = 1 ) {
-		$filename = $name.".php";print_r($name);
+		$filename = $name.".php";
 		$data = "";
 		if ( $module == NULL ) {
-			$data = CB_THEME."/".THEMESET."/".$filename;
+			$data = CB_THEME."/".CB_THEMESET."/".$filename;
 			if ( !file_exists($data) ) { $data = CB_THEME."/_template/".$filename; }
 		} else {
-			$data = CB_THEME."/".THEMESET."/".$filename;
+			$data = CB_THEME."/".CB_THEMESET."/".$filename;
 			if ( !file_exists($data) ) { $data = CB_MODULE."/".$module."/".$filename; }
 		}
 		if ( file_exists($data) ) {
-	
-		include($data);
-		
-		if ( isset($CSS) ) {
-			foreach ( $CSS as $val ) {
-				if ( $module == NULL ) {
-					$this->tempMAINCSS[] = CB_THEME."/_template/css/".$val;
-				} else {
-					$this->tempMAINCSS[] = CB_MODULE."/".$module."/css/".$val;
+			include($data);
+			
+			if ( isset($CSS) ) {
+				foreach ( $CSS as $val ) {
+					if ( $module == NULL ) {
+						$this->tempMAINCSS[] = CB_THEME."/_template/css/".$val;
+					} else {
+						$this->tempMAINCSS[] = CB_MODULE."/".$module."/css/".$val;
+					}
 				}
 			}
-		}
-		if ( isset($JS) ) {
-			foreach ( $JS as $val ) {
-				if ( $module == NULL ) {
-					$this->tempMAINJS[] = CB_THEME."/_template/js/".$val;
-				} else {
-					$this->tempMAINJS[] = CB_MODULE."/".$module."/js/".$val;
+			if ( isset($JS) ) {
+				foreach ( $JS as $val ) {
+					if ( $module == NULL ) {
+						$this->tempMAINJS[] = CB_THEME."/_template/js/".$val;
+					} else {
+						$this->tempMAINJS[] = CB_MODULE."/".$module."/js/".$val;
+					}
 				}
 			}
-		}
-		
-		if ( isset($SUBMENU) AND !empty($SUBMENU) ) {
-			$this->tempSUBMENU = $SUBMENU;
-		}
-		
-		if ( isset($MODULETITLE) AND !empty($MODULETITLE) AND ( $title == 1 ) ) {
-			$this->tempREPLACE['PAGETITLE'] = $MODULETITLE;
-		}
-		
-		return $MODULEBODY;
+			
+			if ( isset($SUBMENU) AND !empty($SUBMENU) ) {
+				$this->tempSUBMENU = $SUBMENU;
+			}
+			
+			if ( isset($MODULETITLE) AND !empty($MODULETITLE) AND ( $title == 1 ) ) {
+				$this->tempREPLACE['PAGETITLE'] = $MODULETITLE;
+			}
+			
+			return $MODULEBODY;
 		}
 	}
 	
@@ -253,8 +253,10 @@ class theme {
 		$html .= $this->tempMAIN[$this->themeStyle];
 		$html .= "</body>";
 		$html .= "</html>";	
-				
+		
+		$html = str_replace('{#MAIN}', $this->inMAIN, $html);
 		$this->tempOut = $html;
+		
 		
 		$this->themeModuleReplace();
 		$this->themeAdminModuleReplace();

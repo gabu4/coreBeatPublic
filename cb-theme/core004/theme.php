@@ -28,20 +28,20 @@ $THEMEBODY['main'] = '
 	<div id="kh">
 	
 		<div id="fejlec" class="nivoSlider">  
-			<img src="' . CB_THEME . '/' . THEMESET . '/slide/1.png" alt="" />
-			<img src="' . CB_THEME . '/' . THEMESET . '/slide/2.png" alt="" />
-			<img src="' . CB_THEME . '/' . THEMESET . '/slide/3.png" alt="" />
+			<img src="' . CB_THEME . '/' . CB_THEMESET . '/slide/1.png" alt="" />
+			<img src="' . CB_THEME . '/' . CB_THEMESET . '/slide/2.png" alt="" />
+			<img src="' . CB_THEME . '/' . CB_THEMESET . '/slide/3.png" alt="" />
 		</div>
 		<div id="fejlec_cover"></div>
 		
-		<div id="menu">{#MODULE,MENU,USER_MENU,1}</div>
+		<div id="menu">{#MODULE,MENU,MENU,1}</div>
 
 		<div id="kozep">  
 			<div id="balsav">
 					
 				<div id="floatBox">
 					<a href="#" title="elérhetőség">
-						<img src="' . CB_THEME . '/' . THEMESET . '/images/fhb.png" />
+						<img src="' . CB_THEME . '/' . CB_THEMESET . '/images/fhb.png" />
 					</a>
 				</div>
 				
@@ -50,14 +50,14 @@ $THEMEBODY['main'] = '
 				</div> 
 				<div id="box">
 				
-					{#MODULE,ACCOUNT,USER_ACCOUNT_BOX,}
+					{#MODULE,ACCOUNT,ACCOUNT_BOX,}
 						<div id="menu2">
-					{#MODULE,MENU_USER,MENU,2}
+					{#MODULE,MENU,MENU,2}
 					</div>
 				</div>
 				<div id="boxalj">
 				</div>
-				<img src="' . CB_THEME . '/' . THEMESET . '/images/likeus.png" />
+				<img src="' . CB_THEME . '/' . CB_THEMESET . '/images/likeus.png" />
 			</div>
 			
 			<div id="tartalom">

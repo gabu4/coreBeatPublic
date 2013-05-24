@@ -19,7 +19,7 @@ class user {
 		
 	public function user() {
 		$this->setUserData(); //Felhasználói adatok beállítása
-	}	
+	}
 	
 	/* felhasználó beléptetése ha érvényes a felhasználónév és a jelszó */
 	public function logIn( $userName, $password ) {
@@ -37,7 +37,7 @@ class user {
 		return 1;
 	}
 	
-	/* felhasználó kiléptetése és session alaphelyzetbe állítása */
+	/* Felhasználó kiléptetése és session alaphelyzetbe állítása */
 	public function logOut() {
 		global $session;
 		
@@ -49,7 +49,7 @@ class user {
 	}
 	
 	
-		/* Felhasználói adatok beállítása, hozzáférési szint lekérdezés */
+	/* Felhasználói adatok beállítása, hozzáférési szint lekérdezés */
 	private function setUserData() {
 		global $database;
 		
@@ -65,7 +65,9 @@ class user {
 	//	$this->levelAccess($this->userLevel);
 	}
 	
-	/* Felhasználó készítése átadott paraméterek alapján */
+	/* Felhasználó készítése átadott paraméterek alapján
+	
+	*/
 	public function createUser($userName, $password, $email, $level = 1, $state = 0, $regDate = NULL, $regCode = NULL) {
 		global $database;
 		

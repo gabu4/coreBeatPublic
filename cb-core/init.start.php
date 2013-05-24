@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v000
-|     Date: 2012. 09. 26.
+|     Revision: v001
+|     Date: 2013. 05. 24.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -14,8 +14,8 @@ if ( !defined('H-KEI') ) { exit; }
 function init() {
 	global $theme;
 	
-	$theme->pageTitle = PAGETITLE;
-
+	$theme->pageTitle = CB_PAGETITLE;
+		
 	main();
 	
 	$theme->loadPageTheme();
@@ -26,42 +26,62 @@ function init() {
 }
 
 function main() {
-	global $page, $menu, $module, $theme;
+	global $module, $module_main, $theme, $user;
 	
-	if ( isset($_GET['admin']) ){
+	if ( isset($_GET['admin']) and ( $module->haveAdmin == 1 ) ){
 		
 		$ok = $module->loadAdminFunction($_GET['admin']);
 		if ( !empty($ok) ) {
 			$theme->theme = ADMIN_THEMESET;
-			$theme->isAdmin = 1;
 			return;
 		}
 		
 	}
+		
+	$type = $module_main->pageType;
+	$id = $module_main->actPageVal;
 	
-	if ( isset($_GET['c']) ){
-		$ok = $module->loadFunction($_GET['c']);
-		if ( !empty($ok) ) return;
+	
+	if ( isset($_GET['mod']) and !empty($_GET['mod']) and isset($_GET['f']) and !empty($_GET['f']) ) {
+		$module = $_GET['mod'];
+		$funct = $_GET['f'];
+		$type = $module_main->pageType = 'MODULE';
 		
+		$out = $module->getFunction(strtolower($module), strtolower($f));
+		
+		if ( !empty($out) ) {
+			$theme->inMAIN = $out; return;
+		}
 	}
-		
-	$type = $menu->actPageType;
 
-	if ( $type == 'PAGE' ) {
-		$id = ( isset($_GET['page']) and ( !empty($_GET['page']) ) ) ? $_GET['page'] : $menu->actPageVal;
-		$page->loadPage($id);
-	} elseif ( $type == 'MODULE' ) {
-		$id = ( isset($_GET['c']) and ( !empty($_GET['c']) ) ) ? $_GET['c'] : $menu->actPageVal;
-		$page->loadModule($id);
-	} elseif ( $type == 'HTML' ) {
-		$page->loadHtml();
-	} elseif ( $type == 'POST' ) {
-		$id = ( isset($_GET['post']) and ( !empty($_GET['post']) ) ) ? $_GET['post'] : $menu->actPageVal;
-		$page->loadPost($id);
-	} elseif ( $type == 'CAT' ) {
-		$id = ( isset($_GET['cat']) and ( !empty($_GET['cat']) ) ) ? $_GET['cat'] : $menu->actPageVal;
-		$page->loadCategory($id);
+	if ( isset($_GET['page']) ) {
+		$id = ( isset($_GET['page']) and ( !empty($_GET['page']) ) ) ? $_GET['page'] : $id;
+		$type = $module_main->pageType = 'PAGE';
+		$module_main->actPageVal = $id;
+	} elseif ( isset($_GET['post']) ) {
+		$id = ( isset($_GET['post']) and ( !empty($_GET['post']) ) ) ? $_GET['post'] : $id;
+		$type = $module_main->pageType = 'POST';
+		$module_main->actPageVal = $id;
+	} elseif ( isset($_GET['category']) ) {
+		$id = ( isset($_GET['category']) and ( !empty($_GET['category']) ) ) ? $_GET['category'] : $id;
+		$type = $module_main->pageType = 'CATEGORY';
+		$module_main->actPageVal = $id;
 	}
+	
+//	$id = 3;
+	$theme->inMAIN = $module->loadFunction('main', strtolower($type), $id);
+	
+	
+	/*	
+		global $database, $theme;
+		
+		$where = mb_strtoupper($where, 'UTF-8');
+
+		$link = $database->getSelect("result","`value`","menu"," WHERE `id` = '$id' AND `state` = '1' ");
+		if ( empty($link) ) { $theme->tempREPLACE[$where] = 'Hiba'; return; }
+		
+		header("Location: ".$link);
+	*/
 	
 }
 

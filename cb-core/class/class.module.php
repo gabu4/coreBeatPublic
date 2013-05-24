@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v003
-|     Date: 2013. 01. 30.
+|     Revision: v004
+|     Date: 2013. 05. 22.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -41,8 +41,8 @@ class module {
 	}
 	
 	private function moduleLoad($name, $type, $function) {
-		
 		if ($type == 'USER') {
+			
 			if ( !isset($this->call[$name][$function]) AND is_file(CB_MODULE.'/'.$name.'/module_user.php') ) {
 				include_once(CB_MODULE.'/'.$name.'/module_user.php');
 				
@@ -51,16 +51,16 @@ class module {
 				global $$module;
 				$$module = new $module;
 				
-				$this->call[$name] = Array();
+				if ( !isset($this->call[$name]) ) $this->call[$name] = Array();
 				
 				$functionName = '__call_'.$function;
-								
-				if ( function_exists( call_user_func(array($$module, $functionName)) ) ) {print "ds";
+				
+				if ( is_callable(array($$module, $functionName)) ) {
 					$this->call[$name][$function] = 1;
 				}
 			}
-		} else if ($type == 'ADMIN') {
-			if ( !isset($this->callAdmin[$name][$function]) AND ( $this->haveAdmin == 1 ) AND ( is_file(CB_MODULE.'/'.$name.'/module_admin.php') ) ) {
+		} else if ( ($type == 'ADMIN') AND ( $this->haveAdmin == 1 ) ) {
+			if ( !isset($this->callAdmin[$name][$function]) AND ( is_file(CB_MODULE.'/'.$name.'/module_admin.php') ) ) {
 				include_once(CB_MODULE.'/'.$name.'/module_admin.php');
 				
 				$module = 'module_admin_'.$name;
@@ -68,17 +68,21 @@ class module {
 				global $$module;
 				$$module = new $module;
 				
-				$this->callAdmin[$name] = Array();
+				if ( !isset($this->callAdmin[$name]) ) $this->callAdmin[$name] = Array();
 				
 				$functionName = '__call_'.$function;
-				if ( function_exists( call_user_func(array($$module, $functionName)) ) ) {
+				if ( is_callable(array($$module, $functionName)) ) {
 					$this->callAdmin[$name][$function] = 1;
 				}
 			}
 		}
-		
 	}
 	
+	/* Felhasználó modul hozzáférés ellenörzése (modulnév alapján)
+	$name - modulnév amit ellenőrizni kell
+	
+	@return - visszatérési érték, ha 1 akkor van hozzáférés, egyébként 0
+	*/
 	public function checkAccess($name) {
 		global $user;
 		
@@ -200,15 +204,19 @@ class module {
 /* <!-- funkció meghívás modulból */
 
 		
+	/* Modul funkció betöltése (bellső)
+	$cModule - modul neve;
+	$cFunction - funkció neve (__call_ előtag nélkül);
+	$cSettings - átadandó paraméterek (statikus vagy tömb, a tömb tömbként kerül átadásra!);
 	
+	@return - modul kimenete;
+	*/
 	public function loadFunction($cModule, $cFunction, $cSettings = NULL ) {
-		global $theme;
 		
 		$cModule = strtolower($cModule);
 		$cFunction = strtolower($cFunction);
 		
 		if ( !isset($this->call[$cModule][$cFunction]) ) return '';
-		print "ads ";
 		
 		$cModule = 'module_'.$cModule;
 		$cFunction = "__call_".$cFunction;
@@ -221,8 +229,34 @@ class module {
 		return $ret;
 	}
 	
+	/* Modul funkció betöltése ($_GET értéken keresztül)
+	$cModule - modul neve;
+	$cFunction - funkció neve (__get_ előtag nélkül);
+	$cSettings - átadandó paraméterek (statikus vagy tömb, a tömb tömbként kerül átadásra!);
+	
+	@return - modul kimenete;
+	*/
+	public function getFunction($cModule, $cFunction, $cSettings = NULL ) {
+		
+		$cModule = strtolower($cModule);
+		$cFunction = strtolower($cFunction);
+		
+		if ( !isset($this->call[$cModule][$cFunction]) ) return '';
+		
+		$cModule = 'module_'.$cModule;
+		$cFunction = "__get_".$cFunction;
+		
+		global $$cModule;
+		
+		if ( is_callable(array($$cModule, $cFunction)) ) {
+			$ret = $$cModule->$cFunction($cSettings);
+			if ( !$ret ) return '';
+			return $ret;
+		}
+		
+	}
+	
 	public function loadAdminFunction($cModule, $cFunction, $cSettings = NULL ) {
-		global $theme;
 		
 		$cModule = strtolower($cModule);
 		$cModule = 'module_admin_'.$cModule;

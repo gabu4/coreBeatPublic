@@ -14,7 +14,7 @@
 
 define('H-KEI','security');
 
-define( "VERSION","0.5.130205" );
+define( "VERSION","0.5.130524" );
 
 require_once('config.php');
 

@@ -34,7 +34,7 @@ var $username = "";
 var $password = "";
 var $database = "";
 
-public function connect( $host = SQLHOST, $username = SQLUSER , $password = SQLPASS , $database = SQLBASE ) {
+public function connect( $host = CB_SQLHOST, $username = CB_SQLUSER , $password = CB_SQLPASS , $database = CB_SQLBASE ) {
 	$this->host = $host;
 	$this->username = $username;
 	$this->password = $password;
@@ -46,9 +46,9 @@ public function start() {
 
 	if( !$this->dbconnect ) die (SQL_CONNECT_ERROR);
 
-	if ( defined('SQLCHARSET') ) {
+	if ( defined('CB_SQLCHARSET') ) {
 	
-		$this->dbconnect->set_charset( SQLCHARSET );
+		$this->dbconnect->set_charset( CB_SQLCHARSET );
 		
 	}
 	
@@ -129,9 +129,17 @@ public function getNumberRows($sqlResult) {
 	$result2 = $result->num_rows();
 	return $result2;
 }
-
+	
+/* Cache-elhető keresés adatbázisban..
+	$type - keresés típusa ( "array" - tömb, "row" - sor, "result" - eredmény );
+	$select - mit keres, milyen értéket kér vissza ( mysql forma );
+	$from - hol keressen ( táblázat vagy tömb );
+	$whereAnd - keresési feltételek;
+	
+	@return - találat;
+*/
 public function getSelect( $type = 'array', $select = "*", $from, $whereAnd = "" ) {
-	$sqlPref = SQLPREF;	
+	$sqlPref = CB_SQLPREF;	
 	$RET = NULL;
 	
 	if ( is_array($from) ) {
@@ -155,8 +163,14 @@ public function getSelect( $type = 'array', $select = "*", $from, $whereAnd = ""
 	return $RET;
 }
 
+/* Egy új sor beszúrása adatbázisba..
+	$where - tábla neve ahova az adatot be kell szúrni;
+	$what - Tömb amit be kell szúrni (kulcs - oszlop név, érték - érték);
+	
+	@return - beszúrás sikeressége esetén 1 egyébként 0;
+*/
 public function insertTo( $where, $what ) {
-	$sqlPref = SQLPREF;
+	$sqlPref = CB_SQLPREF;
 	
 	if ( empty($where) OR empty($what) OR !is_array($what) ) {
 		return 0;

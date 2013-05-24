@@ -11,7 +11,7 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
 class module_filemanager {
 	
@@ -131,7 +131,7 @@ class module_filemanager {
 				}
 				
 				copy($tmp_name,$dir.'/'.$date.$file_ext);
-				$database->doQuery("INSERT INTO `".SQLPREF."file` (`user_id`,`file_name`,`file_size`,`file_type`,`date`,`file_ext`,`comment`) VALUES ('".$user->userID."','".$file_name."','".$file_size."','".$file_type."','".$date."','".$file_ext."','".$comment."') ");
+				$database->doQuery("INSERT INTO `".CB_SQLPREF."file` (`user_id`,`file_name`,`file_size`,`file_type`,`date`,`file_ext`,`comment`) VALUES ('".$user->userID."','".$file_name."','".$file_size."','".$file_type."','".$date."','".$file_ext."','".$comment."') ");
 				
 				$handler->messageSuccess[] = 'Sikeres fájlfeltöltés';
 			} else {

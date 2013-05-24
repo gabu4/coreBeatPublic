@@ -11,7 +11,7 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
 class module_account {
 	
@@ -24,7 +24,7 @@ class module_account {
 	public function __call_account_box() {
 		global $user, $handler, $post, $admin_admin;
 		$html = "";
-		print_r("as f gf");
+		
 		if ( isset($post['loginbutton']) ) { 
 			$login = $this->getLoginPost();
 			if ( $login == 1 ) { 
@@ -57,14 +57,14 @@ class module_account {
 		$theme->tempStaticREPLACE['ACCOUNT']['FORGOT_PASSWORD_LINK'] = '';
 		$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_MAIL_RESEND_LINK'] = '';
 		
-		$reglink = ' <a class="loginElement registration" href="' . RUNNER . '?c=registration">Regisztráció</a> ';
-		$froglink = ' <a class="loginElement frogott_password" href="' . RUNNER . '?c=frogott_password">Elfelejtett jelszó</a> ';
-		$resendlink = ' <a class="loginElement regmailresend" href="' . RUNNER . '?c=regmailresend">Regisztrációs e-mail újraküldés</a> ';
+		$reglink = ' <a class="loginElement registration" href="?c=registration">Regisztráció</a> ';
+		$froglink = ' <a class="loginElement frogott_password" href="?c=frogott_password">Elfelejtett jelszó</a> ';
+		$resendlink = ' <a class="loginElement regmailresend" href="?c=regmailresend">Regisztrációs e-mail újraküldés</a> ';
 		
-		if ( REGMODE == 'normal' ) {
+		if ( CB_REGMODE == 'normal' ) {
 			$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_LINK'] = $reglink;
 			$theme->tempStaticREPLACE['ACCOUNT']['FORGOT_PASSWORD_LINK'] = $froglink;
-		} elseif ( REGMODE == 'admin_invitation' ) {
+		} elseif ( CB_REGMODE == 'admin_invitation' ) {
 			$theme->tempStaticREPLACE['ACCOUNT']['REGISTRATION_LINK'] = $reglink;
 			$theme->tempStaticREPLACE['ACCOUNT']['FORGOT_PASSWORD_LINK'] = $froglink;
 		}
@@ -139,9 +139,9 @@ class module_account {
 			
 			if ( !$error ) {
 			
-				$database->doQuery("UPDATE `".SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."', `address` = '".$post['address']."', `disturb` = '".$post['disturb']."', `comment` = '".$post['comment']."' WHERE `id` = '".$user->userID."' ");
+				$database->doQuery("UPDATE `".CB_SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."', `address` = '".$post['address']."', `disturb` = '".$post['disturb']."', `comment` = '".$post['comment']."' WHERE `id` = '".$user->userID."' ");
 			
-				$database->doQuery("UPDATE `".SQLPREF."user` SET `email` = '".$post['email']."' WHERE `id` = '".$user->userID."' ");
+				$database->doQuery("UPDATE `".CB_SQLPREF."user` SET `email` = '".$post['email']."' WHERE `id` = '".$user->userID."' ");
 				
 			} else {
 				$handler->messageError = $error;
@@ -154,7 +154,7 @@ class module_account {
 		$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$user->userID."' ");
 		
 		if ( empty($userData2) ) {
-			$database->doQuery("INSERT INTO `".SQLPREF."user_data` (`id`) VALUES ('".$user->userID."') ");
+			$database->doQuery("INSERT INTO `".CB_SQLPREF."user_data` (`id`) VALUES ('".$user->userID."') ");
 			$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$user->userID."' ");
 		}
 		if ( isset($post['userDataSettingSaveButton']) ) {
@@ -289,9 +289,9 @@ class module_account {
 				
 				if ( !$error ) {
 					
-				$database->doQuery("UPDATE `".SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."' WHERE `id` = '".$id."' ");
+				$database->doQuery("UPDATE `".CB_SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."' WHERE `id` = '".$id."' ");
 			
-				$database->doQuery("UPDATE `".SQLPREF."user` SET `email` = '".$post['email']."', `username` = '".$post['username']."', `state` = '1', `reg_code` = '' WHERE `id` = '".$id."' ");
+				$database->doQuery("UPDATE `".CB_SQLPREF."user` SET `email` = '".$post['email']."', `username` = '".$post['username']."', `state` = '1', `reg_code` = '' WHERE `id` = '".$id."' ");
 					
 				$user->newPassword($id, $post['password'] );
 					
@@ -330,7 +330,7 @@ class module_account {
 			$id = $userData['id'];
 			
 			if ( empty($userData) ) {
-				return "Hibás ellenörzőkód!<br /><a href='".RUNNER."?c=registration'><-- Vissza</a>";
+				return "Hibás ellenörzőkód!<br /><a href='".CB_INDEX."?c=registration'><-- Vissza</a>";
 			}
 		
 			$html = $theme->loadModuleTemplate('account_registration_admin_invitation_step2_template');
@@ -338,7 +338,7 @@ class module_account {
 			$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$userData['id']."' ");
 			
 			if ( empty($userData2) ) {
-				$database->doQuery("INSERT INTO `".SQLPREF."user_data` (`id`) VALUES ('".$userData['id']."') ");
+				$database->doQuery("INSERT INTO `".CB_SQLPREF."user_data` (`id`) VALUES ('".$userData['id']."') ");
 				$userData2 = $database->getSelect("row","*","user_data"," WHERE `id` = '".$userData['id']."' ");
 			}
 			
@@ -348,9 +348,9 @@ class module_account {
 				
 				if ( !$error ) {
 					
-					$database->doQuery("UPDATE `".SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."' WHERE `id` = '".$id."' ");
+					$database->doQuery("UPDATE `".CB_SQLPREF."user_data` SET `name` = '".$post['name']."', `telephone` = '".$post['telephone']."' WHERE `id` = '".$id."' ");
 			
-					$database->doQuery("UPDATE `".SQLPREF."user` SET `email` = '".$post['email']."', `username` = '".$post['username']."', `state` = '1', `reg_code` = '' WHERE `id` = '".$id."' ");
+					$database->doQuery("UPDATE `".CB_SQLPREF."user` SET `email` = '".$post['email']."', `username` = '".$post['username']."', `state` = '1', `reg_code` = '' WHERE `id` = '".$id."' ");
 					
 					$user->newPassword($id, $post['password'] );
 					
@@ -423,7 +423,7 @@ class module_account {
 		
 	//	if ( $module->moduleAdminAcc['admin'] == 1 ) {
 		if ( $user->userLevel == 255 ) {
-			$html = "<ul><li><a href='".RUNNER."?admin=admin_menu' target='admin_page'>Admin</a></li></ul>";
+			$html = "<ul><li><a href='".CB_INDEX."?admin=admin_menu' target='admin_page'>Admin</a></li></ul>";
 			
 			$theme->tempStaticREPLACE['ADMINMENU'] = $html;
 		} else {

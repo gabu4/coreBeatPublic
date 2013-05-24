@@ -11,7 +11,7 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
 class module_form {
 	
@@ -33,7 +33,7 @@ class module_form {
 			$def['email'] = '';
 			$def['telephone'] = '';
 		} else {
-			$def = $database->getRow("SELECT `name`, `email`, `telephone` FROM `".SQLPREF."user` `u`, `".SQLPREF."user_data` `d`  WHERE `u`.`id` = `d`.`id` AND `u`.`id` = '".$user->userID."' ");
+			$def = $database->getRow("SELECT `name`, `email`, `telephone` FROM `".CB_SQLPREF."user` `u`, `".CB_SQLPREF."user_data` `d`  WHERE `u`.`id` = `d`.`id` AND `u`.`id` = '".$user->userID."' ");
 		}
 		
 		if ( isset($post['sendConnectForm']) ) {

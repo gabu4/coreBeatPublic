@@ -14,7 +14,7 @@ if ( !defined('H-KEI') ) { exit; }
 $settings = $database->getSelect("array","*","settings"," ");
 
 foreach ( $settings as $val ) {
-	define(strtoupper($val['key']),$val['value']);
+	define('CB_'.strtoupper($val['key']),$val['value']);
 }
 
 unset($settings);

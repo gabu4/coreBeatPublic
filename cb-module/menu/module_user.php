@@ -11,52 +11,19 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
 class module_menu {
 	
 	protected $menuData = Array();
-	
-	public $actPage = 1;
-	public $actPageType = "PAGE";
-	public $actPageId = 0;
-	public $actPageVal = 0;
+	protected $actMenuId = 0;
 	
 	function module_menu() {
 		global $database, $handler;
-						
-		if ( ( IS_SEO == '1' ) AND isset($_GET['seo']) and !empty($_GET['seo']) ) { 
-			$val = $database->getSelect("row"," * ","menu"," WHERE `state` = '1' AND `seo_name` = '".$_GET['seo']."' ");
-			if ( !empty($val) ) {
-				$this->actPage = $val['id'];
-				$_GET['m'] = $val['id'];
-				if ( $val['type'] == 'PAGE' ) {
-					$_GET['page'] = $val['value'];
-				} elseif ( $val['type'] == 'POST' ) {
-					$_GET['post'] = $val['value'];
-				} elseif ( $val['type'] == 'CAT' ) {
-					$_GET['cat'] = $val['value'];
-				} elseif ( $val['type'] == 'HTML' ) {
-					$_GET['html'] = $val['value'];
-				} elseif ( $val['type'] == 'MODULE' ) {
-					$_GET['c'] = $val['value'];
-				}
-			}
-		}
-		if ( (!isset($val) OR empty($val)) AND isset($_GET['m']) and !empty($_GET['m']) ) {
-			$this->actPage = $_GET['m'];
-			$val = $database->getSelect("row"," `type`,`id`,`value` ","menu"," WHERE `state` = '1' AND `id` = '".$this->actPage."' ");
-		}
-		if ( !isset($val) OR empty($val) ) {
-			$this->actPage = DEF_PAGE;
-			$val = $database->getSelect("row"," `type`,`id`,`value` ","menu"," WHERE `state` = '1' AND `id` = '".$this->actPage."' ");
-		}
 		
-		$this->actPageType = $val['type'];
-		$this->actPageId = $val['id'];
-		$this->actPageVal = $val['value'];
-
-		$activeMenu = $this->actPage;
+		if ( isset($_GET['m']) AND !empty($_GET['m']) ) {
+			$this->actMenuId = $_GET['m'];
+		}
 		
 		$this->menuSet();
 	}
@@ -73,19 +40,26 @@ class module_menu {
 		}
 		
 		$this->menuData = $menu;
-		
-		foreach ( $menu as $key => $value ) {
-			$theme->tempREPLACE['MENU_'.$key] = $this->getMenu($key, $value);
-		}
 
+	}
+	
+	public function __call_menu($id) {
+		$ret = "";
+			
+		if ( isset($this->menuData[$id]) ) {
+			$ret = $this->getMenu($id, $this->menuData[$id]);
+		}
+			
+		return $ret;
 	}
 
 	private function getMenu($group, $menu, $level = 0) {
+		$module_menu;
 		
 		$html = "<ul class='menu menu_".$group." menulevel_".$level."'>";
 		foreach ($menu[$level] as $val) {
 			$a = "";
-			if ( $this->actPageId == $val['id'] ) {
+			if ( $this->actMenuId == $val['id'] ) {
 				$a = " active ";
 			}
 			$html .= "<li class='menu menu_".$group." ".$a."'>";
@@ -106,20 +80,23 @@ class module_menu {
 	
 	private function getMenuLink($group, $val, $a) {
 		$href = "";
-		if ( IS_SEO == '1' ) {
+		$blank = "";
+		if ( CB_IS_SEO == '1' ) {
 			$href = " href='".$val['seo_name']."' ";
 		} elseif ( $val['type'] == 'PAGE' ) {
-			$href = " href='".RUNNER."?page=".$val['value']."&m=".$val['id']."' ";
+			$href = " href='".CB_INDEX."?page=".$val['value']."&m=".$val['id']."' ";
 		} elseif ( $val['type'] == 'POST' ) {
-			$href = " href='".RUNNER."?post=".$val['value']."&m=".$val['id']."' ";
-		} elseif ( $val['type'] == 'CAT' ) {
-			$href = " href='".RUNNER."?cat=".$val['value']."&m=".$val['id']."' ";
+			$href = " href='".CB_INDEX."?post=".$val['value']."&m=".$val['id']."' ";
+		} elseif ( $val['type'] == 'CATEGORY' ) {
+			$href = " href='".CB_INDEX."?category=".$val['value']."&m=".$val['id']."' ";
 		} elseif ( $val['type'] == 'MODULE' ) {
-			$href = " href='".RUNNER."?c=".$val['value']."&m=".$val['id']."' ";
+			$m = explode("|",$val['value']);
+			$href = " href='".CB_INDEX."?mod=".$m[0]."&f=".$m[1]."&m=".$val['id']."' ";
 		} elseif ( $val['type'] == 'HTML' ) {
-			$href = " href='".RUNNER."".$val['value']."&m=".$val['id']."' ";
+			$href = " href='".$val['value']."' ";
 		}
-		$html = "<a class='link_".$group.$a."' $href >";
+		if ( $val['html_blank'] == 1 ) $blank = " target='_blank' ";
+		$html = "<a class='link_".$group.$a."' $href $blank >";
 		if ( !empty($val['image']) ) {
 			$html .= "<img src='".CB_FILE."/menu_img/".$val['image']."' /> ";
 		}

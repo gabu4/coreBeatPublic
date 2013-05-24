@@ -11,24 +11,23 @@
 */
 if ( !defined('H-KEI') ) { exit; }
 
-include_once('language/'.LANGTYPE.'.php');
+include_once('language/'.CB_LANGTYPE.'.php');
 
-class module_page {
+class module_main {
 	
-	var $call = Array( "loadpage" );
+	var $pageType = 'PAGE';
+	var $actPageVal = CB_DEF_PAGE;
 	
-	function module_page() {
+	function module_main() {
 		global $heandler;
 		
-		$handler->call['page'] = $this->call;
 	}
 	
-	public function __call_loadpage() {
-		$id = $_GET['id'];
+	public function __call_main($id) {
 		return $this->loadPage($id);
 	}
 	
-	public function loadPage($id, $where = 'MAIN' ) {
+	public function __call_page($id, $where = 'MAIN' ) {
 		global $database, $theme;
 		
 		$where = mb_strtoupper($where, 'UTF-8');
@@ -39,11 +38,11 @@ class module_page {
 		$pageData = $database->getSelect("row","*","page"," WHERE `type` = 'PAGE' AND `page_id` = '$actPage' AND `state` = '1' ");
 		if ( empty($pageData) ) { $theme->tempREPLACE[$where] = PAGE_NO_PAGE_DATA; return;}
 		
-		$html = $theme->loadModuleTemplate('page_template');
+		$html = $theme->loadModuleTemplate('page_main_template');
 		
-		$theme->pageTitle = PAGETITLE . " - ".$pageData['name'];
+		$theme->pageTitle = CB_PAGETITLE . " - ".$pageData['name'];
 
-		$replace['TITLE'] = $pageData['name'];
+		$replace['PAGETITLE'] = $pageData['name'];
 		$replace['CONTENT'] = nl2br($pageData['text']);
 		$replace['CDATE'] = $pageData['cdate'];  //keszitesi ido
 		$replace['CID'] = $pageData['cid'];  //keszito id-je
@@ -58,10 +57,10 @@ class module_page {
 			$html = str_replace( '{#'.strtoupper($key).'}', $value, $html );
 		}
 
-		$theme->tempREPLACE[$where] = $html;
+		return $html;
 	}
 	
-	public function loadPost($id, $where = 'MAIN' ) {
+	public function __call_post($id, $where = 'MAIN' ) {
 		global $database, $theme;
 		
 		$where = mb_strtoupper($where, 'UTF-8');
@@ -72,9 +71,9 @@ class module_page {
 		$pageData = $database->getSelect("row","*","page"," WHERE `type` = 'POST' AND `page_id` = '$actPage' AND `state` = '1' ");
 		if ( empty($pageData) ) { $theme->tempREPLACE[$where] = PAGE_NO_PAGE_DATA; return;}
 		
-		$html = $theme->loadModuleTemplate('page_template');
+		$html = $theme->loadModuleTemplate('page_main_template');
 		
-		$theme->pageTitle = PAGETITLE . " - ".$pageData['name'];
+		$theme->pageTitle = CB_PAGETITLE . " - ".$pageData['name'];
 		
 		$replace['TITLE'] = $pageData['name'];
 		$replace['CONTENT'] = nl2br($pageData['text']);
@@ -93,19 +92,8 @@ class module_page {
 
 		$theme->tempREPLACE[$where] = $html;
 	}
-	
-	public function loadHtml($id) {
-		global $database, $theme;
 		
-		$where = mb_strtoupper($where, 'UTF-8');
-
-		$link = $database->getSelect("result","`value`","menu"," WHERE `id` = '$id' AND `state` = '1' ");
-		if ( empty($link) ) { $theme->tempREPLACE[$where] = 'Hiba'; return; }
-		
-		header("Location: ".$link);
-	}
-		
-	public function loadCategory($id, $where = 'MAIN' ) {
+	public function __call_category($id, $where = 'MAIN' ) {
 		global $database, $theme;
 		
 		$where = mb_strtoupper($where, 'UTF-8');
@@ -115,13 +103,13 @@ class module_page {
 		
 		$postCat = $database->getSelect("row","*","post_category"," WHERE `id` = '$id' AND `state` = '1' ");
 		
-		$postCatData = $database->getResultArray("SELECT * FROM `".SQLPREF."page` `page`, `".SQLPREF."post_category_xref` `xref` WHERE `page`.`page_id` = `xref`.`post` AND `page`.`state` = '1' AND `xref`.`id` = '".$id."' AND `page`.`type` = 'POST' ORDER BY `page`.`cdate` DESC ");
+		$postCatData = $database->getResultArray("SELECT * FROM `".CB_SQLPREF."page` `page`, `".CB_SQLPREF."post_category_xref` `xref` WHERE `page`.`page_id` = `xref`.`post` AND `page`.`state` = '1' AND `xref`.`id` = '".$id."' AND `page`.`type` = 'POST' ORDER BY `page`.`cdate` DESC ");
 		if ( empty($postCatData) ) { $theme->tempREPLACE[$where] = PAGE_NO_PAGE_DATA; return; }
 		
 		$html = $theme->loadModuleTemplate('cat_template');
 		$posthtml = $theme->loadModuleTemplate('cat_post_template');
 		
-		$theme->pageTitle = PAGETITLE . " - ".$postCat['name'];
+		$theme->pageTitle = CB_PAGETITLE . " - ".$postCat['name'];
 		
 		$out = "";
 		
@@ -148,6 +136,7 @@ class module_page {
 		}
 		$theme->tempREPLACE[$where] = $html;
 	}
+		
 }
 
 ?>

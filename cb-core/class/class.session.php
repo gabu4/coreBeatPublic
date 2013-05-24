@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v003
-|     Date: 2013. 01. 30.
+|     Revision: v004
+|     Date: 2013. 05. 24.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -15,7 +15,7 @@ class session {
 	
 	public $sessUid = 0;
 	public $sessLevel = 0;
-	public $sessLang = LANGTYPE;
+	public $sessLang = CB_LANGTYPE;
 
 	function session() {
 		$this->sessionStart();
@@ -35,7 +35,7 @@ class session {
 	
 	private function sessionDestroy() {
 		global $database;
-		$database->doQuery(" DELETE FROM `".SQLPREF."session` WHERE `session` = '".$_SESSION['SID']."' ");
+		$database->doQuery(" DELETE FROM `".CB_SQLPREF."session` WHERE `session` = '".$_SESSION['SID']."' ");
 		unset($_SESSION['SID']);
 		session_destroy();
 	}
@@ -43,7 +43,7 @@ class session {
 	public function sessionSave( $userID = 0, $level = 0 ) {
 		global $database;
 		
-		$sessionVal = SESSIONVALUE;
+		$sessionVal = CB_SESSIONVALUE;
 		
 		$exitTime = time()+$sessionVal;
 		
@@ -51,12 +51,12 @@ class session {
 		$sess['session'] = $_SESSION['SID'];
 		$sess['uid'] = $userID;
 		$sess['grouplevel'] = $level;
-		$sess['lang'] = LANGTYPE;
+		$sess['lang'] = CB_LANGTYPE;
 		$sess['ip'] = $_SERVER['REMOTE_ADDR'];
 		$sess['exit'] = $exitTime;
 		
-		$database->doQuery("DELETE FROM `".SQLPREF."session` WHERE `session` = '".$_SESSION['SID']."' ");
-		$database->doQuery("INSERT INTO `".SQLPREF."session` (`session`,`uid`,`grouplevel`,`lang`,`ip`,`exit`) VALUES ('".$sess['session']."','".$sess['uid']."','".$sess['grouplevel']."','".$sess['lang']."','".$sess['ip']."','".$sess['exit']."') ");
+		$database->doQuery("DELETE FROM `".CB_SQLPREF."session` WHERE `session` = '".$_SESSION['SID']."' ");
+		$database->doQuery("INSERT INTO `".CB_SQLPREF."session` (`session`,`uid`,`grouplevel`,`lang`,`ip`,`exit`) VALUES ('".$sess['session']."','".$sess['uid']."','".$sess['grouplevel']."','".$sess['lang']."','".$sess['ip']."','".$sess['exit']."') ");
 		
 		return $sess;
 	}
@@ -64,11 +64,11 @@ class session {
 	private function sessionUpdate($sess) {
 		global $database;
 		
-		$sessionVal = SESSIONVALUE;
+		$sessionVal = CB_SESSIONVALUE;
 		
 		$exitTime = time()+$sessionVal;
 		
-		$database->doQuery(" UPDATE `".SQLPREF."session` SET `exit` = '".$exitTime."' WHERE `session` = '".$sess['session']."' ");
+		$database->doQuery(" UPDATE `".CB_SQLPREF."session` SET `exit` = '".$exitTime."' WHERE `session` = '".$sess['session']."' ");
 		
 		$sess['exit'] = $exitTime;
 		
@@ -79,9 +79,9 @@ class session {
 		global $database, $user;
 		
 		$now = time();
-		$database->doQuery(" DELETE FROM `".SQLPREF."session` WHERE `exit` < ".$now." OR ( `session` = '".$_SESSION['SID']."' AND `ip` != '".$_SERVER['REMOTE_ADDR']."' ) ");
+		$database->doQuery(" DELETE FROM `".CB_SQLPREF."session` WHERE `exit` < ".$now." OR ( `session` = '".$_SESSION['SID']."' AND `ip` != '".$_SERVER['REMOTE_ADDR']."' ) ");
 		
-		$sess = $database->getRow(" SELECT * FROM `".SQLPREF."session` WHERE `session` = '".$_SESSION['SID']."' ");
+		$sess = $database->getRow(" SELECT * FROM `".CB_SQLPREF."session` WHERE `session` = '".$_SESSION['SID']."' ");
 		
 		if ( !empty($sess) ) {
 			$sess = $this->sessionUpdate($sess);
