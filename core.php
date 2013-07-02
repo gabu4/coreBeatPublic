@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v006
-|     Date: 2013. 05. 22.
+|     Revision: v007
+|     Date: 2013. 07. 02.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -25,8 +25,6 @@ $database->connect();
 $database->start();
 
 require_once( CB_CORE .'/init.settings.php');
-
-require_once( CB_CORE .'/init.seo.php');
 
 require_once( CB_LANGUAGE .'/'.CB_LANGTYPE.'.php');
 

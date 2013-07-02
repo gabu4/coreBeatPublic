@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v001
-|     Date: 2013. 05. 24.
+|     Revision: v002
+|     Date: 2013. 07. 02.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -25,6 +25,36 @@ function init() {
 	return $theme->tempOut;
 }
 
+function checkseo() {
+	global $database, $module_main;
+	
+	$seo = $_GET['seo'];
+	$val = $database->getSelect("row","*","menu"," WHERE `state` = '1' AND `seo_name` = '".$seo."' ");
+
+	if ( !empty( $val ) ) {
+		
+			
+		if ( $val['type'] != 'MODULE' ) { //TODO: Modul meghívást megcsinálni!
+	
+				$module_main->actPageVal = $val['value'];
+				$module_main->menuId = $val['id'];
+		print "modulmeghívás (még) nincs!";	
+	//			$m = explode("|",$val['value']);
+	//			$_GET['module'] = $m[0];
+	//			$_GET['function'] = $m[1];
+	//			$_GET['value'] = $m[2];
+	//			$_GET['m'] = $val['id'];
+				
+		} else {
+			
+			$_GET[strtolower($val['value'])] = $val['type'];
+			$_GET['m'] = $val['id'];
+			
+		}
+		
+	}
+}
+
 function main() {
 	global $module, $module_main, $theme, $user;
 	
@@ -37,12 +67,14 @@ function main() {
 		}
 		
 	}
-		
-	$type = $module_main->pageType;
-	$id = $module_main->actPageVal;
 	
+	if ( ( CB_IS_SEO == '1' ) AND isset($_GET['seo']) ) {
+		checkseo();
+	}
 	
-	if ( isset($_GET['mod']) and !empty($_GET['mod']) and isset($_GET['f']) and !empty($_GET['f']) ) {
+	if ( isset($_GET['m']) ) $module_main->menuId = $_GET['m'];
+	
+/*	if ( isset($_GET['mod']) and !empty($_GET['mod']) and isset($_GET['f']) and !empty($_GET['f']) ) {
 		$module = $_GET['mod'];
 		$funct = $_GET['f'];
 		$type = $module_main->pageType = 'MODULE';
@@ -53,35 +85,29 @@ function main() {
 			$theme->inMAIN = $out; return;
 		}
 	}
+*/
 
 	if ( isset($_GET['page']) ) {
-		$id = ( isset($_GET['page']) and ( !empty($_GET['page']) ) ) ? $_GET['page'] : $id;
-		$type = $module_main->pageType = 'PAGE';
-		$module_main->actPageVal = $id;
+	
+		$module_main->pageType = 'PAGE';
+		$module_main->actPageVal = $_GET['page'];
+		
 	} elseif ( isset($_GET['post']) ) {
-		$id = ( isset($_GET['post']) and ( !empty($_GET['post']) ) ) ? $_GET['post'] : $id;
-		$type = $module_main->pageType = 'POST';
-		$module_main->actPageVal = $id;
+	
+		$module_main->pageType = 'POST';
+		$module_main->actPageVal = $_GET['post'];
+		
 	} elseif ( isset($_GET['category']) ) {
-		$id = ( isset($_GET['category']) and ( !empty($_GET['category']) ) ) ? $_GET['category'] : $id;
-		$type = $module_main->pageType = 'CATEGORY';
-		$module_main->actPageVal = $id;
+	
+		$module_main->pageType = 'CATEGORY';
+		$module_main->actPageVal = $_GET['category'];
+		
 	}
 	
 //	$id = 3;
-	$theme->inMAIN = $module->loadFunction('main', strtolower($type), $id);
+	$theme->inMAIN = $module->loadFunction('main', strtolower($module_main->pageType), $module_main->actPageVal);
 	
 	
-	/*	
-		global $database, $theme;
-		
-		$where = mb_strtoupper($where, 'UTF-8');
-
-		$link = $database->getSelect("result","`value`","menu"," WHERE `id` = '$id' AND `state` = '1' ");
-		if ( empty($link) ) { $theme->tempREPLACE[$where] = 'Hiba'; return; }
-		
-		header("Location: ".$link);
-	*/
 	
 }
 

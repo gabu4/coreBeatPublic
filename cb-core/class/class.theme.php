@@ -93,8 +93,8 @@ class theme {
 		
 		$html = $this->tempOut;
 		
-		preg_match_all("/{#STATIC,(.*),(.*)}/", $html, $matchSearch, PREG_SET_ORDER);
-		
+		preg_match_all("/{#STATIC,(.*),(.[^}]*)}/", $html, $matchSearch, PREG_SET_ORDER);
+		print_r($matchSearch);
 		if ( !empty($this->tempStaticREPLACE) ) {
 			foreach ($matchSearch as $matchValue) {
 				if ( isset($this->tempStaticREPLACE[$matchValue[1]][$matchValue[2]]) ) {

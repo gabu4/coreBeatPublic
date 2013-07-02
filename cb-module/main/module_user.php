@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v000
-|     Date: 2012. 10. 13.
+|     Revision: v001
+|     Date: 2013. 07. 02.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -17,14 +17,15 @@ class module_main {
 	
 	var $pageType = 'PAGE';
 	var $actPageVal = CB_DEF_PAGE;
+	var $menuId = 0;
 	
 	function module_main() {
-		global $heandler;
+		
 		
 	}
 	
 	public function __call_main($id) {
-		return $this->loadPage($id);
+		return $this->__call_page($id);
 	}
 	
 	public function __call_page($id, $where = 'MAIN' ) {

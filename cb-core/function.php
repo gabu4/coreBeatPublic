@@ -5,8 +5,8 @@
 |
 |     Creator: Gabu
 |
-|     Revision: v000
-|     Date: 2012. 06. 12.
+|     Revision: v001
+|     Date: 2013. 07. 02.
 +------------------------------------------------------------------------------+
 */
 if ( !defined('H-KEI') ) { exit; }
@@ -35,6 +35,38 @@ function check_email_address($email) {
 		return false;
 	}
 	return true;
+}
+
+function removeInputHTML($html) {
+	$mit = array ("'<script[^<]*?>.*?</script>'si", // javascript eltüntetése
+              "'<[\/\!]*?[^<>]*?>'si",  // HTML elemek eltüntetése
+              "'([\r\n])[\s]+'",  // térközök
+              "'&(quot|#34);'i",  // HTML entitások
+              "'&(amp|#38);'i",
+              "'&(lt|#60);'i",
+              "'&(gt|#62);'i",
+              "'&(nbsp|#160);'i",
+              "'&(iexcl|#161);'i",
+              "'&(cent|#162);'i",
+              "'&(pound|#163);'i",
+              "'&(copy|#169);'i",
+              "'&#(\d+);'e");  // PHP kódként értelmezze
+
+	$mire = array ("",
+				   "",
+				   "\\1",
+				   "\"",
+				   "&",
+				   "<",
+				   ">",
+				   " ",
+				   chr(161),
+				   chr(162),
+				   chr(163),
+				   chr(169),
+				   "chr(\\1)");
+
+	return preg_replace($mit, $mire, $html);
 }
 
 ?>
