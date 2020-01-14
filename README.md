@@ -13,3 +13,5 @@ Lots of function not working, this is a "bleeding edge" development version of C
 Active project dont use this version (currently using CoreBeat v16).
 
 This version public only for "show the new feature" reason only.
+
+Update: 2020. 01. 14.
