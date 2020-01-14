@@ -1,0 +1,8 @@
+<div class='articleContentDiv categoryContent col-md-12 article_id_{{ contentid }} {{ class }}'>
+    <h2 class='title'>{{ contenttitle|raw }}</h2>
+    <hr class='title' />
+    <div class='articleContent'>
+        {% if image is defined %}<div class="pull-right contentImg">{{ image|raw }}</div>{% endif %}
+        {{ content|raw }}
+    </div>
+</div>

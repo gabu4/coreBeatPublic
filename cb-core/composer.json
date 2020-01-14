@@ -1,0 +1,18 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.0",
+        "league/oauth2-client": "^2.3",
+        "components/jquery": "^3.2",
+        "components/jqueryui": "^1.12",
+        "tinymce/tinymce": "^5.0",
+        "league/oauth2-google": "^3.0",
+        "twbs/bootstrap": "4.*",
+        "symfony/polyfill-mbstring": "^1.9",
+        "stevenmaguire/oauth2-microsoft": "^2.2",
+        "psr/log": "^1.0",
+        "mustache/mustache": "^2.12",
+        "robinherbots/jquery.inputmask": "^4.0",
+        "components/font-awesome": "^5.4",
+        "twig/twig": "^3.0"
+    }
+}

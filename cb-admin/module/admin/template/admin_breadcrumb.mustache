@@ -1,0 +1,13 @@
+<nav class="float-right" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="?admin=admin&funct=main"><i class="fa fa-dashboard"></i> [LANG_ADMIN_SYS_MAINPAGE_TNAME]</a></li>
+        {{#?inner}}{{#inner}}
+            {{#!active}}
+                <li class="breadcrumb-item"><a href="{{path}}">{{&icon}} {{text}}</a></li>
+            {{/!active}}
+            {{#?active}}
+                <li class="breadcrumb-item active">{{&icon}} {{text}}</li>
+            {{/?active}}
+        {{/inner}}{{/?inner}}
+    </ol>
+</nav>

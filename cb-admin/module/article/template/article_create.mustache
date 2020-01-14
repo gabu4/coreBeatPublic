@@ -1,0 +1,88 @@
+{#
+    title:[LANG_ADMIN_ARTICLE_EDIT_MAIN_TITLE]
+    jsend:article_create.js
+    load:loadTinyMCE
+#}
+
+<section class='articleCreate articleCreateLang_{{lang}} articleCreatePageID_{{article_id}}'>
+    <input type='hidden' name='article_id' value='{{article_id}}' />
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{#langs}}
+                            <div class="form-group name-field form-cb-name[{{lang}}]">
+                                <div class="row">
+                                    <div class="col-xs-2">{{&language_flag}}</div>
+                                    <div class="col-xs-10">
+                                        <label>[LANG_ADMIN_ARTICLE_EDIT_NAME]</label>
+                                        <input type='text' class='form-control' name='name[{{lang}}]' value='{{name}}' /><span class='comm'></span>
+                                    </div>
+                                </div>
+                            </div>
+                        {{/langs}}
+                    </div>
+                    <div class="col-md-3 col-md-offset-3">
+                        <div class="form-group form-cb-state">
+                            <h4>[LANG_ADMIN_ARTICLE_EDIT_STATE]</h4>
+                            <div class='radio'><label for='state1'><input type='radio' id='state1' name='state' value='1' {{ifstate1}} />[LANG_ADMIN_ARTICLE_EDIT_STATE_ACTIVE]</label></div>
+                            <div class='radio'><label for='state0'><input type='radio' id='state0' name='state' value='0' {{ifstate0}} />[LANG_ADMIN_ARTICLE_EDIT_STATE_INACTIVE]</label></div>
+                            <span class='comm'></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='nav-tabs-custom'>
+            <ul class='nav nav-tabs'>
+                {{#langs}}<li class='{{#?active}}active{{/?active}}'><a href='#tabs-content-{{lang}}' data-toggle='tab' {{#?active}}aria-expanded='true'{{/?active}}>[LANG_ADMIN_ARTICLE_EDIT_TABMENU_CONTENT]{{&language_flag}}</a></li>{{/langs}}
+                <li><a href='#tabs-category' data-toggle='tab'>[LANG_ADMIN_ARTICLE_EDIT_TABMENU_CATEGORY]</a></li>
+                <li><a href='#tabs-image' data-toggle='tab'>[LANG_ADMIN_ARTICLE_EDIT_TABMENU_IMAGE]</a></li>
+                {{#langs}}<li><a href='#tabs-meta-{{lang}}' data-toggle='tab'>[LANG_ADMIN_ARTICLE_EDIT_TABMENU_META]{{&language_flag}}</a></li>{{/langs}}
+                <li><a href='#tabs-other' data-toggle='tab'>[LANG_ADMIN_ARTICLE_EDIT_TABMENU_OTHER]</a></li>
+            </ul>
+            <div class='tab-content'>
+                {{#langs}}
+                    <div class='tab-pane {{#?active}}active{{/?active}} form-cb-text[{{lang}}]' id='tabs-content-{{lang}}'>
+                        <textarea class='form-control contentEdit contentTinyMCE' name='text[{{lang}}]' id='ckEditorID01_{{lang}}'>{{&text}}</textarea>
+                    </div>
+                {{/langs}}
+                <div class='tab-pane pad' id='tabs-category'>
+                    {{&category_list}}
+                </div>
+                <div class='tab-pane pad' id='tabs-image'>
+                    {{&image_tab}}
+                </div>
+                {{#langs}}
+                    <div class='tab-pane' id='tabs-meta-{{lang}}'>
+                        <div class="form-group">
+                            <label>[LANG_ADMIN_ARTICLE_META_EDIT_METAKEY]</label>
+                                <input type='text' class='form-control metaKeywords' name='meta_keywords[{{lang}}]' value='{{meta_keywords}}' />
+                            <label>[LANG_ADMIN_ARTICLE_META_EDIT_METADESC]</label>
+                                <textarea class='form-control metaDescription' name='meta_description[{{lang}}]'>{{meta_description}}</textarea>
+                        </div>
+                    </div>
+                {{/langs}}
+                <div class='tab-pane pad' id='tabs-other'>
+                    <div class="form-group form-cb-other_template">
+                        <label>[LANG_ADMIN_ARTICLE_OTHER_TAB_TEMPLATE]</label>
+                            <input type='text' class='form-control other_template' name='other_template' value='{{template}}' />
+                    </div>
+                    <div class="form-group form-cb-other_class">
+                        <label>[LANG_ADMIN_ARTICLE_OTHER_TAB_CLASS]</label>
+                            <input type='text' class='form-control other_class' name='other_class' value='{{class}}' />
+                    </div>
+                    <div class="form-group form-cb-other_css">
+                        <label>[LANG_ADMIN_ARTICLE_OTHER_TAB_CSS]</label>
+                            <input type='text' class='form-control other_css' name='other_css' value='{{css}}' />
+                    </div>
+                    <div class="form-group form-cb-other_js">
+                        <label>[LANG_ADMIN_ARTICLE_OTHER_TAB_JS]</label>
+                            <input type='text' class='form-control other_js' name='other_js' value='{{js}}' />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

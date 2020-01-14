@@ -1,0 +1,28 @@
+<li class="nav-item dropdown user user-menu">
+    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+        <img src="{{ userimage }}" class="user-image" alt="User Image">
+        <span class="">{{ username|raw }}</span>
+    </a>
+    <ul class="dropdown-menu">
+        <!-- User image -->
+        <li class="user-header">
+            <img src="{{ userimage_big }}" class="" alt="User Image">
+            <p>
+                <!-- Alexander Pierce - Web Developer
+                <small>Member since Nov. 2012</small> -->
+            </p>
+        </li>
+        <!-- Menu Body -->
+        <li class="user-body">
+        </li>
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            <div class="float-left">
+                <a href="?admin=account&funct=edit&id={{ userid }}" class="btn btn-default btn-flat">[LANG_ACCOUNT_PROFIL]</a>
+            </div>
+            <div class="float-right">
+                <a href="{{ user_logout_href }}" class="btn btn-default btn-flat">[LANG_ACCOUNT_LOGOUT]</a>
+            </div>
+        </li>
+    </ul>
+</li>

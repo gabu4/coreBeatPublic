@@ -1,0 +1,13 @@
+<ul class='sidebar-menu'>
+<li class='header'>[LANG_ADMIN_ADMIN_MENUTITLE_MNAME]</li>
+{{#?main}}{{#main}}
+    <li class='{{#?active}}active{{/?active}} {{#?sub}}treeview menu-open{{/?sub}}'><a class='' href='?admin={{vname}}&funct={{vfunct}}'><i class='{{icon}}'></i> <span>{{name}}</span></a>
+        {{#?sub}}
+            <ul class='treeview-menu'>
+                {{#sub}}
+                    <li class='{{#?active}}active{{/?active}}'><a class='' href='?admin={{vname}}&funct={{vfunct}}'><i class='{{icon}}'></i> {{name}}</a></li>
+                {{/sub}}
+            </ul>
+        {{/?sub}}
+    </li>
+{{/main}}{{/?main}}

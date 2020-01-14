@@ -1,0 +1,118 @@
+.GalleryDirList .cbGallery-Admin * {
+    /* transition: 1s all; */
+}
+.GalleryDirList .gTitle {
+    padding:10px 10px;
+    margin: 20px 0;
+    background-color: #fefefe;
+    border:1px solid #e0ddde;
+}
+
+.GalleryDirList .gTitle:hover {
+    background-color: #fcfcfc;
+}
+
+.GalleryDirList .gTitle .gDrag {
+    display:inline-block;
+    width:30px;
+    height:200px;
+    padding:0px;
+    margin-right:10px;
+    margin-left:0px;
+    background-color: #e0ddde;
+}
+
+.GalleryDirList .gTitle .gImg {
+    display:inline-block;
+    width:200px;
+    height:200px;
+    padding:0px;
+    margin-right:0px;
+    margin-left:0px;
+    margin-bottom:0px;
+    border:0px solid #e0ddde;
+}
+
+.GalleryDirList .gTitle a.img {
+    text-align:center;
+    display:block;
+    border:0;
+    overflow:hidden;
+    width:200px;
+    height:200px;
+    position:relative;
+    display:block;
+}
+
+.GalleryDirList .gImg img {
+    min-height:100%;
+    min-width:100%;
+    height:auto;
+    width:auto;
+    position:absolute;
+    display:inline-block;
+    margin:auto;
+    top:0;
+    bottom:0;
+    max-width: 200%;
+    max-height: 200%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.GalleryDirList .gTitle .textTitle {
+    width: calc(100% - 450px);
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 0;
+}
+
+.GalleryDirList .gTitle .textTitle textarea {
+    height: 200px;
+}
+
+.GalleryDirList .gTitle .editButtons {
+    width: 190px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left:10px;
+}
+
+.GalleryDirList .uploadField {
+    padding: 20px;
+    background-color: #ffffbe;
+    margin-bottom: 30px;
+}
+
+
+
+
+.GalleryDirList .cbGallery-Admin.small .gTitle {
+    padding:5px;
+    margin: 5px;
+    display: inline-block;
+}
+.GalleryDirList .cbGallery-Admin.small .gTitle .gImg {
+    width:100px;
+    height:100px;
+}
+    
+.GalleryDirList .cbGallery-Admin.small .gTitle a.img {
+    width:100px;
+    height:100px;
+}
+
+.GalleryDirList .cbGallery-Admin.small .gTitle .textTitle {
+    display: none;
+}
+
+.GalleryDirList .cbGallery-Admin.small .gTitle .editButtons {
+    display: none;
+}
+
+.GalleryDirList .cbGallery-Admin.small .gTitle .gDrag {
+    width:20px;
+    height:100px;
+}

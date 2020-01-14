@@ -1,0 +1,41 @@
+<div class='form-group d-inline-block'>
+    {{#?thumbnail_image}}
+    <hr class='float-left' style='width:100%' />
+    
+    <h3 class='col-md-12 float-left' style='width:100%'>[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_THUMBNAIL_TITLE]</h3>
+    <div class='col-md-4 image_preview thumb'>
+        <img class='' id='preview_thumb' style='max-width:100%;' src='{{thumbnail_image}}' />
+    </div>
+    <div class='col-md-8'>
+        <p id='p-headerimage_file'><button class="btn btn-success JS-uploadImage thumbnail">[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_THUMBNAIL_UPLOAD]</button></p>
+        <p id='p-headerimage_delete'><button class="btn btn-danger JS-removeImage thumbnail">[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_THUMBNAIL_DELETE]</button></p>
+    </div>
+    {{/?thumbnail_image}}
+    {{#?bigthumbnail_image}}
+    <hr class='float-left' style='width:100%' />
+    
+    <h3 class='col-md-12 float-left' style='width:100%'>[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_BIGTHUMBNAIL_TITLE]</h3>
+    <div class='col-md-4 image_preview bigthumb'>
+        <img class='' id='preview_bigthumb' style='max-width:100%;' src='{{bigthumbnail_image}}' />
+    </div>
+    <div class='col-md-8'>
+        <p id='p-headerimage_file'><button class="btn btn-success JS-uploadImage bigthumbnail">[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_BIGTHUMBNAIL_UPLOAD]</button></p>
+        <p id='p-headerimage_delete'><button class="btn btn-danger JS-removeImage bigthumbnail">[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_BIGTHUMBNAIL_DELETE]</button></p>
+    </div>
+    {{/?bigthumbnail_image}}
+    {{#?header_image}}
+    <hr class='float-left' style='width:100%' />
+    
+    <h3 class='col-md-12 float-left' style='width:100%'>[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_HEADERIMG_TITLE]</h3>
+    
+    <div class='col-md-4 image_preview header'>
+        <img class='' id='preview_headerimage' style='max-width:100%;' src='{{header_image}}' />
+    </div>
+    <div class='col-md-8'>
+        <p id='p-headerimage_file'><button class="btn btn-success JS-uploadImage headerimage">[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_HEADERIMG_UPLOAD]</button></p>
+        <p id='p-headerimage_delete'><button class="btn btn-danger JS-removeImage headerimage">[LANG_ADMIN_ARTICLE_EDIT_IMAGE_TAB_HEADERIMG_DELETE]</button></p>
+    </div>
+    {{/?header_image}}
+    <hr class='float-left' style='width:100%' />
+    
+</div>

@@ -1,0 +1,49 @@
+{#
+
+#}
+
+<section class='accountDetails'>
+    <div class="col-12 col-md-6">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">[LANG_ADMIN_ACCOUNT_TITLE_USERDETAILS]</h3>
+            </div>
+            <div class="box-body accountdetails">
+                <div class="row">
+                    <div class="col-12 mb-3 text-center profil-image" style="display: inline-block;">
+                        <img src="{{ image_url }}" alt="" />
+                    </div>
+
+                    <div class="col-12 mb-3 cb-email"><strong>[LANG_ADMIN_ACCOUNT_USER_USERNAME]</strong><br/> {{ data_email }}</div>
+                    <div class="col-12 mb-3 cb-level"><strong>[LANG_ADMIN_ACCOUNT_USER_USERLEVEL]</strong><br/> {{ data_level_text }}</div>
+                    <div class="col-12 mb-3 cb-state"><strong>[LANG_ADMIN_ACCOUNT_EDIT_STATE]</strong><br/> {{ data_state_text|raw }}</div>
+                    
+                    {% if data_extra is defined %}
+                        {% for data in data_extra %}
+                            <div class="col-12 mb-3 cb-{{ data.name }}"><strong>[LANG_ADMIN_ACCOUNT_USER_{{ data.name|upper }}] {% if data.admin is same as(false) %} <span class='fas fa-lock' title="[LANG_ADMIN_ACCOUNT_USER_ADMINCANTEDIT]"></span>{% endif %}{% if data.useredit is same as(false) %} <span class='fas fa-user-slash' title="[LANG_ADMIN_ACCOUNT_USER_USERCANTEDIT]"></span>{% endif %}{% if data.usersee is same as(false) %} <span class='fas fa-low-vision' title="[LANG_ADMIN_ACCOUNT_USER_USERCANTSEE]"></span>{% endif %}</strong><br/> {{ data.value }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            <!-- /.box-footer-->
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 col-md-6">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">[LANG_ADMIN_ACCOUNT_TITLE_USERSTATISTIC]</h3>
+            </div>
+            <div class="box-body accountdetails">
+                <div class="row">
+                    <div class="col-12 mb-3 cb-registration-date"><strong>[LANG_ADMIN_ACCOUNT_USER_REGISTRATIONDATE]</strong><br/> {{ registration_date }}</div>
+                    <div class="col-12 mb-3 cb-login-last"><strong>[LANG_ADMIN_ACCOUNT_USER_LOGINLAST]</strong><br/> {{ login_last }}{{ login_now|raw }}</div>
+                    <div class="col-12 mb-3 cb-login-count"><strong>[LANG_ADMIN_ACCOUNT_USER_LOGINCOUNT]</strong><br/> {{ login_count }}</div>
+                    {% if loginhistory is same as(true) %}<div class="col-12 mb-3 cb-login-history"><strong>[LANG_ADMIN_ACCOUNT_USER_LOGINHISTORY]</strong><br/> {{ login_history|raw }}</div>{% endif %}
+                    {% if pageviewhistory is same as(true) %}<div class="col-12 mb-3 cb-page-view-history"><strong>[LANG_ADMIN_ACCOUNT_USER_PAGEVIEWHISTORY]</strong><br/> {{ pageview_history|raw }}</div>{% endif %}
+                </div>
+            <!-- /.box-footer-->
+            </div>
+        </div>
+    </div>
+</section>

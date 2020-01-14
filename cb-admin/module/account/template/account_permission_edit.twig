@@ -1,0 +1,32 @@
+{#
+    
+#}
+
+<section class='accountPermissionCreate'>
+    <div class="col-md-6">
+        <div class="box">
+            <div class="box-body">
+                <div class="col-md-12">
+                    <div class="form-group form-cb-name">
+                        <label>[LANG_ADMIN_ACCOUNT_PERMISSION_FIELD_NAME]</label>
+                        <input type='text' class='form-control' name='name' value='{{ name }}' /><span class='comm'></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='nav-tabs-custom'>
+            <ul class='nav nav-tabs'>
+                <li class='nav-item'><a class="nav-link active" href='#tabs-user' data-toggle='tab' aria-expanded='true'>[LANG_ADMIN_ACCOUNT_PERMISSION_TABMENU_USER]</a></li>
+                <li class='nav-item {% if tab_admin_button_hidden is same as(true) %}d-none{% endif %}'><a class="nav-link" href='#tabs-admin' data-toggle='tab'>[LANG_ADMIN_ACCOUNT_PERMISSION_TABMENU_ADMIN]</a></li>
+            </ul>
+            <div class='tab-content'>
+                <div class='tab-pane active' id='tabs-user'>
+                    {{ tab_user|raw }}
+                </div>
+                <div class='tab-pane' id='tabs-admin'>
+                    {{ tab_admin|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,103 @@
+{#
+    title:[LANG_ADMIN_LANGUAGE_EDIT_TNAME]
+#}
+
+<section class='languageEdit'>
+    <div class="col-md-12">
+        <div class="box">
+            {{#?language_strings}}
+            <div class="box-header">
+                <div class="row">
+                    <div class="col-md-3"><h2>#{{id}}{{&language_flag_main}}</h2><h6 class="text-muted">{{create_date}}</h6></div>
+                    <div class="col-md-9"><h4>{{language_strings}}</h4></div>
+                </div>
+            </div>
+            {{/?language_strings}}
+            {{#!language_strings}}
+            <div class="box-header">
+                <div class="col-md-3"><h2>{{&language_flag_main}}[LANG_ADMIN_LANGUAGE_EDIT_TNAME]</h2></div>
+                <div class="col-md-9"></div>
+            </div>
+            {{/!language_strings}}
+
+            <div class="box-body language-edit-content">
+                <div class="row">
+                    
+                    <div class="form-group col-lg-3 col-md-6 edit-selector selector-language">
+                        <label for="selectorLanguage">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_LANGUAGE]</label>
+                        <select class="custom-select" id="selectorLanguage" name="lang">
+                            <option value="">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_LANGUAGE_PLEASE_SELECT]</option>
+                            {{#selector_language}}
+                                <option value="{{value}}" {{#?active}}selected{{/?active}}>{{name}}</option>
+                            {{/selector_language}}
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-6 edit-selector selector-admin">
+                        <label for="selectorAdmin">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_ADMIN]</label>
+                        <select class="form-control" id="selectorAdmin" name="is_admin">
+                            <option value="">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_ADMIN_PLEASE_SELECT]</option>
+                            <option value="0" {{#?selector_admin_none}}selected{{/?selector_admin_none}}>[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_ADMIN_NONE]</option>
+                            <option value="1" {{#?selector_admin_yes}}selected{{/?selector_admin_yes}}>[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_ADMIN_YES]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-6 edit-selector selector-module">
+                        <label for="selectorModule">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_MODULE]</label>
+                        <select class="form-control" id="selectorModule" name="module">
+                            <option value="">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_MODULE_PLEASE_SELECT]</option>
+                            {{#selector_module}}
+                                <option value="{{value}}" {{#?active}}selected{{/?active}}>{{name}}</option>
+                            {{/selector_module}}
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-6 edit-selector selector-constant">
+                        <label for="selectorConstant">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_CONSTANT]</label>
+                        <input type="text" class="form-control" id="selectorConstant" name="constant" placeholder="" value="{{selector_constant}}"/>
+                    </div>
+
+                    <div class="form-group col-lg-6 list-selector filter-text">
+                        <label for="selectorText">[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_TEXT]</label>
+                        <textarea class="form-control" id="selectorText" name="text">{{selector_text}}</textarea>
+                    </div>
+
+                    <div class="form-group col-lg-6 list-selector filter-otherlanguage">
+                        {{#?otherlanguage}}
+                        <h5><strong>[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_OTHERLANGUAGE]</strong></h5>
+                        <div class="card card-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                {{#otherlanguage}}
+                                    <li role="otherlang" class="nav-item"><a href="#{{langid}}" class="nav-link {{active}}" aria-controls="{{langid}}" role="tab" data-toggle="tab">{{&langflag}}{{langname}}</a></li>
+                                {{/otherlanguage}}
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                {{#otherlanguage}}
+                                    <div role="tabpanel" class="tab-pane {{active}}" id="{{langid}}">{{langtext}}</div>
+                                {{/otherlanguage}}
+                            </div>
+                        </div>
+                        {{/?otherlanguage}}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-lg-4 list-selector selector-debugger">
+                        <label>[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_DEBUGGER]</label>
+                        <div class='radio'><label><input type='radio' name='debugger' value='0' {{#?selector_debugger_none}}checked{{/?selector_debugger_none}} />[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_DEBUGGER_NONE]</label></div>
+                        <div class='radio'><label><input type='radio' name='debugger' value='1' {{#?selector_debugger_yes}}checked{{/?selector_debugger_yes}} />[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_DEBUGGER_YES]</label></div>
+                        <span class='comm'></span>
+                    </div>
+
+                    <div class="form-group col-lg-4 list-selector selector-translate">
+                        <label>[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_TRANSLATE]</label>
+                        <div class='radio'><label><input type='radio' name='translate' value='0' {{#?selector_translate_none}}checked{{/?selector_translate_none}} />[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_TRANSLATE_NONE]</label></div>
+                        <div class='radio'><label><input type='radio' name='translate' value='1' {{#?selector_translate_yes}}checked{{/?selector_translate_yes}} />[LANG_ADMIN_LANGUAGE_EDIT_SELECTOR_TRANSLATE_YES]</label></div>
+                        <span class='comm'></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+.cbGalleryMosaic2 {
+    display: inline-block;
+    height:250px;
+    padding: 0px;
+    width:250px;
+    margin-right:4px;
+    margin-left:4px;
+    margin-bottom:8px;
+    border: 0px solid #e0ddde;
+}
+
+.cbGalleryMosaic2 .thumb1 { 
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 250px;
+  height: 250px;
+}
+
+.cbGalleryMosaic2 .thumb1 a {
+  display: block;
+  width: 250px;
+  height: 250px;
+}
+
+.cbGalleryMosaic2 .thumb1 a:hover {  }
+
+
+.cbGalleryMosaic2:nth-child(4n) {
+    
+}

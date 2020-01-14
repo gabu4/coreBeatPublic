@@ -1,0 +1,25 @@
+{#
+    js:admin_settings_tab_email.js
+#}
+{#s,mail_charset,select,utf-8;iso-8859-2;iso-8859-1}
+{#s,mail_from,text}
+{#s,mail_from_name,text}
+{#s,mail_sablon,text}
+{#s,mail_type,select,mail;sendmail;smtp;xoauth2}
+<div class='mailType mailType_sendmail'>
+    {#s,mail_sendmail_root,text}
+</div>
+<div class='mailType mailType_smtp'>
+    {#s,mail_smtp_auth,select,true;false}
+    {#s,mail_smtp_username,text}
+    {#s,mail_smtp_password,text}
+    {#s,mail_smtp_server,text}
+    {#s,mail_smtp_port,text}
+    {#s,mail_smtp_secure,select,|MAIL_SMTP_SECURE_NONE;tls;ssl}
+</div>
+<div class='mailType mailType_xoauth2'>
+    {#s,mail_xoauth2_user_email,text}
+    {#s,mail_xoauth2_client_id,text}
+    {#s,mail_xoauth2_client_secret,text}
+    {#s,mail_xoauth2_refresh_token,text}
+</div>

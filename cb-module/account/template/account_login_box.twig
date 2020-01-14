@@ -1,0 +1,66 @@
+{#
+    css:login.css
+#}
+
+<div class='accountbox loginbox'>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cbLoginModal" title="[LANG_ACCOUNT_BUTTON_LOGIN]">
+    [LANG_ACCOUNT_LOGIN_MODAL_BUTTON_TEXT]
+</button>
+
+<div class="modal fade" id="cbLoginModal" tabindex="-1" role="dialog" aria-labelledby="cbLoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cbLoginModalLabel">[LANG_ACCOUNT_WELCOME]</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="[MODAL_CLOSE]">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% if login_allowed_local_or_api is same as(true) %}
+            <form action='{{ action }}' method='post'>
+                <div class='form-group has-feedback'>
+                    <input type='email' class='form-control' id='username' name='username' placeholder='[LANG_ACCOUNT_USERNAME]' />
+                    <span class='glyphicon glyphicon-envelope form-control-feedback'></span>
+                </div>
+                <div class='form-group has-feedback'>
+                    <input type='password' class='form-control' id='password' name='password' placeholder='[LANG_ACCOUNT_PASSWORD]'>
+                    <span class='glyphicon glyphicon-lock form-control-feedback'></span>
+                </div>
+                <div class='row'>
+                    {% if login_button is same as(true) %}
+                        <div class='col-xs-8'>
+                            <div class="checkbox icheck">
+                                <label>
+                                    <input class='iCheckJS' type='checkbox' name='remember-me' value='1'> [LANG_ACCOUNT_REMEMBER_ME]
+                                </label>
+                            </div>
+                        </div><!-- /.col -->
+                        <div class='col-xs-4'>
+                            <button type='submit' class='btn btn-primary btn-block btn-flat' name='loginbutton'>[LANG_ACCOUNT_BUTTON_LOGIN]</button>
+                        </div><!-- /.col -->
+                    {% endif %}
+                    {% if login_api_button is same as(true) %}
+                        <div class='col-xs-4'>
+                            <button type='submit' class='btn btn-primary btn-block btn-flat' name='loginapibutton'>[LANG_ACCOUNT_BUTTON_LOGIN]</button>
+                        </div><!-- /.col -->
+                    {% endif %}
+                    <div class='col-xs-12'>
+                        {% if registration_button is same as(true) %}
+                            <a class='btn btn-default btn-block loginElement registration' href='{{ registration_href|raw }}'>[LANG_ACCOUNT_BUTTON_REGISTRATION]</a>
+                        {% endif %}
+                        {% if forgot_password_button is same as(true) %}
+                            <a class='btn btn-default btn-block loginElement forgott_password' href='{{ forgot_password_href|raw }}'>[LANG_ACCOUNT_BUTTON_FORGOTPASSWORD]</a>
+                        {% endif %}
+                        {% if registration_mail_resend_button is same as(true) %}
+                            <a class='btn btn-default btn-block loginElement registration_mail_resend' href='{{ registration_mail_resend_href|raw }}'>[LANG_ACCOUNT_BUTTON_REGMAILRESEND]</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <input type='hidden' name='prev-page' value='{{ page_url }}'>
+            </form>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+{#
+    bodyclass:hold-transition
+    bodyclass:login-page
+    jsend:login.main.js
+    jsend:account_password.js
+    css:login.main.css
+#}
+
+<div class='login-box-body'>
+    <p class='login-box-msg'>[LANG_ACCOUNT_WELCOME]</p>
+    {% if login_allowed_local_or_api is same as(true) %}
+        <form action='{{ action }}' method='post'>
+            <div class='input-group mb-3'>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class='far fa-envelope form-control-feedback'></span></span>
+                </div>
+                <input type='email' class='form-control' id='username' name='username' placeholder='[LANG_ACCOUNT_USERNAME]' />
+            </div>
+            <div class='input-group mb-3'>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><span class='fas fa-lock form-control-feedback'></span></span>
+                </div>
+                <input type='password' class='form-control' id='password' name='password' placeholder='[LANG_ACCOUNT_PASSWORD]'>
+                <div class="input-group-append jsCBShowPass">
+                    <span class="input-group-text"><i class='fas fa-eye-slash cursor-pointer passshow' title='[LANG_ACCOUNT_PASSWORD_SHOW]'></i><i class="fas fa-eye cursor-pointer passhide" style="display:none;" title="[LANG_ACCOUNT_PASSWORD_HIDE]"></i></span>
+                </div>
+            </div>
+            <div class='row'>
+                {% if login_button is same as(true) %}
+                    <div class='col-8'>
+                        <div class="checkbox icheck">
+                            <label>
+                                <input class='iCheckJS' type='checkbox' name='remember-me' value='1'> [LANG_ACCOUNT_REMEMBER_ME]
+                            </label>
+                        </div>
+                    </div><!-- /.col -->
+                    <div class='col-4'>
+                        <button type='submit' class='btn btn-primary btn-block btn-flat' name='loginbutton'>[LANG_ACCOUNT_BUTTON_LOGIN]</button>
+                    </div><!-- /.col -->
+                {% endif %}
+                {% if login_api_button is same as(true) %}
+                    <div class='col-12'>
+                        <button type='submit' class='btn btn-primary btn-block btn-flat' name='loginapibutton'>[LANG_ACCOUNT_BUTTON_LOGIN_API]</button>
+                    </div><!-- /.col -->
+                {% endif %}
+                <div class='col-12'>
+                    {% if registration_button is same as(true) %}
+                        <a class='btn btn-default btn-block loginElement registration' href='{{ registration_href|raw }}'>[LANG_ACCOUNT_BUTTON_REGISTRATION]</a>
+                    {% endif %}
+                    {% if forgot_password_button is same as(true) %}
+                        <a class='btn btn-default btn-block loginElement forgott_password' href='{{ forgot_password_href|raw }}'>[LANG_ACCOUNT_BUTTON_FORGOTPASSWORD]</a>
+                    {% endif %}
+                    {% if registration_mail_resend_button is same as(true) %}
+                        <a class='btn btn-default btn-block loginElement registration_mail_resend' href='{{ registration_mail_resend_href|raw }}'>[LANG_ACCOUNT_BUTTON_REGMAILRESEND]</a>
+                    {% endif %}
+                </div>
+            </div>
+            <input type='hidden' name='to-admin' value='1'>
+            <input type='hidden' name='prev-page' value='{{ page_url }}'>
+        </form>
+    {% endif %}
+</div>

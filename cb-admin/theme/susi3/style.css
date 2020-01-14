@@ -1,0 +1,376 @@
+
+/* PAGE STYLE */
+	body {
+		background: gray;
+		font-family: "serif";
+		font-size:14px;
+		margin:0;
+		padding:0;
+	}
+
+	#pcenter {
+		float:none;
+		width:100%;
+		margin:0px auto 0px auto;
+	}
+
+	#pageadmin {
+		float:left;
+		width:100%;
+		margin:0;
+		
+		border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		border-left: 0px solid black;
+		border-right: 0px solid black;
+		border-radius:10px;
+		background: #fff;
+	}
+	
+	div.inlineBlock{
+		display:inline-block;
+	}
+	
+	#logo {
+		float:left;
+		margin:0 5%;
+		width: 90%;
+	}
+	
+	#logo  div.accountbox {
+		float:right;
+		height: 50px;
+		margin: 25px 0;
+		width: 100px;
+		
+	}
+
+	#left {
+		float:left;
+		width: 150px;
+		margin: 0px 1px 10px 0px;
+	}
+
+	#center {
+		float:right;
+		width: calc(100% - 151px);
+		margin: 0px 0px 10px 0px;
+	}
+
+	#lent {
+		width:80%;
+		margin:10px 10%;
+		padding: 10px 0 0;
+		text-align:center;
+		float:left;
+		border-top:1px solid #222;
+	}
+
+/* MENU, SUBMENU */
+	#menu {
+		float:left;
+		width:100%;
+		margin: 1px 0 1px;
+		color:#fff;
+	}
+	
+	#menu ul.mainMenuAdmin {
+		float:left;
+		padding:0;
+		margin:0;
+		font-size:14px;
+		list-style-type:none;
+		display:block;
+	}
+
+	#menu ul.mainMenuAdmin li {
+		float:left;
+		margin:0px;
+		display:block;
+	}
+
+	#menu ul.mainMenuAdmin li a{
+		padding:5px 15px;
+		display:block;
+	}
+
+	#subMenu {
+		float:left;
+		width:100%;
+	}
+
+	#subMenu ul.subMenu{
+		float:left;
+		width:100%;
+		font-size:14px;
+		padding:0;
+		margin:0;
+		list-style-type:none;
+	}
+
+	#subMenu ul.subMenu>li.subMenuElement{
+		float:left;
+		width:100%;
+		padding:0;
+		margin:0 0 1px 0;
+	}
+	
+	#subMenu ul.subMenu>li.subMenuElement.space {
+		height:25px;
+	}
+
+	#subMenu ul.subMenu>li.subMenuElement.link>a{
+		float:left;
+		width:90%;
+		padding:5px 5%;
+		display:block;
+	}
+	
+	#subMenu ul.subMenu>li.subMenuElement.button>input{
+		float:left;
+		width:100%;
+		padding:5px 5%;
+		display:block;
+		text-align:left;
+		border:0;
+	}
+
+	#subMenu ul.subMenu>li.subMenuElement.link>a,
+	#subMenu ul.subMenu>li.subMenuElement.button>input,
+	#menu{
+		background: #222;
+	}
+	
+	#subMenu ul.subMenu>li.subMenuElement.link  .green,
+	#subMenu ul.subMenu>li.subMenuElement.button .green {
+		background: #005500;
+	}
+	
+	#subMenu ul.subMenu>li.subMenuElement.link  .blue,
+	#subMenu ul.subMenu>li.subMenuElement.button .blue {
+		background: #060055;
+	}
+	
+	#subMenu ul.subMenu>li.subMenuElement.link  .red,
+	#subMenu ul.subMenu>li.subMenuElement.button .red {
+		background: #550000;
+	}
+	
+	#subMenu ul.subMenu>li.subMenuElement.link  .active,
+	#subMenu ul.subMenu>li.subMenuElement.button .active {
+		background: darkorange;
+	}
+
+	#subMenu ul.subMenu>li.subMenuElement.link>a,
+	#subMenu ul.subMenu>li.subMenuElement.button>input,
+	#menu ul.mainMenuAdmin>li>a{
+		text-decoration:none;
+		color: #fff;
+		cursor:pointer;
+	}
+
+	#subMenu ul.subMenu>li.subMenuElement.link>a:hover,
+	#subMenu ul.subMenu>li.subMenuElement.button>input:hover,
+	#menu ul.mainMenuAdmin>li>a:hover{
+		background: darkorange;
+	}
+	
+	ul.mainPageMenuAdmin {
+		float:left;
+		width:100%;
+		font-size:14px;
+		padding:0;
+		margin:0;
+		list-style-type:none;
+	}
+	
+	ul.mainPageMenuAdmin li{
+		float:left;
+		width: 104px;
+		padding:0;
+		margin:10px;
+		border: 0;
+	}
+	
+	ul.mainPageMenuAdmin li a{
+		float:left;
+		display:block;
+		width: 100px;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		border: 2px solid transparent;
+	}
+	ul.mainPageMenuAdmin li a:hover{
+		transition: box-shadow 0.3s;
+		transition-timing-function: ease-out;
+		border: 2px solid black;
+		box-shadow: 0px 0px 30px black inset;
+		border-radius: 2px;
+	}
+	
+	ul.mainPageMenuAdmin li a div.menuPageLink{
+		float:left;
+		display:block;
+		width: 100px;
+		height: 50px;
+		padding: 72px 0 0 0;
+		line-height:25px;
+		margin:0;
+		text-align:center;
+		border: 0;
+		background-repeat: no-repeat;
+		background-position: top center;
+		font-size:14px;
+		font-weight:normal;
+		color: black;
+		text-shadow: 1px 1px 2px gray;
+		font-family: Verdana;
+	}
+
+
+.tartalom h1.title{
+	float:left;
+	width:90%;
+	margin:0 0 1px;
+	padding:10px 5%;
+	background:#eeeeee;
+}
+
+.tartalom hr.title{
+	display:none;
+	float:left;
+	width:30%;
+	margin-right:60%;
+	margin-left:10%;
+}
+
+.tartalom div.pageContent{
+	float:left; width: 100%;
+}
+.tartalom div.pageContent p{
+	width: 100%; margin:8px 0;
+}
+
+/* oldal elemek */
+.tartalom div.pageContent span.inpText{
+	width: 150px;
+}
+.tartalom div.pageContent input[type=text]{
+	width: 450px;
+}
+.tartalom div.pageContent textarea{
+	width: 450px;height:100px;
+}
+.tartalom div.pageContent select{
+	width: 450px;
+}
+
+
+.tartalom div.pageContent span.rowText{
+	width: 150px;
+}
+.tartalom div.pageContent span.rowData{
+	width: 460px;
+}
+.tartalom div.pageContent span.rowData input[type=text]{
+	width: 460px;
+}
+.tartalom div.pageContent span.rowData textarea{
+	width: 460px;
+}
+
+.tartalom div.pageContent span.inpText{
+	display: inline-block;
+	vertical-align: top;
+	width: 150px;
+}
+.tartalom div.pageContent input[type=text]{
+	width: 450px;
+}
+.tartalom div.pageContent textarea.contentEdit{
+	width: 600px;height:500px;
+}
+.tartalom div.pageContent input.metaKey{
+	width: 450px;
+}
+.tartalom div.pageContent textarea.metaDesc{
+	width: 450px;height:200px;
+}
+
+.tartalom div.pageContent a.filelink{
+	margin: 0 5px;
+}
+
+.tartalom div.pageContent p span.categorySel{
+	background: beige;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox{
+	width:100%;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox input{
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox label{
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew {
+	width:100%;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew span.rowText {
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew input.new_category {
+	width:300px;
+}
+
+.tartalom table.adminList {
+	width:100%;
+	border: 1px solid #cccccc;
+	border-radius: 4px 4px 4px 4px;
+	border-spacing: 0px;
+}
+
+.tartalom .tabTableList .ui-tabs .ui-tabs-panel {
+	padding: 0;
+}
+.tartalom .tabTableList table.adminList {
+	width:100%;
+	border: 0;
+	border-radius: 0;
+	border-spacing: 0px;
+}
+.ui-widget-header { background: #222; background-image:none; }
+.tartalom table.adminList thead tr{ background: #222; color: #fff; line-height:38px; }
+.tartalom table.adminList thead tr th{ font-weight:normal;text-align:left;font-family:arial;padding:0 5px; }
+
+.tartalom table.adminList tbody tr{ background: white; }
+
+.tartalom table.adminList tbody tr:nth-of-type(even) { background: whitesmoke; }
+.tartalom table.adminList tbody tr:hover { background: lightgray; }
+
+.tartalom table.adminList tr td.left { text-align: left; }
+.tartalom table.adminList tr td.center { text-align: center; }
+.tartalom table.adminList tr td.right { text-align: right; }
+.tartalom table.adminList tr td.bold { font-weight: bold; }
+.tartalom table.adminList tr td.italic { font-style: italic; }
+
+.tartalom div.menuTypeSelect {
+	background:#ddd;
+	padding: 10px;
+}
+
+.tartalom div.menuTypeSelect p{
+	margin:10px 0;
+}
+
+.tartalom div.menuTypeSelect p a {
+	display:inline-block;
+	border:1px solid black;
+	box-shadow: 0 0 2px black;
+}

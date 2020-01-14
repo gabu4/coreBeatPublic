@@ -1,0 +1,9 @@
+{#
+    css:logout.css
+#}
+
+<div class="header-logged">
+    <a href="{{ user_settings_href }}"><span class="avatar"><img src="{{ userimage }}" alt=""></span> {{ username|raw }}</a>
+    <a href="{{ user_settings_href }}" >[LANG_ACCOUNT_SETTINGS]</a>
+    <a href="{{ user_logout_href }}" class="text-custom">[LANG_ACCOUNT_LOGOUT_BUTTON]</a>
+</div>

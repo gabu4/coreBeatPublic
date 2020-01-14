@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6">
+        {#s,sitetitle,text}
+        {#s,sitetitle2,text}
+    </div>
+    <div class="col-md-6">
+        {#s,langtype,text}
+        <div class="row">
+            <div class="col-md-6">
+                {#s,langtype_user_default,text}
+            </div>
+            <div class="col-md-6">
+                {#s,langtype_admin_default,text}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        {#s,debug,select,false|DEBUG_FALSE;true|DEBUG_TRUE}
+        {#s,debug_memory,select,true;false}
+        {#s,php_set_time_limit,text}
+        {#s,savelog,select,detailed|SAVELOG_DETAILED;login|SAVELOG_LOGIN;false}
+    </div>
+    <div class="col-md-6">
+        <div class="well well-sm">
+            {#s,maintenance,select,true;false}
+        </div>
+        {#s,def_page,text}
+        {#s,error404_load_mainpage,select,true;false}
+        {#s,error403_user_login,select,true;false}
+    </div>
+</div>

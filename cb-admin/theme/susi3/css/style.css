@@ -1,0 +1,516 @@
+/* PAGE STYLE */
+    body {
+        background: gray;
+        font-family: "serif";
+        font-size:14px;
+        margin:0;
+        padding:0;
+        color: #fff;
+    }
+
+    h1 { font-size:24px;font-weight:normal;font-style:normal;margin:20px 0; }
+    h2 { font-size:21px;font-weight:normal;font-style:normal;margin:20px 0 15px; }
+    h3 { font-size:18px;font-weight:normal;font-style:normal;margin:15px 0 10px; }
+    h4 { font-size:15px;font-weight:normal;font-style:normal;margin:15px 0 5px; }
+    h5 { font-size:12px;font-weight:normal;font-style:normal;margin:10px 0 5px; }
+    h6 { font-size:10px;font-weight:normal;font-style:normal;margin:10px 0 0; }
+    p { font-size:15px;font-weight:normal;font-style:normal;margin:10px 0; }
+    a { font-size:15px;font-weight:normal;font-style:normal; }
+    div {  }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=numeric],
+    textarea,
+    select { 
+        padding:10px 20px;
+        font-size:15px;
+        background:white;
+        border-top:1px solid lightgray;
+        border-right:3px solid gray;
+        border-bottom:1px solid black;
+        border-left:3px solid darkgray;
+        transition: 1.5s border-left, 2s background, 2.5s border-bottom, 2.5s border-top, 3.5s border-right;
+    }
+
+    input[type=text]:hover,
+    input[type=password]:hover,
+    input[type=email]:hover,
+    input[type=numeric]:hover,
+    textarea:hover,
+    select:hover {
+        border-top: 1px solid coral;
+        border-left: 3px solid coral;
+        border-bottom: 1px solid coral;
+        border-right: 3px solid coral;
+        transition: .3s all;
+        background: #FFFFCC;
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus,
+    input[type=email]:focus,
+    input[type=numeric]:focus,
+    textarea:focus,
+    select:focus {
+        border-top: 1px solid crimson;
+        border-left: 3px solid crimson;
+        border-bottom: 1px solid crimson;
+        border-right: 3px solid crimson;
+        background: antiquewhite;
+        transition: .5s all;
+    }
+
+    #pcenter {
+        float:none;
+        width:96%;
+        margin:20px 2%;
+    }
+
+    #pageadmin {
+        float:left;
+        width:100%;
+        margin:0;
+
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-left: 0px solid black;
+        border-right: 0px solid black;
+        border-radius:10px;
+        background: #fff;
+        color: #000;
+    }
+
+    div.inlineBlock{
+        display:inline-block;
+    }
+
+    #logo {
+        float:left;
+        margin:0 5%;
+        width: 90%;
+    }
+
+    #logo  div.accountbox {
+        float:right;
+        height: 50px;
+        margin: 25px 0;
+        width: 100px;
+        display: block;
+    }
+    
+    #pageadmin #left {
+        float:left;
+        width: 150px;
+        margin: 0px 1px 10px 0px;
+    }
+    
+    #pageadmin #center {
+        float:left;
+        width: 100%;
+        margin: 0px 0px 10px 0px;
+    }
+    
+    #pageadmin #left + #center {
+        float:right;
+        width: calc(100% - 151px);
+        margin: 0px 0px 10px 0px;
+    }
+
+    #lent {
+        width:80%;
+        margin:10px 10%;
+        padding: 10px 0 0;
+        text-align:center;
+        float:left;
+        border-top:1px solid #222;
+    }
+
+/* MENU, SUBMENU */
+    #menu {
+        float:left;
+        width:100%;
+        margin: 1px 0 1px;
+        color:#fff;
+    }
+
+    #menu ul.mainMenuAdmin {
+        float:left;
+        padding:0;
+        margin:0;
+        font-size:14px;
+        list-style-type:none;
+        display:block;
+    }
+
+    #menu ul.mainMenuAdmin li {
+        float:left;
+        margin:0px;
+        display:block;
+    }
+
+    #menu ul.mainMenuAdmin li a{
+        padding:5px 15px;
+        display:block;
+        transition: 0.3s all;
+    }
+
+    #subMenu {
+        float:left;
+        width:100%;
+    }
+
+    #subMenu ul.subMenu{
+        float:left;
+        width:100%;
+        font-size:14px;
+        padding:0;
+        margin:0;
+        list-style-type:none;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement{
+        float:left;
+        width:100%;
+        padding:0;
+        margin:0 0 1px 0;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.space {
+        height:25px;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link>a{
+        float:left;
+        width:90%;
+        padding:5px 5%;
+        display:block;
+        transition: 0.3s all;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.button>input{
+        float:left;
+        width:100%;
+        padding:5px 5%;
+        display:block;
+        text-align:left;
+        border:0;
+        transition: 0.3s all;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link>a,
+    #subMenu ul.subMenu>li.subMenuElement.button>input,
+    #menu{
+        background: #222;
+    }
+    
+    #subMenu ul.subMenu>li.subMenuElement.link.hidden,
+    #subMenu ul.subMenu>li.subMenuElement.button.hidden {
+        display:none;
+    }
+    
+    #subMenu ul.subMenu>li.subMenuElement.link .green,
+    #subMenu ul.subMenu>li.subMenuElement.button .green {
+        background: #005500;
+        color: #fff;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link .blue,
+    #subMenu ul.subMenu>li.subMenuElement.button .blue {
+        background: #060055;
+        color: #fff;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link .red,
+    #subMenu ul.subMenu>li.subMenuElement.button .red {
+        background: #550000;
+        color: #fff;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link .active,
+    #subMenu ul.subMenu>li.subMenuElement.button .active {
+        background: darkorange;
+        color: #fff;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link>a,
+    #subMenu ul.subMenu>li.subMenuElement.button>input,
+    #menu ul.mainMenuAdmin>li>a{
+        text-decoration:none;
+        color: #fff;
+        cursor:pointer;
+    }
+
+    #subMenu ul.subMenu>li.subMenuElement.link>a:hover,
+    #subMenu ul.subMenu>li.subMenuElement.button>input:hover,
+    #menu ul.mainMenuAdmin>li>a:hover{
+        background: darkorange;
+        transition: 0.3s all;
+    }
+
+    ul.mainPageMenuAdmin {
+        float:left;
+        width:100%;
+        font-size:14px;
+        padding:0;
+        margin:0;
+        list-style-type:none;
+    }
+
+    ul.mainPageMenuAdmin li{
+        float:left;
+        width: 132px;
+        padding:0;
+        margin:10px;
+        border: 0;
+    }
+
+    ul.mainPageMenuAdmin li a{
+        float:left;
+        display:block;
+        width: 130px;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        border: 1px solid transparent;
+        border-radius: 100px;
+        transition: all 0.5s;
+    }
+    ul.mainPageMenuAdmin li a:hover{
+        transition: all 0.3s;
+        transition-timing-function: ease-out;
+        border: 1px solid black;
+        border-radius: 0px;
+    }
+
+    ul.mainPageMenuAdmin li a div.menuPageLink{
+        float:left;
+        display:block;
+        width: 110px;
+        height: 50px;
+        padding: 72px 10px 0;
+        line-height: 25px;
+        margin:10px 0 0;
+        text-align:center;
+        border: 0;
+        background-repeat: no-repeat;
+        background-position: top center;
+        font-size: 14px;
+        font-weight:normal;
+        color: black;
+	text-shadow: 1px 1px 2px gray;
+        font-family: verdana;
+    }
+
+
+/* oldal elemek */
+.tartalom h1.title{
+    float:left;
+    width:90%;
+    margin:0 0 1px;
+    padding:10px 5%;
+    background:#eeeeee;
+}
+
+.tartalom hr.title{
+    display:none;
+    float:left;
+    width:30%;
+    margin-right:60%;
+    margin-left:10%;
+}
+
+.tartalom div.pageContent{
+    float:left; width: 100%;
+}
+.tartalom div.pageContent #allPageContent{
+    float:left; width: 98%;
+}
+.tartalom div.pageContent #tabs{
+    float:left; width: 98%;
+}
+
+.tartalom div.pageContent p{
+    width: 100%; margin:8px 0;
+}
+
+.tartalom div.pageContent textarea{
+    width: 450px;height:100px;
+}
+.tartalom div.pageContent select{
+    width: 450px;
+}
+
+
+.tartalom div.pageContent span.rowText{
+    width: 150px;
+}
+.tartalom div.pageContent span.rowData{
+    max-width: 460px;
+}
+.tartalom div.pageContent span.rowData input[type=text]{
+    max-width: 460px;
+    width: calc(100% - 46px);
+}
+.tartalom div.pageContent span.rowData textarea{
+    width: 460px;
+}
+
+.tartalom div.pageContent span.inpText{
+    display: inherit;
+    vertical-align: top;
+    width: 200px;
+}
+.tartalom div.pageContent input[type=text]{
+    max-width: 450px;
+    width: calc(100% - 46px);
+}
+.tartalom div.pageContent textarea.contentEdit{
+    width: 600px;height:500px;
+}
+.tartalom div.pageContent input.metaKey{
+    width: 450px;
+}
+.tartalom div.pageContent textarea.metaDesc{
+    width: 450px;height:200px;
+}
+
+.tartalom div.pageContent a.filelink{
+    margin: 0 5px;
+}
+
+.tartalom div.pageContent p span.categorySel{
+    background: beige;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox{
+    width:100%;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox input{
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelBox label{
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew {
+    width:100%;
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew span.rowText {
+}
+
+.tartalom div.pageContent p span.categorySel span.categorySelNew input.new_category {
+    width:300px;
+}
+
+.tartalom table.adminList {
+    width:100%;
+    border: 1px solid #cccccc;
+    border-radius: 4px 4px 4px 4px;
+    border-spacing: 0px;
+}
+
+.tartalom .tabTableList .ui-tabs .ui-tabs-panel {
+    padding: 0;
+}
+.tartalom .tabTableList table.adminList {
+    width:100%;
+    border: 0;
+    border-radius: 0;
+    border-spacing: 0px;
+}
+.ui-widget-header { background: #222; background-image:none; }
+.tartalom table.adminList thead tr{ background: #222; color: #fff; line-height:38px; }
+.tartalom table.adminList thead tr th{ font-weight:normal;text-align:left;font-family:arial;padding:0 5px; }
+
+.tartalom table.adminList tbody tr{ background: white;transition: 0.3s all; }
+
+.tartalom table.adminList tbody tr:nth-of-type(even) { background: whitesmoke; }
+.tartalom table.adminList tbody tr:hover { background: lightgray;transition: 0.3s all; }
+
+.tartalom table.adminList tr td { vertical-align: middle; }
+.tartalom table.adminList tr td.left { text-align: left; }
+.tartalom table.adminList tr td.center { text-align: center; }
+.tartalom table.adminList tr td.right { text-align: right; }
+.tartalom table.adminList tr td.bold { font-weight: bold; }
+.tartalom table.adminList tr td.italic { font-style: italic; }
+
+.tartalom div.menuTypeSelect {
+    background:#ddd;
+    padding: 10px;
+}
+
+.tartalom div.menuTypeSelect p{
+    margin:10px 0;
+}
+
+.tartalom div.menuTypeSelect p a {
+    display:inline-block;
+    border:1px solid black;
+    box-shadow: 0 0 2px black;
+}
+
+
+/* STYLE WIDTH */
+.tartalom div.pageContent .rowWidth_1_1{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_2_1{ float:left;width:49%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_2_2{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_3_1{ float:left;width:32.3%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_3_2{ float:left;width:65.6%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_3_3{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_4_1{ float:left;width:24%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_4_2{ float:left;width:49%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_4_3{ float:left;width:74%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_4_4{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_5_1{ float:left;width:19%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_5_2{ float:left;width:39%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_5_3{ float:left;width:59%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_5_4{ float:left;width:79%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_5_5{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_6_1{ float:left;width:15.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_6_2{ float:left;width:32%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_6_3{ float:left;width:49%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_6_4{ float:left;width:65.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_6_5{ float:left;width:82%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_6_6{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_1{ float:left;width:13.2%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_2{ float:left;width:27.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_3{ float:left;width:41.8%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_4{ float:left;width:56.1%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_5{ float:left;width:70.4%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_6{ float:left;width:84.7%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_7_7{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_1{ float:left;width:11.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_2{ float:left;width:24%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_3{ float:left;width:36.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_4{ float:left;width:49%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_5{ float:left;width:61.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_6{ float:left;width:74%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_7{ float:left;width:86.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_8_8{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_1{ float:left;width:10.1%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_2{ float:left;width:21.2%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_3{ float:left;width:32.3%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_4{ float:left;width:43.4%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_5{ float:left;width:54.5%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_6{ float:left;width:65.6%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_7{ float:left;width:76.7%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_8{ float:left;width:87.8%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_9_9{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_1{ float:left;width:9%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_2{ float:left;width:19%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_3{ float:left;width:29%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_4{ float:left;width:39%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_5{ float:left;width:49%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_6{ float:left;width:59%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_7{ float:left;width:69%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_8{ float:left;width:79%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_9{ float:left;width:89%;margin-right:0.5%;margin-left:0.5%; }
+.tartalom div.pageContent .rowWidth_10_10{ float:left;width:99%;margin-right:0.5%;margin-left:0.5%; }
+
+.tartalom div.pageContent .rowWidth_6_1.state { white-space: nowrap; }
+

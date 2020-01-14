@@ -1,0 +1,148 @@
+/*
+ * Skin: Gorjuss-pink
+ * ------------
+ */
+.skin-gorjuss-pink .main-header nav.navbar {
+  background-color: #fbaacd;
+  background-image: url('../../images/skin/gorjuss-pink/bg.png');
+  background-repeat: repeat;
+}
+.skin-gorjuss-pink .main-header .navbar .nav > li > a {
+  color: #000;
+}
+.skin-gorjuss-pink .main-header .navbar .nav > li > a:hover,
+.skin-gorjuss-pink .main-header .navbar .nav > li > a:active,
+.skin-gorjuss-pink .main-header .navbar .nav > li > a:focus,
+.skin-gorjuss-pink .main-header .navbar .nav .open > a,
+.skin-gorjuss-pink .main-header .navbar .nav .open > a:hover,
+.skin-gorjuss-pink .main-header .navbar .nav .open > a:focus,
+.skin-gorjuss-pink .main-header .navbar .nav > .active > a {
+  background: rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+.skin-gorjuss-pink .main-header .navbar .sidebar-toggle {
+  color: #000;
+}
+.skin-gorjuss-pink .main-header .navbar .sidebar-toggle:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.1);
+}
+.skin-gorjuss-pink .main-header .navbar .sidebar-toggle {
+  color: #000;
+}
+.skin-gorjuss-pink .main-header .navbar .sidebar-toggle:hover {
+  background-color: #f37eb1;
+}
+@media (max-width: 767px) {
+  .skin-gorjuss-pink .main-header .navbar .dropdown-menu li.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .skin-gorjuss-pink .main-header .navbar .dropdown-menu li a {
+    color: #000;
+  }
+  .skin-gorjuss-pink .main-header .navbar .dropdown-menu li a:hover {
+    background: #c66f94;
+  }
+}
+.skin-gorjuss-pink .main-header .logo {
+  background-color: #f37eb1;
+  color: #000;
+  border-bottom: 0 solid transparent;
+}
+.skin-gorjuss-pink .main-header .logo:hover {
+  background-color: #c66f94;
+}
+.skin-gorjuss-pink .main-header li.user-header {
+  background-color: #fbaacd;
+}
+.skin-gorjuss-pink .content-header {
+  background: transparent;
+}
+.skin-gorjuss-pink .wrapper,
+.skin-gorjuss-pink .main-sidebar,
+.skin-gorjuss-pink .left-side {
+  background-color: #000;
+  background-image: url('../../images/skin/gorjuss-pink/bg3b.png');
+  background-repeat: repeat-y;
+}
+.skin-gorjuss-pink .user-panel > .info,
+.skin-gorjuss-pink .user-panel > .info > a {
+  color: #fff;
+}
+.skin-gorjuss-pink .sidebar-menu > li.header {
+  color: #4b646f;
+  /* background: #1a2226; */
+}
+.skin-gorjuss-pink .sidebar-menu > li > a {
+  border-left: 3px solid transparent;
+}
+.skin-gorjuss-pink .sidebar-menu > li:hover > a,
+.skin-gorjuss-pink .sidebar-menu > li.active > a {
+  color: #ffffff;
+  background: rgba(0,0,0,0.5);
+  border-left-color: #f37eb1;
+}
+.skin-gorjuss-pink .sidebar-menu > li > .treeview-menu {
+  margin: 0 1px;
+  background: rgba(0,0,0,0.3);
+}
+.skin-gorjuss-pink .sidebar a {
+  color: #b8c7ce;
+}
+.skin-gorjuss-pink .sidebar a:hover {
+  text-decoration: none;
+}
+.skin-gorjuss-pink .treeview-menu > li > a {
+  color: #8aa4af;
+}
+.skin-gorjuss-pink .treeview-menu > li.active > a,
+.skin-gorjuss-pink .treeview-menu > li > a:hover {
+  color: #ffffff;
+  background: rgba(0,0,0,0.7);
+}
+.skin-gorjuss-pink .sidebar-form {
+  border-radius: 3px;
+  border: 1px solid #374850;
+  margin: 10px 10px;
+}
+.skin-gorjuss-pink .sidebar-form input[type="text"],
+.skin-gorjuss-pink .sidebar-form .btn {
+  box-shadow: none;
+  background-color: #374850;
+  border: 1px solid transparent;
+  height: 35px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.skin-gorjuss-pink .sidebar-form input[type="text"] {
+  color: #666;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+}
+.skin-gorjuss-pink .sidebar-form input[type="text"]:focus,
+.skin-gorjuss-pink .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  background-color: #fff;
+  color: #666;
+}
+.skin-gorjuss-pink .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+  border-left-color: #fff;
+}
+.skin-gorjuss-pink .sidebar-form .btn {
+  color: #999;
+  border-top-left-radius: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.skin-gorjuss-pink .content-wrapper {
+  background-image: url('../../images/skin/gorjuss-pink/gorjuss_mini.png');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.skin-gorjuss-pink .box {
+    background: rgba(255,255,255,.95);
+}

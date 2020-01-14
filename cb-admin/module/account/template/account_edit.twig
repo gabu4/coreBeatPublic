@@ -1,0 +1,130 @@
+{#
+    jsend:account_edit.js
+    jsend:account_password.js
+#}
+
+<section class='accountCreate'>
+    <div class="col-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">[LANG_ADMIN_ACCOUNT_TITLE_USERCREATE]</h3>
+            </div>
+            <div class="box-body accountEdit">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <input type='hidden' name='form_userid' value='{{ account_id }}' />
+                        <div class="input-group mb-3 text-center profil-image" style="display: inline-block;">
+                            <img src="{{ image_url }}" alt="" />
+                        </div>
+                        <label for="image">[LANG_ADMIN_ACCOUNT_USER_IMAGE]</label>
+                        <div class="input-group mb-3 form-cb-image">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" title="[LANG_ADMIN_ACCOUNT_USER_IMAGE]"><span class='fas fa-portrait form-control-feedback'></span></span>
+                            </div>
+                            <select class="custom-select" id="imageTypeSelector" name="image">
+                                <option>[LANG_ADMIN_ACCOUNT_IMAGE_PLEASE_SELECT]</option>
+                                <option value="gravatar" {% if image is same as( 'gravatar') %}SELECTED{% endif %}>Gravatar</option>
+                                <option value="mp" {% if image is same as( 'mp') %}SELECTED{% endif %}>Gravatar - Mystery person</option>
+                                <option value="identicon" {% if image is same as( 'identicon') %}SELECTED{% endif %}>Gravatar - Identicon</option>
+                                <option value="monsterid" {% if image is same as( 'monsterid') %}SELECTED{% endif %}>Gravatar - MonsterID</option>
+                                <option value="wavatar" {% if image is same as( 'wavatar') %}SELECTED{% endif %}>Gravatar - Wavatar</option>
+                                <option value="retro" {% if image is same as( 'retro') %}SELECTED{% endif %}>Gravatar - Retro</option>
+                                <option value="robohash" {% if image is same as( 'robohash') %}SELECTED{% endif %}>Gravatar - RoboHash</option>
+                            <!-- <option value="upload" {% if image is same as( 'upload') %}SELECTED{% endif %}>[LANG_ADMIN_ACCOUNT_IMAGE_UPLOAD]</option> -->
+                            </select>
+                        </div>
+                        
+                        <label for="email">[LANG_ADMIN_ACCOUNT_USER_USERNAME]</label>
+                        <div class="input-group mb-3 form-cb-email">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" title="[LANG_ADMIN_ACCOUNT_USER_USERNAME]">@</span>
+                            </div>
+                            <input type='email' class='form-control' id="email" name='email' value='{{ data_email }}' placeholder="[LANG_ADMIN_ACCOUNT_USER_USERNAME]" />
+                        </div>
+                        
+                        <label for="password">[LANG_ADMIN_ACCOUNT_USER_PASSWORD]</label>
+                        <div class='input-group mb-3 form-cb-password'>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" title="[LANG_ADMIN_ACCOUNT_USER_PASSWORD]"><span class='fas fa-lock form-control-feedback'></span></span>
+                            </div>
+                            <input type='password' class='form-control' id='password' name='pass' placeholder='[LANG_ADMIN_ACCOUNT_USER_PASSWORD]'>
+                            <div class="input-group-append jsCBShowPass">
+                                <span class="input-group-text"><i class='fas fa-eye-slash cursor-pointer passshow' title='[LANG_ACCOUNT_PASSWORD_SHOW]'></i><i class="fas fa-eye cursor-pointer passhide" style="display:none;" title="[LANG_ACCOUNT_PASSWORD_HIDE]"></i></span>
+                            </div>
+                        </div>
+                        <label for="password">[LANG_ADMIN_ACCOUNT_USER_PASSWORD_STRENGTH]</label>
+                        <div class='mb-3 cb-password_strength'>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <label for="userlevel">[LANG_ADMIN_ACCOUNT_USER_USERLEVEL]</label>
+                        <div class="input-group mb-3 form-cb-userlevel">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" title="[LANG_ADMIN_ACCOUNT_USER_USERLEVEL]"><span class='fas fa-level-up-alt form-control-feedback'></span></span>
+                            </div>
+                            <select class='custom-select' id="userlevel" name='userlevel'>
+                                {% for level in userlevel %}
+                                    <option value='{{ level.id }}' {% if level.selected is same as(true) %}SELECTED{% endif %}>{{ level.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-group mb-3 form-cb-state">
+                            <h4>[LANG_ADMIN_ACCOUNT_EDIT_STATE]</h4>
+                            <div class='col-12'><label for='state1'><input type='radio' id='state1' name='state' value='1' {% if state is same as('1') %}CHECKED{% endif %} /> [LANG_ADMIN_ACCOUNT_EDIT_STATE_ACTIVE]</label></div>
+                            <div class='col-12'><label for='state0'><input type='radio' id='state0' name='state' value='0' {% if state is same as('0') %}CHECKED{% endif %} /> [LANG_ADMIN_ACCOUNT_EDIT_STATE_INACTIVE]</label></div>
+                            <div class='col-12'><label for='state2'><input type='radio' id='state2' name='state' value='2' {% if state is same as('2') %}CHECKED{% endif %} /> [LANG_ADMIN_ACCOUNT_EDIT_STATE_NOT_ACTIVED]</label></div>
+                        </div>
+                        
+                        {% if admin_color is same as(true) %}
+                            <label>[LANG_ADMIN_ACCOUNT_USER_ADMIN_THEME_STYLE]</label>
+                            <div class="input-group mb-3 form-cb-admin_theme_style">
+                                <select class="custom-select" id="imageTypeSelector" name="admin_theme_style">
+                                    <option value="" {% if admin_theme_style is empty %}SELECTED{% endif %}>[LANG_ADMIN_ACCOUNT_THEME_SYSTEM_SELECT]</option>
+                                    <option value="black" {% if admin_theme_style is same as('black') %}SELECTED{% endif %}>black</option>
+                                    <option value="black-light" {% if admin_theme_style is same as('black-light') %}SELECTED{% endif %}>black-light</option>
+                                    <option value="blue" {% if admin_theme_style is same as('blue') %}SELECTED{% endif %}>blue</option>
+                                    <option value="blue-light" {% if admin_theme_style is same as('blue-light') %}SELECTED{% endif %}>blue-light</option>
+                                    <option value="gorjuss-blue" {% if admin_theme_style is same as('gorjuss-blue') %}SELECTED{% endif %}>gorjuss-blue</option>
+                                    <option value="gorjuss-pink" {% if admin_theme_style is same as('gorjuss-pink') %}SELECTED{% endif %}>gorjuss-pink</option>
+                                    <option value="gorjuss-yellow" {% if admin_theme_style is same as('gorjuss-yellow') %}SELECTED{% endif %}>gorjuss-yellow</option>
+                                    <option value="green" {% if admin_theme_style is same as('green') %}SELECTED{% endif %}>green</option>
+                                    <option value="green-light" {% if admin_theme_style is same as('green-light') %}SELECTED{% endif %}>green-light</option>
+                                    <option value="purple" {% if admin_theme_style is same as('purple') %}SELECTED{% endif %}>purple</option>
+                                    <option value="purple-light" {% if admin_theme_style is same as('purple-light') %}SELECTED{% endif %}>purple-light</option>
+                                    <option value="red" {% if admin_theme_style is same as('red') %}SELECTED{% endif %}>red</option>
+                                    <option value="red-light" {% if admin_theme_style is same as('red-light') %}SELECTED{% endif %}>red-light</option>
+                                    <option value="yellow" {% if admin_theme_style is same as('yellow') %}SELECTED{% endif %}>yellow</option>
+                                    <option value="yellow-light" {% if admin_theme_style is same as('yellow-light') %}SELECTED{% endif %}>yellow-light</option>
+                                </select>
+                            </div>
+                        {% endif %}
+                        
+                        {% for data in data_extra %}
+                            <label>[LANG_ADMIN_ACCOUNT_USER_{{ data.name_big }}]</label>
+                            <div class="input-group mb-3 form-cb-{{ data.name }}">
+                                <input type='text' class='form-control' name='{{ data.name }}' value='{{ data.value }}' {% if data.admin is same as(false) %}readonly{% endif %} /></span>
+                                {% if data.useredit_or_usersee is same as(false) %}
+                                <div class="input-group-prepend">
+                                    {% if data.useredit is same as(false) %}<span class="input-group-text" title="[LANG_ADMIN_ACCOUNT_USER_USERCANTEDIT]"><span class='fas fa-user-slash form-control-feedback'></span></span>{% endif %}
+                                    {% if data.usersee is same as(false) %}<span class="input-group-text" title="[LANG_ADMIN_ACCOUNT_USER_USERCANTSEE]"><span class='fas fa-low-vision form-control-feedback'></span></span>{% endif %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                    
+            <!-- /.box-body -->
+            <div class="box-footer">
+
+            </div>
+            <!-- /.box-footer-->
+        </div>
+    </div>
+</section>

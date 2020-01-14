@@ -1,0 +1,3 @@
+#cbLogoutModal {}
+#cbLogoutModal #cbLogoutModalLabel { display: inline-block; }
+#cbLogoutModal .modal-header .close { margin-top: -10px; }

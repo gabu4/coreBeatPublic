@@ -1,0 +1,73 @@
+/* menu */
+#menu_top {
+	float:left;	
+	height:40px;
+	margin:0;
+	padding:0px 0px 0px 0px;
+	width:1000px;
+	background: black;
+}
+
+#menu_top ul.ml_0 {
+	float:left;
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+#menu_top ul.ml_0>li {
+	line-height:40px;padding: 0;
+	font-size:18px;
+	color:#fff;
+	float:left;
+}
+#menu_top ul.ml_0>li a {
+	text-decoration:none;
+	line-height:40px;padding:0 10px;
+	color:#fff;
+	display:block;
+}
+#menu_top ul.ml_0>li>a.active,
+#menu_top ul.ml_0>li>a:hover {
+	background:#d8060a;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+
+/* menu2 */
+#menu_left {
+	float:left;
+	margin:0 -15px;
+	padding:0;
+	width:230px;
+}
+
+#menu_left ul.ml_0 {
+	float:left;
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+#menu_left ul.ml_0 li {
+	float:left;
+	clear:left;
+	margin:1px 0 0 0;
+}
+
+#menu_left ul.ml_0 li a{
+	background: black;
+	color: #fff;
+	font-size: 15px;
+	line-height: 30px;
+	padding: 0 10px 0 10px;
+	margin: 0 10px 0 0;
+	width:210px;
+	float:left;
+	display:block;
+	text-decoration:none;
+}
+
+#menu_left ul.ml_0 li a.active,
+#menu_left ul.ml_0 li a:hover{
+	background: #d8060a;
+}

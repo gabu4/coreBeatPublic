@@ -1,0 +1,38 @@
+{#
+    title:[LANG_ACCOUNT_USERSETTINGS_USERDATA_TITLE]
+#}
+
+<section class='accountContentDiv accountContentPageDiv account-settings account-settings-userdata-form'>
+    <div class="accountContent col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+        <form name='form_userSettingsUserdata' action='' method='POST'>
+            <h2 class='title'>[LANG_ACCOUNT_USERSETTINGS_USERDATA_TITLE]</h2>
+
+            <a href="{{back_link}}" class="btn btn-danger btn-block">[LANG_ACCOUNT_USERSETTINGS_USERDATA_BACK_BUTTON]</a>
+
+            <div class="form-group form-cb-email">
+                <p>[LANG_ACCOUNT_EMAIL]: <i>{{&email}}</i></p>
+            </div>
+            <div class="form-group form-cb-first_name">
+                <label for="first_name" class="control-label">[LANG_ACCOUNT_FIRSTNAME]</label>
+                <input type="text" id="first_name" class="form-control" name="first_name" value="{{first_name}}" required="" title="[LANG_ACCOUNT_FIRSTNAME_TITLE]" placeholder="[LANG_ACCOUNT_FIRSTNAME_EXAMPLE]" />
+                <span class="help-block">[LANG_ACCOUNT_FIRSTNAME_HELPTEXT]</span>
+                <span class='comm'></span>
+            </div>
+            <div class="form-group form-cb-last_name">
+                <label for="last_name" class="control-label">[LANG_ACCOUNT_LASTNAME]</label>
+                <input type="text" id="last_name" class="form-control" name="last_name" value="{{last_name}}" required="" title="[LANG_ACCOUNT_LASTNAME_TITLE]" placeholder="[LANG_ACCOUNT_LASTNAME_EXAMPLE]" />
+                <span class="help-block">[LANG_ACCOUNT_LASTNAME_HELPTEXT]</span>
+                <span class='comm'></span>
+            </div>
+            <div class="form-group form-cb-display_name">
+                <label for="display_name" class="control-label">[LANG_ACCOUNT_DISPLAY_NAME]</label>
+                <input type="text" id="display_name" class="form-control" name="display_name" value="{{display_name}}" required="" title="[LANG_ACCOUNT_DISPLAY_NAME_TITLE]" placeholder="[LANG_ACCOUNT_DISPLAY_NAME_EXAMPLE]" />
+                <span class="help-block">[LANG_ACCOUNT_DISPLAY_NAME_HELPTEXT]</span>
+                <span class='comm'></span>
+            </div>
+            
+            <button type='submit' class="btn btn-success btn-block" name='usersettingsuserdatabutton'>[LANG_ACCOUNT_USERSETTINGS_USERDATA_SAVE_BUTTON]</button>
+
+        </form>
+    </div>
+</section>

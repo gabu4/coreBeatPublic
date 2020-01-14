@@ -1,0 +1,40 @@
+{#
+    js:admin_settings.js
+#}
+
+    <section class='adminSettings'>
+        <div class="col-12">
+            <div class='nav-tabs-custom'>
+                <ul class='nav nav-tabs'>
+                    {{#?content_general}}<li class="nav-item"><a class="nav-link" href='#tabs-general' data-toggle='tab' aria-expanded='true'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_GENERAL]</a></li>{{/?content_general}}
+                    {{#?content_security}}<li class="nav-item"><a class="nav-link" href='#tabs-security' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_SECURITY]</a></li>{{/?content_security}}
+                    {{#?content_user}}<li class="nav-item"><a class="nav-link" href='#tabs-user' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_USER]</a></li>{{/?content_user}}
+                    {{#?content_email}}<li class="nav-item"><a class="nav-link" href='#tabs-email' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_EMAIL]</a></li>{{/?content_email}}
+                    {{#?content_seo}}<li class="nav-item"><a class="nav-link" href='#tabs-seo' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_SEO]</a></li>{{/?content_seo}}
+                    {{#?content_theme}}<li class="nav-item"><a class="nav-link" href='#tabs-theme' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_THEME]</a></li>{{/?content_theme}}
+                    {{#?content_content}}<li class="nav-item"><a class="nav-link" href='#tabs-content' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_CONTENT]</a></li>{{/?content_content}}
+                    {{#?content_product}}<li class="nav-item"><a class="nav-link" href='#tabs-product' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_PRODUCT]</a></li>{{/?content_product}}
+                    {{#?content_currency}}<li class="nav-item"><a class="nav-link" href='#tabs-currency' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_CURRENCY]</a></li>{{/?content_currency}}
+                    {{#?content_catalog}}<li class="nav-item"><a class="nav-link" href='#tabs-catalog' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_CATALOG]</a></li>{{/?content_catalog}}
+                    {{#?content_media}}<li class="nav-item"><a class="nav-link" href='#tabs-media' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_MEDIA]</a></li>{{/?content_media}}
+                    {{#?content_gallery}}<li class="nav-item"><a class="nav-link" href='#tabs-gallery' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_GALLERY]</a></li>{{/?content_gallery}}
+                    {{#?content_other}}<li class="nav-item"><a class="nav-link" href='#tabs-other' data-toggle='tab'>[LANG_ADMIN_ADMIN_SETTINGS_TABMENU_OTHER]</a></li>{{/?content_other}}
+                </ul>
+                <div class='tab-content'>
+                    {{#?content_general}}<div class='tab-pane fade' id='tabs-general'>{{&content_general}}</div>{{/?content_general}}
+                    {{#?content_security}}<div class='tab-pane fade' id='tabs-security'>{{&content_security}}</div>{{/?content_security}}
+                    {{#?content_user}}<div class='tab-pane fade' id='tabs-user'>{{&content_user}}</div>{{/?content_user}}
+                    {{#?content_email}}<div class='tab-pane fade' id='tabs-email'>{{&content_email}}</div>{{/?content_email}}
+                    {{#?content_seo}}<div class='tab-pane fade' id='tabs-seo'>{{&content_seo}}</div>{{/?content_seo}}
+                    {{#?content_theme}}<div class='tab-pane fade' id='tabs-theme'>{{&content_theme}}</div>{{/?content_theme}}
+                    {{#?content_content}}<div class='tab-pane fade' id='tabs-content'>{{&content_content}}</div>{{/?content_content}}
+                    {{#?content_product}}<div class='tab-pane fade' id='tabs-product'>{{&content_product}}</div>{{/?content_product}}
+                    {{#?content_currency}}<div class='tab-pane fade' id='tabs-currency'>{{&content_currency}}</div>{{/?content_currency}}
+                    {{#?content_catalog}}<div class='tab-pane fade' id='tabs-catalog'>{{&content_catalog}}</div>{{/?content_catalog}}
+                    {{#?content_media}}<div class='tab-pane fade' id='tabs-media'>{{&content_media}}</div>{{/?content_media}}
+                    {{#?content_gallery}}<div class='tab-pane fade' id='tabs-gallery'>{{&content_gallery}}</div>{{/?content_gallery}}
+                    {{#?content_other}}<div class='tab-pane fade' id='tabs-other'>{{&content_other}}</div>{{/?content_other}}
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,4 @@
+.teamList .teamMate { position: relative; }
+.teamList .teamMate .flags { position: absolute; right: 10px; top: 5px; }
+.teamList .teamMate .flags .flag img { height: 24px; }
+.teamList .teamMate .img { max-width: 100%; }

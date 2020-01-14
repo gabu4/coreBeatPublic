@@ -1,0 +1,278 @@
+body { /*background:url(../images/bg.png);*/ }
+#pcenter { width:520px;margin:20px calc(50% - 260px); }
+#pcenter #center { text-align:center;width:100%; }
+
+#pageadmin {  }
+
+
+    ul.mainPageMenuAdmin {
+        display:block;
+        padding:0;
+        margin:0;
+        list-style-type:none;
+    }
+
+    ul.mainPageMenuAdmin li{
+        display:inline-block;
+        padding:0;
+        margin:10px;
+        border: 0;
+        float:left;
+    }
+
+    ul.mainPageMenuAdmin li a{
+        display:block;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        transition: all 0.5s;
+        color: black;
+        background-color: transparent;
+    }
+    ul.mainPageMenuAdmin li a:hover{
+        transition: all 0.3s;
+        transition-timing-function: ease-out;
+        background-color: rgba(0,0,0,.2);
+    }
+
+    ul.mainPageMenuAdmin li a span.menuPageLink{
+        display: inline-block;
+        width: 110px;
+        height: 110px;
+        padding: 72px 10px 0;
+        line-height:17px;
+        margin:10px 0 0;
+        text-align:center;
+        border: 0;
+        background-repeat: no-repeat;
+        background-position: top center;
+        position: relative;
+    }
+    
+    ul.mainPageMenuAdmin li a span.menuPageLink i.mainFloat{
+        position: absolute;
+        text-align:center;
+        font-size: 64px;
+        width: 100%;
+        top: 0;
+        left: 0;
+        color: #222d32;
+    }
+
+/* sidebar button mod */
+
+.sidebar-menu > li > button {
+  padding: 12px 5px 12px 15px;
+  display: block;
+}
+
+.sidebar-menu > li > button > .fa,
+.sidebar-menu > li > button > .glyphicon,
+.sidebar-menu > li > button > .ion {
+  width: 20px;
+}
+
+.sidebar-menu.moduleSubMenu li > a,
+.sidebar-menu.moduleSubMenu li > button {
+    position: relative;
+    color: #fff;
+}
+.sidebar-menu.moduleSubMenu > li > button {
+    display: block;
+    padding: 12px 5px 12px 15px;
+    width: 100%;
+    text-align: left;
+    border-left: 3px solid transparent;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
+    background: transparent;
+}
+.sidebar-menu.moduleSubMenu > li > button > .fa,
+.sidebar-menu.moduleSubMenu > li > button > .glyphicon,
+.sidebar-menu.moduleSubMenu > li > button > .ion {
+    width: 20px;
+}
+
+.skin-blue .sidebar button { color: #b8c7ce; }
+.skin-blue-light .sidebar button { color: #444444; }
+.skin-black .sidebar button { color: #b8c7ce; }
+.skin-black-light .sidebar button { color: #444444; }
+.skin-green .sidebar button { color: #b8c7ce; }
+.skin-green-light .sidebar button { color: #444444; }
+.skin-red .sidebar button { color: #b8c7ce; }
+.skin-red-light .sidebar button { color: #444444; }
+.skin-yellow .sidebar button { color: #b8c7ce; }
+.skin-yellow-light .sidebar button { color: #444444; }
+.skin-purple .sidebar button { color: #b8c7ce; }
+.skin-purple-light .sidebar button { color: #444444; }
+
+
+.skin-blue .sidebar-menu > li:hover > button,
+.skin-blue .sidebar-menu > li.active > button {
+  color: #ffffff;
+  background: #1e282c;
+  border-left-color: #3c8dbc;
+}
+
+
+.sidebar-mini.sidebar-collapse .sidebar-menu > li > button > span {
+    display: none !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0px);
+}
+
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > button > span:not(.pull-right) {
+  display: block !important;
+  position: absolute;
+  width: 180px;
+  left: 50px;
+  z-index: 1000000;
+}
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > button > span {
+  top: 0;
+  margin-left: -3px;
+  padding: 12px 5px 12px 20px;
+  background-color: inherit;
+}
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > button > .pull-right-container {
+  position: relative !important;
+  float: right;
+  width: auto !important;
+  left: 180px !important;
+  top: -22px !important;
+  z-index: 900;
+}
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > button > .pull-right-container > .label:not(:first-of-type) {
+  display: none;
+}
+
+.sidebar-menu li > button {
+  position: relative;
+}
+.sidebar-menu li > button > .pull-right-container {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -7px;
+}
+
+.sidebar-menu > li > .green {
+        background: #005500;
+        color: #fff;
+    }
+.sidebar-menu > li > .blue,
+    #subMenu ul.subMenu>li.subMenuElement.button .blue {
+        background: #060055;
+        color: #fff;
+    }
+.sidebar-menu > li > .red,
+    #subMenu ul.subMenu>li.subMenuElement.button .red {
+        background: #550000;
+        color: #fff;
+    }
+    
+/* contactForm style mod */
+.contactFormsCreate .formRowRemoveButton {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.contactFormsCreate h4.panel-title a {
+    color: gray;
+    font-size: 70%;
+}
+.contactFormsCreate h4.panel-title a span.rowTitle {
+    color: black;
+    font-size: 140%;
+    margin-left: 10px;
+}
+
+.contactFormsCreate .moveIconSpan {
+    margin-left: -8px;
+}
+
+.contactFormsCreate .moveIcon {
+    color: rgba(0,0,0,.3);
+    cursor: pointer;
+}
+
+ol.new_row_pace {
+    list-style: none;
+    padding: 0;
+}
+
+ol.new_row_pace li {
+    margin: 0;
+}
+ol.new_row_pace li .panel {
+    border-radius: 0;
+}
+
+ol.new_row_pace li.placeholder {
+  position: relative;
+  /** More li styles **/
+}
+ol.new_row_pace li.placeholder:before {
+  position: absolute;
+  /** Define arrowhead **/
+}
+
+/* article list */
+.articleList .article_main span.flag img,
+.productList .product_main span.flag img {
+    height: 16px;
+}
+
+.articleCreate .name-field + .name-field,
+.productCreate .name-field + .name-field {
+    border-top: 1px solid #d2d6de;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.articleCreate .nav-tabs-custom span.flag img,
+.productCreate .nav-tabs-custom span.flag img,
+.languageEdit .filter-otherlanguage span.flag img {
+    height: 16px;
+}
+
+.menuList .languageSelector span.flag img {
+    height: 24px;
+}
+    
+/* bootstrap hack and more */
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-inline-flex { display: inline-flex; }
+.d-inline-table { display: inline-table; }
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-table { display: table; }
+.d-table-cell { display: table-cell; }
+.d-table-row { display: table-row; }
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+.fixed-bottom-left {
+    position: fixed;
+    z-index: 10000;
+    bottom: 20px;
+    left: 20px;
+}
+
+.loadingPage {
+    display:none;
+}
+
+div.mce-fullscreen {
+    z-index: 1050;
+}

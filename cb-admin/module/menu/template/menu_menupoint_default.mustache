@@ -1,0 +1,60 @@
+{#
+    jsend:menu_menupoint_default.js
+#}
+
+<div class="row">
+    <section class='menupointHtml'>
+        <input type='hidden' name='id' value='{{id}}' />
+        <input type='hidden' name='content_id' value='{{content_id}}' />
+        <div class="col-md-6 col-md-offset-3">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">{{title}}</h3>
+                </div>
+                <div class="box-body menuType-menu_html">
+                    <div class="form-group form-cb-name">
+                        <label>[ADMIN_TEXT_MENUPOINT_HTML_NAME]</label>
+                        <input type='text' class='form-control' name='name' value='{{name}}' /><span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-seo_name">
+                        <label>[ADMIN_TEXT_MENUPOINT_ARTICLE_SEO_NAME]</label>
+                        <div class="input-group input-group-sm">
+                            <input type='text' class='form-control' name='seo_name' value='{{seo_name}}' /><span class='comm'></span>
+                            <span class="input-group-btn">
+                                <button type='button' class='btn btn-default' name='renewseo'>[ADMIN_TEXT_MENUPOINT_ARTICLE_SEO_NAME_REFRESH]</button>>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group form-cb-language">
+                        {{&languageselect}}<span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-category">
+                        <label>[ADMIN_TEXT_MENUPOINT_HTML_CATEGORY]</label>
+                        {{&groupselect}}<span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-parent">
+                        <label>[ADMIN_TEXT_MENUPOINT_HTML_PARENT]</label>
+                        {{&parentselect}}<span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-is_blank">
+                        <label><input type='checkbox' class='' name='is_blank' value='1' {{ifisblank}} /> [ADMIN_TEXT_MENUPOINT_HTML_IS_BLANK]</label><span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-order">
+                        <label>[ADMIN_TEXT_MENUPOINT_HTML_ORDER]</label>
+                        <input type='text' class='form-control' name='order' value='{{order}}' /><span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-text">
+                        <label>[ADMIN_TEXT_MENUPOINT_HTML_TEXT]</label>
+                        <textarea class='form-control menuText' name='text' />{{&text}}</textarea><span class='comm'></span>
+                    </div>
+                    <div class="form-group form-cb-state">
+                        <h4>[ADMIN_TEXT_MENUPOINT_HTML_STATE]</h4>
+                        <div class='radio'><label for='state1'><input type='radio' id='state1' name='state' value='1' {{ifstate1}} />[ADMIN_TEXT_MENUPOINT_HTML_STATE_ACTIVE]</label></div>
+                        <div class='radio'><label for='state0'><input type='radio' id='state0' name='state' value='0' {{ifstate0}} />[ADMIN_TEXT_MENUPOINT_HTML_STATE_INACTIVE]</label></div>
+                        <span class='comm'></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

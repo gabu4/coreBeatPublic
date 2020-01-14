@@ -1,0 +1,10 @@
+<div id='{{form_name}}' class='container div-content-form form-id-{{id}} {{class}}'>
+    <h3 class='title'>{{name}}</h3>
+    <form name='form_connect' action='{{uri}}#{{form_name}}' method='POST'>
+        {{&msg}}
+        <input type='hidden' name='form_id' value='{{form_id}}' />
+        {{&field}}
+        {{&recapcha}}
+        {{&button}}
+    </form>
+</div>

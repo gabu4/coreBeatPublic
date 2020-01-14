@@ -1,0 +1,34 @@
+.login-box .login-box-body .checkbox.icheck {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+
+.login-page,
+.register-page{
+    background-image: url(../images/login_bg/szabadsaghid_1b.jpg);
+}
+
+.skin-gorjuss-blue.login-page,
+.skin-gorjuss-blue.register-page {
+    background-image: url('../images/skin/gorjuss-blue/login_bg/gorjuss_mini.png'),url(../images/skin/gorjuss-blue/login_bg/bg.png);
+    background-repeat: no-repeat,repeat;
+    background-position: bottom right,center center;
+    background-size: auto auto, auto auto;
+}
+
+.skin-gorjuss-pink.login-page,
+.skin-gorjuss-pink.register-page {
+    background-image: url('../images/skin/gorjuss-pink/login_bg/gorjuss_mini.png'),url(../images/skin/gorjuss-pink/login_bg/bg.png);
+    background-repeat: no-repeat,repeat;
+    background-position: bottom right,center center;
+    background-size: auto auto, auto auto;
+}
+
+.skin-gorjuss-yellow.login-page,
+.skin-gorjuss-yellow.register-page {
+    background-image: url('../images/skin/gorjuss-yellow/login_bg/gorjuss_mini.png'),url(../images/skin/gorjuss-yellow/login_bg/bg.png);
+    background-repeat: no-repeat,repeat;
+    background-position: bottom right,center center;
+    background-size: auto auto, auto auto;
+}

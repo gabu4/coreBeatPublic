@@ -1,0 +1,1 @@
+$(document).ready(function() {    adminLTE_login_functions();});var adminLTE_login_functions = function() {    $('input.iCheckJS').iCheck({      checkboxClass: 'icheckbox_square-blue',      radioClass: 'iradio_square-blue',      increaseArea: '20%' // optional    });};

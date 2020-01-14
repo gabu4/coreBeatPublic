@@ -1,0 +1,27 @@
+{#
+    js:admin_update_page.js
+#}
+
+    <section class='adminUpdate'>
+        <div class="col-md-12">
+            
+            <div class="box">
+                <div class="box-body">
+                    <h2 class=" text-center">Verzió frissítés</h2>
+
+                    <h4 class="text-center">Aktuális verzió:</h4>
+                    <p class="text-center"><big><strong><i>{{current_version}}</i></strong></big></p>
+                    {{#?have_system_update}}
+                        <p>&nbsp;</p>
+                        <h4 class="text-center">Elérhető legfrissebb verzió:</h4>
+                        {{#?updated_version_minor_update}}<p class="text-center">Hibajavítás <small>(minor update)</small>: <i>{{updated_version_minor}}</i> <a href="{{updated_version_minor_update}}">(Frissítés most)</a>{{/?updated_version_minor_update}}</p>
+                        {{#?updated_version_major_update}}<p class="text-center">Funciófejlesztés <small>(major update)</small>: <i>{{updated_version_major}}</i> <a href="{{updated_version_major_update}}">(Frissítés most)</a>{{/?updated_version_major_update}}</p>
+                    {{/?have_system_update}}
+                    {{#?updated_version_develop_update}}
+                        <p>&nbsp;</p>
+                        <p class="text-center">Fejlesztői verzió: <i>{{updated_version_develop}}</i></p>
+                    {{/?updated_version_develop_update}}
+                </div>
+            </div>
+        </div>
+    </section>

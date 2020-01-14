@@ -1,0 +1,205 @@
+/*oldal felépítése*/
+
+body{
+	background: lightgray;
+	font-family: "serif";
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+
+#page_center{
+	width:1002px;
+	margin:0 auto 0 auto;
+	float:none;
+}
+
+#page{
+	width:1000px;
+	margin:30px 0 30px;
+	float:left;
+	display:block;
+	background:white;
+	border: 1px solid darkgray;
+}
+
+#head,
+#main,
+#foot{
+	float:left;
+	display:block;
+	width:1000px;
+	position:relative;
+}
+
+
+#logo{
+	background:url('../images/logo.png') no-repeat center top;
+	width:1000px;
+	height:240px;
+	float:left;
+}
+
+#content_left {
+	float:left;
+	width:200px;
+	padding:0 15px;
+	background:rgb(240, 240, 240);
+}
+
+#content {
+	float:left;
+	width:740px;
+	padding:0 15px 0 15px;
+}
+
+#foot{
+	text-align:center;
+	padding:15px 0;
+	background:rgb(220, 220, 220);
+}
+
+/* tartalom rész */
+
+
+#content h1.title {
+	clear:both;
+	float:left;
+	margin:5px 0 5px 0;
+	color:black;
+	font-size:28px;
+	font-weight:normal;
+	width:100%;
+}
+
+#content hr.title {
+	width:100%;
+	float:left;
+	border:0;
+}
+
+
+
+/* module elemek */
+
+	
+/*design elemek*/
+/*debugging*/
+
+#content div.pageContent{
+	float: left;
+	width: 100%;	
+}
+
+#content div.pageContent p{
+	float: left;
+	width: 100%;
+	margin: 8px 0;
+}
+
+/* menu elemek */
+#tartalom div.pageContent.accountInvite span.inpText{
+	float: left;
+	width: 150px;
+}
+#tartalom div.pageContent.accountInvite input[type=text]{
+	float: left;
+	width: 450px;
+}
+#tartalom div.pageContent.accountInvite textarea{
+	float: left;
+	width: 450px;
+	height: 200px;
+}
+
+
+#tartalom div.pageContent.userSettings span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.userSettings span.rowData{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.userSettings span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.userSettings span.rowData textarea{
+	float:left; width: 460px;
+}
+
+
+#tartalom div.pageContent.formContent span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.formContent span.rowData{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.formContent span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.formContent span.rowData textarea{
+	float:left; width: 460px;
+}
+
+
+#tartalom div.pageContent.registration.step1  span.rowText{
+	float:left; width: 200px;
+}
+#tartalom div.pageContent.registration.step1  span.rowData{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.registration.step1  span.rowData input[type=text]{
+	float:left; width: 450px;
+}
+
+#tartalom div.pageContent.registration.step2 span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.registration.step2 span.rowData{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.registration.step2 span.rowData input[type=text]{
+	float:left; width: 460px;
+}
+#tartalom div.pageContent.registration.step2 span.rowData textarea{
+	float:left; width: 460px;
+}
+
+#tartalom div.pageContent.formContent span.rowText{
+	float:left; width: 200px;
+}
+#tartalom div.pageContent.formContent  span.rowData{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.formContent  span.rowData input[type=text]{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.formContent textarea{
+	float:left; width: 600px;height:200px;
+}
+
+#tartalom div.pageContent.pageEditor span.inpText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.pageEditor input[type=text]{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.pageEditor textarea.contentEdit{
+	float:left; width: 600px;height:500px;
+}
+#tartalom div.pageContent.pageEditor input.metaKey{
+	float:left; width: 450px;
+}
+#tartalom div.pageContent.pageEditor textarea.metaDesc{
+	float:left; width: 450px;height:200px;
+}
+
+#tartalom div.pageContent.userDetails span.rowText{
+	float:left; width: 150px;
+}
+#tartalom div.pageContent.userDetails  span.rowData{
+	float:left; width: 450px;
+	color:#000;
+}
+#tartalom div.pageContent.userDetails  a.filelink{
+	margin: 0 5px;
+}

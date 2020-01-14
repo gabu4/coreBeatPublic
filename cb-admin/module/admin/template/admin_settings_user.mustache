@@ -1,0 +1,56 @@
+{#
+    js:admin_settings_tab_user.js
+#}
+<div class="row">
+    <div class="col-md-6">
+        {#s,sessionvalue,text}
+        {#s,sessionstayloginvalue,text}
+        {#s,registration_term_id,text}
+    </div>
+    <div class="col-md-6">
+        <div class="well well-sm">
+            {#s,account_login_type,select,none|ACCOUNT_LOGIN_NONE;local|ACCOUNT_LOGIN_LOCAL;api|ACCOUNT_LOGIN_API}
+            {#s,account_local_register,select,none|ACCOUNT_LOCAL_REGISTER_NONE;normal|ACCOUNT_LOCAL_REGISTER_NORMAL;invitation|ACCOUNT_LOCAL_REGISTER_INVITATION}
+            {#s,registration_form,select,normal|ACCOUNT_REGISTER_FORM_NORMAL;mini|ACCOUNT_REGISTER_FORM_MINI}
+            {#s,account_local_invite,select,none|ACCOUNT_LOCAL_INVITE_NONE;user|ACCOUNT_LOCAL_INVITE_USER;admin|ACCOUNT_LOCAL_INVITE_ADMIN}
+            <div class='userLoginMethod-local local'>
+                [LANG_ADMIN_ADMIN_SETTINGS_HEADER_ROW_USER_LOCAL]
+                {#s,account_local_activation,select,none|NO_ACTIVATION;email|EMAIL_ACTIVATION;admin|ADMIN_ACTIVATION}
+            </div>
+            <div class='userLoginMethod-local api'>
+                [LANG_ADMIN_ADMIN_SETTINGS_HEADER_ROW_USER_API]
+                {#s,account_api_url,text}
+                {#s,account_api_key,text}
+                {#s,account_api_secret,text}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-6">
+        <div class="well well-sm">
+            {#s,login_fb_enable,select,true;false}
+            <div class='userLoginMethod-facebook true'>
+                {#s,login_fb_api_code,text}
+                {#s,login_fb_api_secret,text}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="well well-sm">
+            {#s,login_gp_enable,select,true;false}
+            <div class='userLoginMethod-google true'>
+                {#s,login_gp_api_ap_name,text}
+                {#s,login_gp_api_code,text}
+                {#s,login_gp_api_secret,text}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+
+
+

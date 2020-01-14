@@ -1,0 +1,3 @@
+#cbLoginModal {}
+#cbLoginModal #cbLoginModalLabel { display: inline-block; }
+#cbLoginModal .modal-header .close { margin-top: -10px; }

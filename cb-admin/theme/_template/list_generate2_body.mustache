@@ -1,0 +1,37 @@
+{#
+    
+#}
+
+<div class='table-responsive no-padding {{cssname}}'>
+    <table class='adminList table table-hover'>
+        {{#?head}}
+            <thead>
+                <tr>
+                    {{#head}}
+                        <th class='thead col_{{id}}'>{{&text}}</th>
+                    {{/head}}
+                </tr>
+            </thead>
+        {{/?head}}
+        <tbody>
+            {{#?body}}
+                {{#body}}
+                    <tr class='trow row_{{rowid}} rs_{{rownumber}}'>
+                        {{#col}}
+                            <td class='tbody col_{{colid}}'>{{&content}}</td>
+                        {{/col}}
+                    </tr>
+                {{/body}}
+            {{/?body}}
+        </tbody>
+    </table>
+    {{#?paginator}}
+        <nav>
+            <ul class="pagination">
+                {{#paginator}}
+                    <li class="page-item item-number-{{pagenumber}} {{#?active}}active{{/?active}}"><a class="page-link" href="{{link}}">{{text}}</a></li>
+                {{/paginator}}
+            </ul>
+        </nav>
+    {{/?paginator}}
+</div>

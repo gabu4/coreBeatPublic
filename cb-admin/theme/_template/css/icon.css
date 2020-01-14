@@ -1,0 +1,16 @@
+/* admin icon formMenu */
+input.adminSubmit { display:block;color:transparent;width:32px;height:32px;border:0;box-shadow:none;margin:0 0 0 5px;background-repeat:no-repeat;background-position:center center; }
+input.adminSubmit { background-image:url(../); }
+
+/* admin form menuLock */
+span.adminIconButton { display:block;display:inline-block;height:32px;padding:0 0 0 32px;margin:0;max-width:0px;overflow:hidden;background-repeat:no-repeat;background-position:left center; }
+span.adminIconButton.active { background-image:url(../icon/pack/active.png); }
+span.adminIconButton.inactive { background-image:url(../icon/pack/inactive.png); }
+span.adminIconButton.settings { background-image:url(../icon/pack/settings.png); }
+span.adminIconButton.edit { background-image:url(../icon/pack/edit.png); }
+span.adminIconButton.view { background-image:url(../icon/pack/view.png); }
+span.adminIconButton.delete { background-image:url(../icon/pack/delete.png); }
+span.adminIconButton.trash { background-image:url(../icon/pack/trash.png); }
+span.adminIconButton.info { background-image:url(../icon/pack/info.png); }
+span.adminIconButton.about { background-image:url(../icon/pack/about.png); }
+span.adminIconButton.statistics { background-image:url(../icon/pack/statistics.png); }

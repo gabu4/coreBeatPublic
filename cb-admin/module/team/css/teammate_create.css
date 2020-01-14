@@ -1,0 +1,13 @@
+.teamCreate .article_main span.flag img {
+    height: 16px;
+}
+
+.teamCreate .name-field + .name-field {
+    border-top: 1px solid #d2d6de;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+.teamCreate .nav-tabs-custom span.flag img {
+    height: 16px;
+}

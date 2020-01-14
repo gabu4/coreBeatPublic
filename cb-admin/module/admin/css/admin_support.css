@@ -1,0 +1,4 @@
+section.supportPage {}
+section.supportPage img { max-width: 100%; }
+section.supportPage .rowWeb img { max-width: 300px; }
+section.supportPage .rowApp img { max-width: 200px; }

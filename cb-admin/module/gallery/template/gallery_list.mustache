@@ -1,0 +1,32 @@
+{#
+    jsend:lightbox.js
+    jsend:sortable.min.js
+    jsend:gallery_list.js
+    css:lightbox.css
+    css:gallery.css
+#}
+<div class="row">
+    <section class='GalleryDirList'>
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body ">
+                    <input type="hidden" id='gallerydir' value="{{subdir}}" />
+                    <input type="hidden" id='galleryid' value="{{id}}" />
+                    <h1>[LANG_ADMIN_GALLERY_GALLERY_TITLE] - {{name}}</h1>
+                    <div class='col-md-12 uploadField'>
+                        <input id="galleryFileUpload" name="galleryFile[]" type="file" multiple /> <button type="button" id='imageUpload' class='btn btn-info'>[LANG_ADMIN_GALLERY_IMAGE_UPLOAD]</button>
+                    </div>
+                    <div class='col-md-12 sizer text-right'>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button type="button" class="btn btn-default gallerySizeButton" data-size="small">[LANG_ADMIN_GALLERY_SIZE_SMALL]</button>
+                            <button type="button" class="btn btn-default gallerySizeButton" data-size="large">[LANG_ADMIN_GALLERY_SIZE_LARGE]</button>
+                        </div>
+                    </div>
+                    <div id='sortable' class='col-md-12 sortable cbGallery-Admin'>
+                        {{&body}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

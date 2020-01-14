@@ -1,0 +1,76 @@
+{#
+    title:[LANG_ADMIN_LANGUAGE_LIST_TNAME]
+    jsend:language_list_main.js
+#}
+
+<section class='languageList'>
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="row">
+                    <div class="form-group col-lg-4 col-md-6 list-filter filter-text">
+                        <label for="filterText">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_TEXT]</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="filterText" name="ft" placeholder="" value="{{filter_text}}"/>
+                            <div class="input-group-append"><span class="input-group-text"><span class="fas fa-search" aria-hidden="true"></span></span></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-6 list-filter filter-language">
+                        <label for="filterLanguage">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_LANGUAGE]</label>
+                        <select class="form-control" id="filterLanguage" name="fl">
+                            <option value="">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_LANGUAGE_ALL]</option>
+                            {{#?filter_language}}
+                                {{#filter_language}}
+                                    <option value="{{value}}" {{#?active}}selected{{/?active}}>{{name}}</option>
+                                {{/filter_language}}
+                            {{/?filter_language}}
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-6 list-filter filter-module">
+                        <label for="filterModule">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_MODULE]</label>
+                        <select class="form-control" id="filterModule" name="fm">
+                            <option value="">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_MODULE_ALL]</option>
+                            {{#?filter_module}}
+                                {{#filter_module}}
+                                    <option value="{{value}}" {{#?active}}selected{{/?active}}>{{name}}</option>
+                                {{/filter_module}}
+                            {{/?filter_module}}
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-6 list-filter filter-admin">
+                        <label for="filterAdmin">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_ADMIN]</label>
+                        <select class="form-control" id="filterAdmin" name="fa">
+                            <option value="">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_ADMIN_ALL]</option>
+                            <option value="0" {{#?filter_admin_none}}selected{{/?filter_admin_none}}>[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_ADMIN_NONE]</option>
+                            <option value="1" {{#?filter_admin_yes}}selected{{/?filter_admin_yes}}>[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_ADMIN_YES]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-6 list-filter filter-debugger">
+                        <label for="filterDebugger">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_DEBUGGER]</label>
+                        <select class="form-control" id="filterDebugger" name="fd">
+                            <option value="">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_DEBUGGER_ALL]</option>
+                            <option value="0" {{#?filter_debugger_none}}selected{{/?filter_debugger_none}}>[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_DEBUGGER_NONE]</option>
+                            <option value="1" {{#?filter_debugger_yes}}selected{{/?filter_debugger_yes}}>[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_DEBUGGER_YES]</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-6 list-filter filter-translate">
+                        <label for="filterTranslate">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_TRANSLATE]</label>
+                        <select class="form-control" id="filterTranslate" name="fn">
+                            <option value="">[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_TRANSLATE_ALL]</option>
+                            <option value="0" {{#?filter_translate_none}}selected{{/?filter_translate_none}}>[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_TRANSLATE_NONE]</option>
+                            <option value="1" {{#?filter_translate_yes}}selected{{/?filter_translate_yes}}>[LANG_ADMIN_LANGUAGE_LIST_MAIN_FILTER_TRANSLATE_YES]</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body language-scripts-content">
+                {{&body}}
+            </div>
+        </div>
+    </div>
+</section>

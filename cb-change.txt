@@ -1,0 +1,121 @@
+#0.16.19031400
+-egységesítések
+-update rendszer frissítés
+
+#0.6.17042500
+-hibajavítások
+
+#0.6.17021100
+-új modul meghívási formula (module_database.php, module_function.php, module_call.php)
+
+#0.6.17013000
+-function.php módosítás
+
+#0.6.17012400
+-elmúlt időszakok néhány változtatásainak visszaportolása
+
+#0.6.16062400
+-adminban javítás a felhasználó létrehozás és módosításban
+-új funkciók a $user meghívásban -> cb_update_user(), cb_get_user_level_from_id()
+-kiegészítés $user funkcióban -> cb_check_email_exist($email,$account_id) , mostantól account id alapján a bizonyos felhasználót ki tudunk szűrni ha kell!
+
+#0.6.16052500
+-javított jogosultság kezelés a rendszerben! (mostantól rendesen szűri a modulkezelő a modulokat a hozzáférési szint szerint)
+-funkciók közé felvéve egy tinyURL generálás
+-funkciók közé felvéve egy imageshack képmegoszóra való képfeltöltés script, ami a kép url-jével tér vissza.
+
+#0.6.16051100
+-account belépéskor sima felhasználónál "PRINT" tag kivétele
+-menü megjelenéskor egy active2 osztály létrehozása, ami akkor aktív amikor az almenü aktív, a teljes menüfára vonatkozóan érvényes.
+
+#0.6.16050601
+-cb-core/sys.class.content.php javítás
+
+#0.6.16050600
+-Admin felület működési hibajavítás
+-Sok apró hibajavítás
+
+#0.6.16050500
+-Admin elemek leválasztása külön menübe
+-Működő nyelv beállítás
+-Több félkész modul törtése (egyszerüsítés)
+-Sok apró hibajavítás
+
+#0.5.15102700
+-ÁLLAPOTMENTÉS, cél->utolsó "befejezett" 0.5 ág, és áttérés 0.6 ágra utána
+-Hibajavítások az AdminLTE theme bejelenkezési ablakábak megjelenésében
+-Javítások a template kezelőben, a tároló algoritmus "javítása" és újragondolása
+-Nyelvi script tagok kezelésének módosítása.. Mostantól NEM használható a stringen kívüli cserélendő szöveg, de stringben is [] azaz szögletes zárójelbe tétele ajánlott a cserélendő szövegnek (a másik mód megfog szünni). Ahol a régi módszer van használva ott jelenleg "WARNING" ott ad a rendszer, a javítás folyamatos lesz! A régi mód meszűnik amint valamennyi látható nyelvi "hiba" javítva lesz.
+-bootstrap meghívási lehetőség theme scripten keresztül ha kell $theme->loadBootstrap();
+
+#0.5.15102600
+-ÁLLAPOTMENTÉS, cél->utolsó "befejezett" 0.5 ág, és áttérés 0.6 ágra utána
+-JSEND elem hozzáadása templatebe ... ez arra jó, hogy a HTML BODY elem legvégére tölthessünk be javascript fájlt ha azt szeretnénk a teljesítmény vagy a script szerkezete miatt (kényelemből), meghívása templateben $JSEND['funckió'][] = 'fájlnév.js'; A funkció opcionális ugyan, de ajánlott a használata.
+-JS és CSS template elemeknél lehetőség van csak adott funckióra vonatkozólak meghívni elemeket. funkció megadása nélkül minden adot template fájlban található funciókor betöltődik valamennyi funkcióhoz nem rendelt js és css. meghívása mint a fenti bejegyzés esetében $JS['funckció'][] = 'fájlnév.js'; és $CSS['funkció'] = 'fájnév.css';
+
+#0.5.15102200
+-ÁLLAPOTMENTÉS, cél->utolsó "befejezett" 0.5 ág, és áttérés 0.6 ágra utána
+-Felhasználói nyelv kezelés módosítás, ha felülakarnánk írni az alap szöveget mostantól megoldható rendszerszinten, de még semmi felület vagy módszer nincs rá...
+-AdminLTE téma integrációjának elkezdése
+
+#0.5.15101300
+-ÁLLAPOTMENTÉS, cél->utolsó "befejezett" 0.5 ág, és áttérés 0.6 ágra utána
+-felhasználó kezelésbeli javítások (folyamatban)
+
+#0.5.15062700
+-működő galéria modul
+-slideshow modul (működő)
+-adminban az oldalsó menü nem foglalja el állandóan a sávot (dinamikus theme susi3)
+-előbbihez szükséges fejlesztések admin modulban
+-adatbázis lekérdezés mostantól hetetséges Insert OR Update -vel, azaz, ha nincs adott sor akkor megcsinálja, de ha van akkor csak frissíti. Szükséges parancs hozzá: $database->insertOrUpdate(táblaNév,adatTömb)
+-módosítás a menü megjelenés CLASS osztályaiban (az alapértelmezett templatejében)
+-javítások a menükezelő moduljában
+-javítások a tartalomkezelő moduljában
+
+#0.5.15061700
+-menü modul külső része mostantól témával generál
+
+#0.5.15042000
+-hibajavítások
+-sok-sok változás a rendszer kódjában
+-menü készítés szerkesztés lehetséges
+-adabázis lekérdezés (mysqli.php) parancsok kommentelése
+-adabázisban a settings táblában egy auto_load paraméter bevezetése, hogy a későbbiek folyamán ne töltsön be majd mindent
+-új lekérdezés a settings táblából nem automatán betöltődő paramétereknek: cb_load_settings
+-új menupont létrehozásakor a választások között csak az jelenik meg amit akarunk, mert mondjuk csak annak van írva felület
+
+#0.5.14100900
+-modulok elemeinek szétválasztása (a public és privát elemek)
+-a kinézet összeállítása átírva, hogy legyen template fájlja
+-részben újraírt article modul
+-adatbázisvisszajelzés javítás
+-több fájl kommentelése, kommentelésben való áttérés szabványos formára
+
+#0.5.14050700
+-menüpontkezelés fejlesztésének elkezdése
+
+#0.5.14050600
+-használtalma oldal specifikus módosítások jönnek egy időre
+-használtama specifikus admin design (de az alapjai megratandók a sima kiadáshoz)
+-működő bejegyzés tartalomkezelő az adminban, csoport létrehozás, csoport törlés, bejegyzés leétrehozás, bejegyzés törtés
+-admin oldalsó almenübe menübe lehet rakni üres helyet, gombot és színezhető
+-admin autó form létrehozás megcsinálva.. módosítás szükséges pár ponton a rendszerben .. gyakorlatilag a lapnak van egy közös form eleme
+
+#0.5.14042400
+-admin menü készítés.. menücsoport listázása már megjelenik.. még van vele sok munka...
+
+#0.5.14042200
+-class.theme.php kettéválasztása.. a kevésbé fontos nem core részek az extension.theme.php fájlba kerülnek mint class extended
+-admin felületi modul ikonkezelés átalakítása
+-admin formMenu előkészítés.. (befejezésre vár)
+-admin automata form generálás az oldaltartalomhoz.. (befejezésre vár)
+-modul átírások, javítások
+
+#0.5.14032500
+-kommentelés pár fájlban
+
+#0.5.14032400
+-Verzió változásokat lekövető fájl (cb-change.txt)
+-cb-admin megszüntetése
+-cb-adminban levő képek áthelyezése a cb-theme/_template részre
+-cb-adminban levő modul elemek áthelyezése a cb_module/{MODULENÉV}/admin/ rész alá, mostantól ezt a strukturát kell követni

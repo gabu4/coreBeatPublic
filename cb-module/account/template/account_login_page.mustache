@@ -1,0 +1,58 @@
+{#
+    title:[LANG_ACCOUNT_WELCOME]
+#}
+
+<section class='accountContentDiv accountContentPageDiv account-login-page'>
+    <div class="accountContent col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+        <h2 class='title'>[LANG_ACCOUNT_WELCOME]</h2>
+        {{#?login_allowed_local_or_api}}
+        <form action='{{action}}' method='post'>
+            <div class='form-group has-feedback'>
+                <input type='email' class='form-control' id='username' name='username' placeholder='[LANG_ACCOUNT_USERNAME]' />
+                <span class='glyphicon glyphicon-envelope form-control-feedback'></span>
+            </div>
+            <div class='form-group has-feedback'>
+                <div class="input-group flex-nowrap">
+                    <input type="password" class="form-control" id="password" name="password" value="" required="" title="[LANG_ACCOUNT_PASSWORD_TITLE]" placeholder="[LANG_ACCOUNT_PASSWORD]" />
+                    <div class="input-group-append jsCBShowPass">
+                        <span class="input-group-text passshow"><i class="fas fa-eye-slash" title="[LANG_ACCOUNT_PASSWORD_SHOW]"></i></span>
+                        <span class="input-group-text passhide" style="display:none;"><i class="fas fa-eye" title="[LANG_ACCOUNT_PASSWORD_HIDE]"></i></span>
+                    </div>
+                </div>
+                <span class='glyphicon glyphicon-lock form-control-feedback'></span>
+            </div>
+            <div class='row'>
+                {{#?login_button}}
+                    <div class='col-xs-8'>
+                        <div class="checkbox icheck">
+                            <label>
+                                <input class='iCheckJS' type='checkbox' name='remember-me' value='1'> [LANG_ACCOUNT_REMEMBER_ME]
+                            </label>
+                        </div>
+                    </div><!-- /.col -->
+                    <div class='col-xs-4'>
+                        <button type='submit' class='btn btn-primary btn-block btn-flat' name='loginbutton'>[LANG_ACCOUNT_BUTTON_LOGIN]</button>
+                    </div><!-- /.col -->
+                {{/?login_button}}
+                {{#?login_api_button}}
+                    <div class='col-xs-4'>
+                        <button type='submit' class='btn btn-primary btn-block btn-flat' name='loginapibutton'>[LANG_ACCOUNT_BUTTON_LOGIN]</button>
+                    </div><!-- /.col -->
+                {{/?login_api_button}}
+                <div class='col-xs-12'>
+                    {{#?registration_button}}
+                        <a class='btn btn-default btn-block loginElement registration' href='{{&registration_href}}'>[LANG_ACCOUNT_BUTTON_REGISTRATION]</a>
+                    {{/?registration_button}}
+                    {{#?forgot_password_button}}
+                        <a class='btn btn-default btn-block loginElement forgott_password' href='{{&forgot_password_href}}'>[LANG_ACCOUNT_BUTTON_FORGOTPASSWORD]</a>
+                    {{/?forgot_password_button}}
+                    {{#?registration_mail_resend_button}}
+                        <a class='btn btn-default btn-block loginElement registration_mail_resend' href='{{&registration_mail_resend_href}}'>[LANG_ACCOUNT_BUTTON_REGMAILRESEND]</a>
+                    {{/?registration_mail_resend_button}}
+                </div>
+            </div>
+            <input type='hidden' name='prev-page' value='{{page_url}}'>
+        </form>
+    {{/?login_allowed_local_or_api}}
+    </div>
+</section>

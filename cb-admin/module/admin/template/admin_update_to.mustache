@@ -1,0 +1,25 @@
+{#
+    js:admin_update_page.js
+#}
+
+    <section class='adminUpdate'>
+        <div class="col-md-12">
+            
+            <div class="box">
+                <div class="box-body">
+                    <h2 class=" text-center">Verzió frissítés a(z) {{version}}-ra</h2>
+                    <input type="hidden" name="target_version" value="{{version}}" />
+                    <h4 class="text-center">Aktuális verzió:</h4>
+                    <p class="text-center"><big><strong><i>{{current_version}}</i></strong></big></p>
+                    {{#?changelog}}
+                        <p>&nbsp;</p>
+                        <h4 class="text-center">Változások:</h4>
+                        <p class="text-center">{{&changelog}}</p>
+                    {{/?changelog}}
+                        <p>&nbsp;</p>
+                        <p class="text-center"><big><strong>Figyelem!</strong></big><br><br> A frissítés nem visszavonható!<br> ..felelőség, nyilatkozat etc.etc...</p>
+                        <p class="text-center checkbox"><label><input type="checkbox"> Megértettem, frissíteni szeretnék!</label></p>
+                </div>
+            </div>
+        </div>
+    </section>

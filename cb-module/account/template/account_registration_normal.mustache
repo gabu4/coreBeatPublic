@@ -1,0 +1,61 @@
+{#
+    title:[LANG_ACCOUNT_REGISTRATION_TITLE]
+    jsend:account_password.js
+#}
+
+<section class='accountContentDiv accountContentPageDiv account-registration-form'>
+    <div class="accountContent col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+        <form name='form_userRegistration' action='' method='POST'>
+            <h2 class='title'>[LANG_ACCOUNT_REGISTRATION_TITLE]</h2>
+            <div class="form-group mb-3 form-cb-email">
+                <label for="email" class="control-label">[LANG_ACCOUNT_EMAIL]</label>
+                <input type="email" id="email" class="form-control" name="email" value="{{data_email}}" required="" title="[LANG_ACCOUNT_EMAIL_TITLE]" placeholder="[LANG_ACCOUNT_EMAIL_EXAMPLE]" />
+                <div class="help-block">[LANG_ACCOUNT_EMAIL_HELPTEXT]</div>
+            </div>
+            <div class="form-group form-cb-password">
+                <label for="password" class="control-label">[LANG_ACCOUNT_PASSWORD]</label>
+                <div class="input-group flex-nowrap">
+                    <input type="password" id="password" class="form-control" name="password" value="" required="" title="[LANG_ACCOUNT_PASSWORD_TITLE]" placeholder="[LANG_ACCOUNT_PASSWORD_EXAMPLE]" />
+                    <div class="input-group-append jsCBShowPass">
+                        <span class="input-group-text "><i class="fas fa-eye-slash cursor-pointer passshow" title="[LANG_ACCOUNT_PASSWORD_SHOW]"></i><i class="fas fa-eye cursor-pointer passhide" style="display:none;" title="[LANG_ACCOUNT_PASSWORD_HIDE]"></i></span>
+                    </div>
+                </div>
+                <div class="help-block">[LANG_ACCOUNT_PASSWORD_HELPTEXT]</div>
+            </div>
+            <div class="mb-3 cb-password_strength">
+                <label for="password">[LANG_ACCOUNT_PASSWORD_STRENGTH] <span class="text-strength"></span></label>
+                <div class='cb-password_strength'>
+                    <div class="progress progress-sm">
+                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="help-block">[LANG_ACCOUNT_PASSWORD_STRENGTH_HELPTEXT]</div>
+            </div>
+            
+            {{#?require_href}}
+            <div class="checkbox">
+                <label>
+                    <input class='' type='checkbox' name='account-require-checkbox-ok' value='1' require /> [LANG_ACCOUNT_REQUIRE_CHECKBOX]
+                </label>
+                <p class="help-block"><a href='{{require_href}}' target='user_require_reading'>[LANG_ACCOUNT_REQUIRE_CHECKBOX_I_READING]</a></p>
+                <p class="help-block">[LANG_ACCOUNT_REQUIRE_CHECKBOX_HELPTEXT]</p>
+            </div>
+            {{/?require_href}}
+            
+            <button type='submit' class="btn btn-success btn-block" name='userregistrationbutton'>[LANG_ACCOUNT_USERREGISTRATION_BUTTON]</button>
+
+            {{#?login_button}}
+                <a class='btn btn-default btn-block loginElement login' href='{{&login_href}}'>[LANG_ACCOUNT_BUTTON_LOGIN]</a>
+            {{/?login_button}}
+            {{#?login_api_button}}
+                <a class='btn btn-default btn-block loginElement login_api' href='{{&login_api_href}}'>[LANG_ACCOUNT_BUTTON_LOGIN]</a>
+            {{/?login_api_button}}
+            {{#?forgot_password_button}}
+                <a class='btn btn-default btn-block loginElement forgott_password' href='{{&forgot_password_href}}'>[LANG_ACCOUNT_BUTTON_FORGOTPASSWORD]</a>
+            {{/?forgot_password_button}}
+            {{#?registration_mail_resend_button}}
+                <a class='btn btn-default btn-block loginElement registration_mail_resend' href='{{&registration_mail_resend_href}}'>[LANG_ACCOUNT_BUTTON_REGMAILRESEND]</a>
+            {{/?registration_mail_resend_button}}
+        </form>
+    </div>
+</section>
